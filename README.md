@@ -99,7 +99,13 @@ You can also start a build any time from the repo's **Actions** tab.
 
 **Photos.** Photos load straight from Airbnb's servers and are never copied. Every listing shows its cover photo. Listings Claude reviewed show a gallery whose numbers match the photo notes in their breakdown.
 
-**Adding more Claude reviews.** Reviews run on this Mac, because the API key stays here. Each costs roughly $0.05 on Opus 5.5. This reviews up to 500 more of the most promising listings, saving each review into `reviews/reviews.json` as it goes:
+**Weekly automatic reviews.** Every Sunday, `.github/workflows/review.yml` reviews the most promising listings that don't have a review yet, new listings included, using their cover photo and Inside Airbnb data. It saves them to `reviews/reviews.json`, and the daily build publishes them.
+- Each run reviews at most `REVIEWS_PER_WEEK` listings, a repository variable set to 40 (about $1.10 a week, or $5 a month).
+- It needs an `ANTHROPIC_API_KEY` repository secret. Without it the run stops before doing anything.
+- Set a monthly spend limit in the Claude Console as a hard cap.
+- Because the workflow commits to `main`, run `git pull` before pushing changes from this Mac.
+
+**Adding more Claude reviews by hand.** Reviews run on this Mac, because the API key stays here. Each costs roughly $0.05 on Opus 5.5. This reviews up to 500 more of the most promising listings, saving each review into `reviews/reviews.json` as it goes:
 
 ```bash
 zsh tools/run_review.sh /tmp/site 500

@@ -1,0 +1,61 @@
+name: Weekly Claude reviews
+
+# Every Sunday, Claude reviews the most promising listings that have no review
+# yet (new listings included) from their cover photo and Inside Airbnb data,
+# and saves the results to reviews/reviews.json. The daily build publishes them.
+#
+# Spending: at most REVIEWS_PER_WEEK reviews per run (repo variable, default 40,
+# about $1.10 at ~$0.027 each). Set a monthly spend limit on the API key in the
+# Claude Console as a hard cap.
+#
+# Needs the repository secret ANTHROPIC_API_KEY. Without it, the run stops
+# before doing anything.
+
+on:
+  schedule:
+    - cron: "0 6 * * 0" # Sundays 06:00 UTC, before the daily build at 09:17
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reviews
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      REVIEWS_PER_WEEK: ${{ vars.REVIEWS_PER_WEEK || '40' }}
+    steps:
+      - name: Check the API key is set
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::Add the ANTHROPIC_API_KEY repository secret to enable weekly reviews."
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m airbnb_access check-key
+      - name: Review the most promising unreviewed listings
+        run: >
+          python -m airbnb_access web-export --regions all --out _site
+          --reviews reviews/reviews.json --claude-limit "$REVIEWS_PER_WEEK"
+      - name: Save the new reviews
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reviews/reviews.json
+          if git diff --cached --quiet; then
+            echo "No new reviews."
+          else
+            count=$(python -c 'import json;print(len(json.load(open("reviews/reviews.json"))))')
+            git commit -m "Weekly Claude reviews ($count total)"
+            git push
+          fi
