@@ -64,7 +64,20 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:va
 .tabs{display:flex;gap:4px;background:var(--soft);border-radius:999px;padding:4px;width:max-content;margin:0 auto 18px}
 .tabs button{border:0;background:none;padding:8px 18px;border-radius:999px;cursor:pointer;font-weight:600}
 .tabs button[aria-selected="true"]{background:var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.15)}
-.dates{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dates label{font-size:12px;font-weight:800}.dates input{display:block;width:100%;margin-top:4px}
+.calsum{text-align:center;font-weight:800;margin:0 0 4px}.calsum small{display:block;font-weight:400;color:var(--muted)}
+.calnav{display:flex;justify-content:space-between;align-items:center;margin:8px 0 -30px;position:relative;z-index:1;pointer-events:none}
+.calnav button{pointer-events:auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-size:18px;line-height:1}
+.calnav button:disabled{opacity:.3;cursor:not-allowed}
+.cal{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.month h4{text-align:center;margin:6px 0 12px;font-size:15px;line-height:22px}
+.days{display:grid;grid-template-columns:repeat(7,1fr);row-gap:2px}
+.dow{font-size:12px;color:var(--muted);text-align:center;padding:2px 0 6px}
+.cell{position:relative}.cell.in,.cell.from,.cell.to{background:var(--soft)}
+.cell.from{border-radius:999px 0 0 999px}.cell.to{border-radius:0 999px 999px 0}.cell.from.to{border-radius:999px;background:none}
+.day{display:block;width:100%;max-width:44px;margin:0 auto;aspect-ratio:1;border:0;background:none;border-radius:50%;cursor:pointer;font:600 14px var(--f-body);font-variant-numeric:tabular-nums;color:var(--ink)}
+.day:hover:not(:disabled){box-shadow:inset 0 0 0 1.5px var(--ink)}
+.day:disabled{color:var(--muted);opacity:.45;text-decoration:line-through;cursor:not-allowed}
+.day.sel{background:var(--ink);color:var(--bg)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 16px;cursor:pointer}
 .chip[aria-pressed="true"]{border-color:var(--ink);background:var(--soft);font-weight:600;box-shadow:inset 0 0 0 1px var(--ink)}
@@ -142,7 +155,7 @@ dialog::backdrop{background:rgba(10,15,22,.5)}
 @media (max-width:640px){
  .seg{padding:8px 12px}.seg .lbl{font-size:11px}.seg .val{font-size:13px}.seg.out{display:none}.go{width:40px;height:40px}
  .toolbar{flex-wrap:wrap}.toolbar .chips{flex-basis:100%;order:2}.toolbar .btn{flex:1;justify-content:center}
- .cat{grid-template-columns:1fr 34px}.cat .f{grid-column:1/-1}#p-who{right:0}.dates{grid-template-columns:1fr}.brand{display:none}}
+ .cat{grid-template-columns:1fr 34px}.cat .f{grid-column:1/-1}#p-who{right:0}.cal{grid-template-columns:1fr}.cal .month+.month{display:none}.brand{display:none}}
 </style>
 
 <header>
@@ -164,7 +177,9 @@ dialog::backdrop{background:rgba(10,15,22,.5)}
   <div class="panel" id="p-when" role="dialog" aria-label="When" hidden>
    <div class="tabs" role="tablist"><button role="tab" id="tabDates" aria-selected="true">Dates</button><button role="tab" id="tabFlex" aria-selected="false">Flexible</button></div>
    <div id="whenDates">
-    <div class="dates"><label>Check in<input class="textin" type="date" id="checkIn"></label><label>Check out<input class="textin" type="date" id="checkOut"></label></div>
+    <p class="calsum" id="calSum" aria-live="polite"></p>
+    <div class="calnav"><button id="calPrev" aria-label="Previous month">‹</button><button id="calNext" aria-label="Next month">›</button></div>
+    <div class="cal" id="cal"></div>
     <p class="hint" id="dateHint"></p>
    </div>
    <div id="whenFlex" hidden>
@@ -331,7 +346,11 @@ let openPanel=null;
 function setPanel(name){openPanel=openPanel===name?null:name;
  document.querySelectorAll('.panel').forEach(p=>p.hidden=p.id!=='p-'+openPanel);
  document.querySelectorAll('.seg').forEach(s=>{s.classList.toggle('active',s.dataset.panel===openPanel);s.setAttribute('aria-expanded',s.dataset.panel===openPanel)});
- if(openPanel==='where'){$('whereInput').focus();suggest()}}
+ if(openPanel==='where'){$('whereInput').focus();suggest()}
+ if(openPanel==='when'&&S.mode==='dates'){
+  // Open on the check-in month and put focus on a date, so the calendar is ready to use at once.
+  calMonth=monthStart(Math.max(firstDay,Math.min(lastDay,S.checkIn?dayNum(S.checkIn):firstDay)));renderCal();
+  $('cal').querySelector('.day[tabindex="0"]:not(:disabled)')?.focus()}}
 document.querySelectorAll('.seg').forEach(s=>s.onclick=e=>{e.stopPropagation();setPanel(s.dataset.panel)});
 document.querySelectorAll('.panel').forEach(p=>p.onclick=e=>e.stopPropagation());
 document.addEventListener('click',()=>openPanel&&setPanel(openPanel));
@@ -355,11 +374,46 @@ $('whereInput').onkeydown=e=>{if(e.key==='Enter'){setWhere($('whereInput').value
 
 function setMode(m){S.mode=m;$('tabDates').setAttribute('aria-selected',m==='dates');$('tabFlex').setAttribute('aria-selected',m==='flex');$('whenDates').hidden=m!=='dates';$('whenFlex').hidden=m!=='flex';update()}
 $('tabDates').onclick=()=>setMode('dates');$('tabFlex').onclick=()=>setMode('flex');
-$('checkIn').min=$('checkOut').min=isoOf(calStart);$('checkIn').max=$('checkOut').max=isoOf(calEnd);
 $('dateHint').textContent=`Open nights come from Inside Airbnb's calendar snapshot, which runs to ${fmt(calEnd)}. Bookings since then won't show, so confirm on Airbnb.`;
-$('checkIn').oninput=()=>{S.checkIn=$('checkIn').value;if(S.checkOut&&S.checkOut<=S.checkIn)S.checkOut='';
- if(S.checkIn)$('checkOut').min=isoOf(dayNum(S.checkIn)+1);update()};
-$('checkOut').oninput=()=>{S.checkOut=$('checkOut').value;update()};
+// One calendar for the whole stay: the first click sets check-in, the second sets check-out.
+const MONTHS_LONG=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const today=dayNum(new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10));
+const firstDay=Math.max(today,calStart), lastDay=calEnd;
+const monthStart=n=>{const d=new Date(n*DAY);return Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),1)/DAY};
+const addMonths=(m,k)=>{const d=new Date(m*DAY);return Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+k,1)/DAY};
+let calMonth=monthStart(firstDay), hoverDay=null;
+function pickDay(n){
+ const a=S.checkIn?dayNum(S.checkIn):null;
+ if(a===null||S.checkOut||n<=a){S.checkIn=isoOf(n);S.checkOut=''}
+ else S.checkOut=isoOf(n);
+ hoverDay=null;update();
+ const b=$('cal').querySelector(`[data-n="${n}"]`);b&&b.focus()}
+function renderCal(){
+ const a=S.checkIn?dayNum(S.checkIn):null, b=S.checkOut?dayNum(S.checkOut):(a!==null&&hoverDay>a?hoverDay:null);
+ const n=nightsOf();
+ $('calSum').innerHTML=a===null?'Select a check-in date<small>Then pick your check-out date on the same calendar</small>':
+  !S.checkOut?`Select a check-out date<small>Check in ${fmt(a)}</small>`:
+  `${n} night${n>1?'s':''}<small>${fmt(a)} – ${fmt(dayNum(S.checkOut))}</small>`;
+ let html='';
+ for(const m of [calMonth,addMonths(calMonth,1)]){const d=new Date(m*DAY),lead=d.getUTCDay(),len=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+1,0)).getUTCDate();
+  html+=`<div class="month"><h4>${MONTHS_LONG[d.getUTCMonth()]} ${d.getUTCFullYear()}</h4><div class="days">`+
+   ['S','M','T','W','T','F','S'].map(x=>`<div class="dow" aria-hidden="true">${x}</div>`).join('')+'<div></div>'.repeat(lead);
+  for(let i=0;i<len;i++){const day=m+i,off=day<firstDay||day>lastDay,sel=day===a||day===b;
+   const cls=['cell',b!==null&&day>a&&day<b?'in':'',a!==null&&b!==null&&day===a?'from':'',a!==null&&b!==null&&day===b?'to':''].join(' ');
+   html+=`<div class="${cls}"><button class="day${sel?' sel':''}" data-n="${day}" ${off?'disabled':''} tabindex="${day===(a??firstDay)?0:-1}" aria-pressed="${sel}" aria-label="${new Date(day*DAY).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric',timeZone:'UTC'})}${day===a?', check-in':''}${day===b&&S.checkOut?', check-out':''}">${i+1}</button></div>`}
+  html+='</div></div>'}
+ $('cal').innerHTML=html;
+ $('calPrev').disabled=calMonth<=monthStart(firstDay);$('calNext').disabled=addMonths(calMonth,1)>=monthStart(lastDay);
+ $('cal').querySelectorAll('.day:not(:disabled)').forEach(btn=>{const day=+btn.dataset.n;
+  btn.onclick=()=>pickDay(day);
+  btn.onmouseenter=()=>{if(S.checkIn&&!S.checkOut&&hoverDay!==day){hoverDay=day;renderCal()}};
+  btn.onkeydown=e=>{const step={ArrowLeft:-1,ArrowRight:1,ArrowUp:-7,ArrowDown:7}[e.key];if(!step)return;e.preventDefault();
+   const t=Math.min(lastDay,Math.max(firstDay,day+step));
+   if(t<calMonth)calMonth=addMonths(calMonth,-1);if(t>=addMonths(calMonth,2))calMonth=addMonths(calMonth,1);
+   renderCal();$('cal').querySelector(`[data-n="${t}"]`)?.focus()}})}
+$('cal').onmouseleave=()=>{if(hoverDay!==null){hoverDay=null;renderCal()}};
+$('calPrev').onclick=()=>{calMonth=addMonths(calMonth,-1);renderCal()};
+$('calNext').onclick=()=>{calMonth=addMonths(calMonth,1);renderCal()};
 $('clearDates').onclick=()=>{Object.assign(S,{checkIn:'',checkOut:'',len:0,months:[]});update()};
 const LENS=[[2,'Weekend'],[7,'Week'],[28,'Month'],[3,'3 nights'],[5,'5 nights'],[14,'2 weeks']];
 $('lenChips').innerHTML=LENS.map(([n,l])=>`<button class="chip" data-n="${n}">${l}</button>`).join('');
@@ -412,7 +466,7 @@ function syncControls(){
  const who=[guests?`${guests} guest${guests>1?'s':''}`:'',S.infants?`${S.infants} infant${S.infants>1?'s':''}`:'',S.pets?`${S.pets} pet${S.pets>1?'s':''}`:''].filter(Boolean).join(', ');
  $('whoVal').textContent=who||'Add guests';$('whoVal').classList.toggle('set',!!who);
  WHO.forEach(([k])=>{$('o-'+k).textContent=S[k];document.querySelector(`[data-k="${k}"][data-d="-1"]`).disabled=!S[k]||(k==='adults'&&S.adults===1&&(S.children||S.infants||S.pets))});
- $('checkIn').value=S.checkIn;$('checkOut').value=S.checkOut;
+ renderCal();
  $('lenChips').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',S.len===+b.dataset.n));
  $('monthChips').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',S.months.includes(b.dataset.m)));
  document.querySelectorAll('.chips').forEach(c=>c._sync&&c._sync());
