@@ -117,7 +117,7 @@ main{max-width:1400px;margin:0 auto;padding-block:18px 40px}
 .strip span{position:absolute;left:4px;bottom:4px;font:500 11px var(--f-num);background:var(--surface);color:var(--ink);border-radius:999px;padding:0 6px}
 .photonote{color:var(--muted);font-size:13px;margin:6px 0 0}
 .plate .src{position:absolute;top:14px;right:14px;font-size:12px;background:var(--surface);color:var(--muted);border-radius:999px;padding:2px 9px}
-.card .t{display:flex;justify-content:space-between;gap:8px;font-weight:600}.card .t span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card .t{display:flex;justify-content:space-between;gap:8px;font-weight:600}.card .t span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.card .t span+span{flex:none;white-space:nowrap}
 .card .m{color:var(--muted);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .card .p{margin-top:4px}.card .p u{color:var(--muted);text-decoration-thickness:1px}
 .more{display:block;margin:30px auto 0;padding:12px 26px;border-radius:12px;border:1px solid var(--ink);background:var(--surface);cursor:pointer;font-weight:600}
@@ -546,7 +546,9 @@ function detail(d){
  const pics=d.gallery&&d.gallery.length?d.gallery:(d.img?[d.img]:[]);
  const gallery=pics.length?`<img class="hero" id="dHero" src="${esc(photoURL(pics[0],1200))}" alt="Photo 1 of ${pics.length} from the Airbnb listing">`+
   (pics.length>1?`<div class="strip" role="list" aria-label="Listing photos">${pics.map((k,j)=>`<button role="listitem" data-j="${j}" aria-label="Show photo ${j+1}"${j?'':' aria-current="true"'}><img src="${esc(photoURL(k,240))}" alt="" loading="lazy"><span>${j+1}</span></button>`).join('')}</div>`:'')+
-  `<p class="photonote">${d.method==='claude'?`Photos as Claude saw them; numbers match the notes below.`:'Cover photo only.'} <a href="${esc(airbnbURL(d))}" target="_blank" rel="noopener">All photos on Airbnb</a></p>`:'';
+  `<p class="photonote">${pics.length>1?`All photos are the host's own, from this listing on Airbnb. Claude reviewed them in this order, so the numbers match the notes below.`:
+   d.method==='claude'?`Cover photo from the host's Airbnb listing. Claude reviewed it along with the listing's description and amenities.`:`Cover photo from the host's Airbnb listing.`}
+   <a href="${esc(airbnbURL(d))}" target="_blank" rel="noopener">${pics.length>1?'View the listing on Airbnb':'See all photos on Airbnb'}</a></p>`:'';
  $('dBody').innerHTML=`${gallery}<div class="big ${tone(d.overall)}"><div class="n">${d.overall}</div><div><b>${esc(d.verdict)}</b><div class="facts">${d.method==='claude'?'Photos, description and amenities reviewed by Claude':'Keyword and amenity check; photos not reviewed yet'} · ${esc(d.confidence)} confidence</div></div></div>
  <p class="facts">${esc(d.type)} · ${esc(d.hood?d.hood+', ':'')}${esc(d.market)}${d.guests?` · up to ${d.guests} guests`:''}${d.bedrooms?` · ${d.bedrooms} bedrooms`:''}${d.beds?` · ${d.beds} beds`:''}${d.baths?` · ${d.baths} baths`:''}${d.price?` · ${money(d.price)}/night`:''}${d.minN?` · ${d.minN}-night minimum`:''}${d._win?` · open ${fmt(d._win[0])} – ${fmt(d._win[1])}${n&&d.price?` (${money(d.price*n)} est.)`:''}`:''}</p>
  <p>${esc(d.summary)}</p>

@@ -6,4 +6,4 @@ set -e
 source ~/.zshrc 2>/dev/null || true
 cd "${0:A:h}/.."
 .venv/bin/python -m airbnb_access check-key
-.venv/bin/python -m airbnb_access web-export --regions all --out "$1" --claude-limit "${2:-500}" --pages --reviews reviews/reviews.json
+.venv/bin/python -m airbnb_access web-export --regions all --out "$1" --claude-limit "${2:-500}" --reviews reviews/reviews.json

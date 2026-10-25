@@ -29,7 +29,7 @@ class Runner:
         self.done = self._load_done()
         self.lock = threading.Lock()
         self.limiter = listing_page.RateLimiter(args.page_delay)
-        self.pages_enabled = not args.no_pages
+        self.pages_enabled = args.pages
         self.counts = {"rated": 0, "claude": 0, "errors": 0, "input_tokens": 0, "output_tokens": 0}
         self.client = None
         if not args.no_claude:
@@ -206,8 +206,8 @@ def main(argv=None):
     run.add_argument("--limit", type=int, default=0, help="max new listings per market (0 = all)")
     run.add_argument("--out", default="results")
     run.add_argument("--cache", default="data")
-    run.add_argument("--no-pages", action="store_true",
-                     help="do not fetch airbnb.com listing pages (cover photo only, no accessibility amenities)")
+    run.add_argument("--pages", action="store_true",
+                     help="also fetch airbnb.com listing pages (against Airbnb's terms; off by default)")
     run.add_argument("--page-delay", type=float, default=3.0, help="seconds between listing-page requests")
     run.add_argument("--no-calendar", action="store_true",
                      help="skip the availability calendar (date search in the report will not work)")
@@ -234,7 +234,7 @@ def main(argv=None):
                      help="photo-review up to this many listings with Claude (needs ANTHROPIC_API_KEY)")
     web.add_argument("--claude-max-prelim", type=int, default=6)
     web.add_argument("--model", default="claude-opus-5-5")
-    web.add_argument("--pages", action="store_true", help="fetch airbnb.com pages for listings sent to Claude")
+    web.add_argument("--pages", action="store_true", help="also fetch airbnb.com pages for listings sent to Claude (against Airbnb's terms; off by default)")
     web.add_argument("--reviews", help="JSON file of saved Claude reviews to reuse and add to")
     web.set_defaults(func=lambda a: __import__("airbnb_access.web_export", fromlist=["export"]).export(
         Path(a.out), a.regions, a.claude_limit, a.claude_max_prelim, a.model, a.pages, reviews_path=a.reviews))

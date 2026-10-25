@@ -138,7 +138,7 @@ Useful flags:
 | Flag | Effect |
 |---|---|
 | `--no-claude` | Keyword check only, no API cost. Lower accuracy, and confidence is always "low" |
-| `--no-pages` | Don't fetch airbnb.com pages. Uses the cover photo only and misses the accessibility amenities |
+| `--pages` | Also fetch airbnb.com listing pages for the full photo set and accessibility amenities. Off by default because Airbnb's terms forbid automated collection |
 | `--no-calendar` | Skip the availability calendar download. Date search in the report is turned off |
 | `--report-rows 20000` | Most listings to include in report.html (best rated first). For large runs, give each market its own `--out` folder |
 | `--model claude-haiku-5-5` | Far cheaper photo review (see cost below) |
@@ -166,6 +166,6 @@ These are rough estimates; measure on a `--limit 50` run first.
 
 ## Limits
 
-- **Airbnb's Terms of Service.** They restrict automated access to the site. The page fetching here is polite and low-volume, but check the terms before running it at scale. `--no-pages` keeps everything to Inside Airbnb's published data.
+- **Airbnb's Terms of Service.** They forbid automated collection from airbnb.com, so the tools use only Inside Airbnb's published data by default. The first 350 Claude reviews were made with listing pages fetched from airbnb.com, before this default changed. `--pages` turns page fetching back on, at your own risk.
 - **Photos are marketing.** Hosts rarely photograph the entrance or the bathroom from a wheelchair user's point of view. Most listings end up "Unverified" (7) because nothing in them addresses accessibility. Treat the rating as a shortlist, and confirm with the host using the questions in each breakdown.
 - **Page structure.** The page parser reads Airbnb's embedded page data. It needs updating if Airbnb changes that structure. A failed parse quietly falls back to CSV data, and `page_fetched` in the output shows which listings had full data.
