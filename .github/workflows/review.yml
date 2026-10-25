@@ -47,6 +47,13 @@ jobs:
         run: >
           python -m airbnb_access web-export --regions all --out _site
           --reviews reviews/reviews.json --claude-limit "$REVIEWS_PER_WEEK"
+      # Keep a copy of the paid-for reviews on the run page even if saving fails.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reviews
+          path: reviews/reviews.json
+          if-no-files-found: ignore
       - name: Save the new reviews
         run: |
           git config user.name "github-actions[bot]"
@@ -54,8 +61,15 @@ jobs:
           git add reviews/reviews.json
           if git diff --cached --quiet; then
             echo "No new reviews."
-          else
-            count=$(python -c 'import json;print(len(json.load(open("reviews/reviews.json"))))')
-            git commit -m "Weekly Claude reviews ($count total)"
-            git push
+            exit 0
           fi
+          count=$(python -c 'import json;print(len(json.load(open("reviews/reviews.json"))))')
+          git commit -m "Weekly Claude reviews ($count total)"
+          # Someone may have pushed while the reviews ran: catch up, then push.
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && exit 0
+            echo "Push attempt $attempt failed; retrying in 15s."
+            sleep 15
+          done
+          echo "::error::Couldn't save the reviews. Download them from this run's 'reviews' artifact."
+          exit 1
