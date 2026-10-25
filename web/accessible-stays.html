@@ -119,6 +119,7 @@ main{max-width:1400px;margin:0 auto;padding-block:18px 40px}
 .plate .src{position:absolute;top:14px;right:14px;font-size:12px;background:var(--surface);color:var(--muted);border-radius:999px;padding:2px 9px}
 .card .t{display:flex;justify-content:space-between;gap:8px;font-weight:600}.card .t span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.card .t span+span{flex:none;white-space:nowrap}
 .card .m{color:var(--muted);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .asof{color:var(--muted);font-size:13px;line-height:1.35}
 .card .p{margin-top:4px}.card .p u{color:var(--muted);text-decoration-thickness:1px}
 .more{display:block;margin:30px auto 0;padding:12px 26px;border-radius:12px;border:1px solid var(--ink);background:var(--surface);cursor:pointer;font-weight:600}
 .empty{color:var(--muted);text-align:center;padding:60px 20px}
@@ -296,6 +297,7 @@ function prep(rows){rows.forEach(d=>{
  d.overall=11-d.overall;if(d.categories)for(const c of Object.values(d.categories))c.score=11-c.score;
  d._pt=ptypeOf(d.type);d._entire=/^entire/i.test(d.room);d._feat=new Set(d.feat);
  d._loc=(d.market+' '+d.hood+' '+d.region).toLowerCase();
+ d._asOf=fmt(dayNum((CFG.markets.find(m=>m.key===d.region)||{date:d.avail?d.avail.start:'1970-01-01'}).date));
  if(d.avail)d._start=dayNum(d.avail.start)});return rows}
 function bits(d){if(!d._bits){const s=atob(d.avail.bits);d._bits=new Uint8Array(s.length);for(let i=0;i<s.length;i++)d._bits[i]=s.charCodeAt(i)}return d._bits}
 function open(d,day){const i=day-d._start;if(i<0||i>=368)return false;return(bits(d)[i>>3]>>(i&7))&1}
@@ -400,7 +402,7 @@ $('whereInput').onkeydown=e=>{if(e.key==='Enter'){setWhere($('whereInput').value
 
 function setMode(m){S.mode=m;$('tabDates').setAttribute('aria-selected',m==='dates');$('tabFlex').setAttribute('aria-selected',m==='flex');$('whenDates').hidden=m!=='dates';$('whenFlex').hidden=m!=='flex';update()}
 $('tabDates').onclick=()=>setMode('dates');$('tabFlex').onclick=()=>setMode('flex');
-$('dateHint').textContent=`Open nights come from Inside Airbnb's calendar snapshot, which runs to ${fmt(calEnd)}. Bookings since then won't show, so confirm on Airbnb.`;
+$('dateHint').textContent=`Places show as open if every night was open when Inside Airbnb last checked that market, one to three months ago. Some may have been booked since, so Airbnb confirms availability when you book.`;
 // One calendar for the whole stay: the first click sets check-in, the second sets check-out.
 const MONTHS_LONG=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const today=dayNum(new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10));
@@ -532,7 +534,7 @@ function cardHTML(d,i){const n=nightsOf();
  const tags=d.feat.filter(k=>FEAT[k]&&FEAT[k].group==='Accessibility features').slice(0,3).map(k=>`<span class="tag">${esc(FEAT[k].label)}</span>`).join('');
  const price=d.price?`<div class="p"><b class="num">${money(d.price)}</b> night${n&&d._win?` · <u class="num">${money(d.price*n)} est. total</u>`:''}</div>`:'<div class="p m">Price not listed</div>';
  const star=d.stars?`<span class="num">★ ${d.stars.toFixed(2)}${d.reviews?` (${d.reviews})`:''}</span>`:(d.reviews?'':'<span>New</span>');
- const win=d._win&&S.mode==='flex'&&S.len?`<div class="m">${fmt(d._win[0])} – ${fmt(d._win[1])}</div>`:'';
+ const win=d._win?`<div class="asof">${S.mode==='flex'&&S.len?`${fmt(d._win[0])} – ${fmt(d._win[1])}, open`:'Open'} as of ${d._asOf}; may have been booked since</div>`:'';
  return `<button class="card" data-i="${i}" aria-label="${esc(d.name)}. Accessibility ${d.overall} out of 10, ${esc(d.verdict)}.">
  <div class="plate ${tone(d.overall)}${d.img?' photo':''}">${d.img?`<img src="${esc(photoURL(d.img,480))}" alt="" loading="lazy" onerror="this.parentNode.classList.remove('photo');this.remove()">`:''}<span class="src">${d.method==='claude'?'Photos reviewed':'Keyword check'}</span>
   <div><div class="sc"><b>${d.overall}</b><span>/10</span></div><div class="vd">${esc(d.verdict)}</div></div><div class="tags">${tags}</div></div>
@@ -557,9 +559,9 @@ function detail(d){
    d.method==='claude'?`Cover photo from the host's Airbnb listing. Claude reviewed it along with the listing's description and amenities.`:`Cover photo from the host's Airbnb listing.`}
    <a href="${esc(airbnbURL(d))}" target="_blank" rel="noopener">${pics.length>1?'View the listing on Airbnb':'See all photos on Airbnb'}</a></p>`:'';
  $('dBody').innerHTML=`${gallery}<div class="big ${tone(d.overall)}"><div class="n">${d.overall}</div><div><b>${esc(d.verdict)}</b><div class="facts">${d.method==='claude'?'Photos, description and amenities reviewed by Claude':'Keyword and amenity check; photos not reviewed yet'} · ${esc(d.confidence)} confidence</div></div></div>
- <p class="facts">${esc(d.type)} · ${esc(d.hood?d.hood+', ':'')}${esc(d.market)}${d.guests?` · up to ${d.guests} guests`:''}${d.bedrooms?` · ${d.bedrooms} bedrooms`:''}${d.beds?` · ${d.beds} beds`:''}${d.baths?` · ${d.baths} baths`:''}${d.price?` · ${money(d.price)}/night`:''}${d.minN?` · ${d.minN}-night minimum`:''}${d._win?` · open ${fmt(d._win[0])} – ${fmt(d._win[1])}${n&&d.price?` (${money(d.price*n)} est.)`:''}`:''}</p>
+ <p class="facts">${esc(d.type)} · ${esc(d.hood?d.hood+', ':'')}${esc(d.market)}${d.guests?` · up to ${d.guests} guests`:''}${d.bedrooms?` · ${d.bedrooms} bedrooms`:''}${d.beds?` · ${d.beds} beds`:''}${d.baths?` · ${d.baths} baths`:''}${d.price?` · ${money(d.price)}/night`:''}${d.minN?` · ${d.minN}-night minimum`:''}${d._win?` · open ${fmt(d._win[0])} – ${fmt(d._win[1])} as of ${d._asOf}, may have been booked since${n&&d.price?` (${money(d.price*n)} est.)`:''}`:''}</p>
  <p>${esc(d.summary)}</p>
- <div class="links"><a href="${esc(airbnbURL(d))}" target="_blank" rel="noopener">See photos and book on Airbnb</a>${map}</div>
+ <div class="links"><a href="${esc(airbnbURL(d))}" target="_blank" rel="noopener">${d._win?'Check live availability on Airbnb':'See photos and book on Airbnb'}</a>${map}</div>
  ${cats}${list('Barriers',d.barriers)}${list('Host-declared accessibility features',d.declared)}${list('What the photos show',d.photos.map(p=>`Photo ${p.photo}: ${p.observation}`))}${d.questions.length?`<h4 class="qhead">Ask the host before booking <button class="copy" id="copyQ"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copy all</span></button></h4><ul id="qList">${d.questions.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}${d.note?`<p class="facts"><small>${esc(d.note)}</small></p>`:''}`;
  $('dBody').querySelectorAll('.strip button').forEach(b=>b.onclick=()=>{const j=+b.dataset.j;
   $('dHero').src=photoURL(pics[j],1200);$('dHero').alt=`Photo ${j+1} of ${pics.length} from the Airbnb listing`;
