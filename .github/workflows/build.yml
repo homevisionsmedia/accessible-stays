@@ -1,12 +1,12 @@
 name: Build and publish
 
-# Rebuilds the site from Inside Airbnb's latest data every week and publishes
+# Rebuilds the site from Inside Airbnb's latest data every day and publishes
 # it to GitHub Pages. Saved Claude reviews (reviews/reviews.json) are reused,
 # so no API key is needed here and no review is paid for twice.
 
 on:
   schedule:
-    - cron: "17 9 * * 1" # Mondays 09:17 UTC
+    - cron: "17 9 * * *" # daily 09:17 UTC; picks up each new market snapshot the day it is published
   workflow_dispatch:
   push:
     branches: [main]

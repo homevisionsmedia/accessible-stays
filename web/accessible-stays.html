@@ -266,6 +266,7 @@ const money=n=>'$'+Math.round(n).toLocaleString('en-US');
 const DAY=864e5, dayNum=iso=>{const[y,m,d]=iso.split('-').map(Number);return Date.UTC(y,m-1,d)/DAY};
 const isoOf=n=>new Date(n*DAY).toISOString().slice(0,10);
 const fmt=n=>new Date(n*DAY).toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+const fmtLong=n=>new Date(n*DAY).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
 const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const FEAT=Object.fromEntries(CFG.features.map(f=>[f.key,f]));
 const TOTAL=CFG.markets.reduce((a,m)=>a+m.count,0);
@@ -507,8 +508,13 @@ function render(){
  if(loadingMsg){$('count').innerHTML=`<span class="loading">${esc(loadingMsg)}</span>`;$('grid').innerHTML='';$('more').hidden=true;return}
  if(loadError){$('count').textContent='';$('grid').innerHTML=`<p class="empty">${esc(loadError)}</p>`;$('more').hidden=true;return}
  const rows=current,where=dataLabel||S.where;
- const scope=dataLabel?`${(CFG.markets.find(m=>m.label===dataLabel)||{count:0}).count.toLocaleString()} listings in this market`:
-  `Showing the ${DATA.length.toLocaleString()} most accessible of ${TOTAL.toLocaleString()} listings in ${CFG.markets.length} US markets. Pick a destination to search every listing there.`;
+ const mk=CFG.markets.find(m=>m.label===dataLabel);
+ // How fresh the data is: each market is a snapshot Inside Airbnb takes every few months.
+ const asOf=mk?`Listings and availability as of ${fmtLong(dayNum(mk.date))}`:
+  (Math.min(...snaps)===Math.max(...snaps)?`Listings and availability as of ${fmtLong(snaps[0])}`:
+   `Listings and availability as of ${fmtLong(Math.min(...snaps))} to ${fmtLong(Math.max(...snaps))}, depending on the market`);
+ const scope=(mk?`${mk.count.toLocaleString()} listings in this market`:
+  `Showing the ${DATA.length.toLocaleString()} most accessible of ${TOTAL.toLocaleString()} listings in ${CFG.markets.length} US markets. Pick a destination to search every listing there.`)+`<br>${asOf}. Confirm dates on Airbnb before booking.`;
  const noCal=datesActive()?DATA.filter(d=>!d.avail).length:0;
  $('count').innerHTML=`${rows.length.toLocaleString()} place${rows.length===1?'':'s'}${where?` in ${esc(S.where||where)}`:''}<small>${scope}${noCal?` · ${noCal.toLocaleString()} without calendar data are hidden while dates are set`:''}</small>`;
  $('grid').innerHTML=rows.length?rows.slice(0,shown).map(cardHTML).join(''):emptyHTML();

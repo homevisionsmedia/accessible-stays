@@ -89,7 +89,7 @@ Never put the key in the web page, its data files or the GitHub repo. Anyone who
 
 ## The website (GitHub Pages)
 
-The search site is published on GitHub Pages and rebuilds itself every Monday on GitHub's servers (`.github/workflows/build.yml`). Each build:
+The search site is published on GitHub Pages and rebuilds itself every day on GitHub's servers, picking up each market's new Inside Airbnb snapshot (published roughly every three months per market) the day it appears (`.github/workflows/build.yml`). Each build:
 - streams all US markets straight from Inside Airbnb, with nothing stored;
 - rates every listing;
 - reuses the saved Claude reviews in `reviews/reviews.json`;
