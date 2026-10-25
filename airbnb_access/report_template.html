@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accessible Stays Search</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{--bg:#fff;--card:#fff;--soft:#f6f5f2;--ink:#1d1d1b;--muted:#6b6a65;--line:#e2e0da;--good:#1f7a4d;--good2:#3f8f5f;--ok:#9a7400;--bad:#b3261e;--accent:#d7264f;--focus:#2b5fd9;--shadow:0 6px 24px rgba(0,0,0,.12)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151514;--card:#1f1f1d;--soft:#262624;--ink:#ecebe6;--muted:#a3a29b;--line:#383733;--good:#5cc78f;--good2:#7bc79a;--ok:#e0c050;--bad:#f2867e;--accent:#ff5a7a;--focus:#8fb0ff;--shadow:0 6px 24px rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{--bg:#151514;--card:#1f1f1d;--soft:#262624;--ink:#ecebe6;--muted:#a3a29b;--line:#383733;--good:#5cc78f;--good2:#7bc79a;--ok:#e0c050;--bad:#f2867e;--accent:#ff5a7a;--focus:#8fb0ff;--shadow:0 6px 24px rgba(0,0,0,.5)}
+*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,select{font:inherit;color:inherit}:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+header{position:sticky;top:0;z-index:1000;background:var(--bg);border-bottom:1px solid var(--line);padding:14px 16px 10px}
+.headrow{display:flex;align-items:center;gap:16px;max-width:1500px;margin:0 auto;position:relative}
+.brand{font-weight:800;color:var(--accent);font-size:18px;white-space:nowrap}
+.searchbar{flex:1;max-width:860px;margin:0 auto;display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);background:var(--card)}
+.seg{flex:1;min-width:0;text-align:left;background:none;border:0;border-radius:999px;padding:10px 20px;cursor:pointer;position:relative}
+.seg+.seg::before{content:"";position:absolute;left:0;top:25%;height:50%;border-left:1px solid var(--line)}
+.seg:hover,.seg.active{background:var(--soft)}.seg.active::before,.seg.active+.seg::before{display:none}
+.seg .lbl{display:block;font-size:12px;font-weight:700}.seg .val{display:block;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg .val.set{color:var(--ink)}
+.go{flex:none;margin:6px;width:46px;height:46px;border-radius:50%;border:0;background:var(--accent);color:#fff;display:grid;place-items:center;cursor:pointer}
+.panel{display:none;position:absolute;top:calc(100% + 10px);background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:22px;z-index:1100;max-height:75vh;overflow:auto}
+.panel.open{display:block}#p-where{left:50%;transform:translateX(-50%);width:min(440px,92vw)}#p-when{left:50%;transform:translateX(-50%);width:min(720px,94vw)}#p-who{right:max(0px,calc(50% - 430px));width:min(380px,92vw)}
+.panel h3{margin:0 0 10px;font-size:15px}
+.textin{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.suggest{list-style:none;margin:10px 0 0;padding:0}.suggest button{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:none;border:0;padding:10px;border-radius:12px;cursor:pointer}
+.suggest button:hover,.suggest button:focus-visible{background:var(--soft)}.pin{width:40px;height:40px;border-radius:10px;background:var(--soft);display:grid;place-items:center;flex:none}
+.suggest small{display:block;color:var(--muted)}
+.tabs{display:flex;justify-content:center;gap:4px;background:var(--soft);border-radius:999px;padding:4px;width:max-content;margin:0 auto 18px}
+.tabs button{border:0;background:none;padding:8px 18px;border-radius:999px;cursor:pointer;font-weight:600}.tabs button[aria-selected="true"]{background:var(--card);box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.dates{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dates label{font-size:12px;font-weight:700}.dates input{display:block;width:100%;margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 16px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--ink);background:var(--soft);font-weight:600;box-shadow:inset 0 0 0 1px var(--ink)}
+.month{border-radius:14px;padding:12px 14px;min-width:96px;text-align:center}
+.hint{color:var(--muted);font-size:13px;margin:10px 0 0}
+.step{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}.step:last-child{border:0}
+.step small{display:block;color:var(--muted)}.stepper{display:flex;align-items:center;gap:12px}
+.stepper button{width:32px;height:32px;border-radius:50%;border:1px solid var(--muted);background:none;cursor:pointer}.stepper button:disabled{opacity:.3;cursor:not-allowed}
+.stepper output{min-width:18px;text-align:center}
+.toolbar{display:flex;align-items:center;gap:10px;max-width:1500px;margin:10px auto 0}
+.toolbar .chips{flex:1;min-width:0;flex-wrap:nowrap;overflow-x:auto;padding:2px;scrollbar-width:thin}.toolbar .chip{white-space:nowrap;font-size:14px;padding:7px 14px}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 14px;cursor:pointer;white-space:nowrap}
+.badge{background:var(--ink);color:var(--bg);border-radius:999px;font-size:11px;padding:1px 7px}
+select.btn{appearance:auto}
+main{max-width:1500px;margin:0 auto;padding:16px;display:grid;grid-template-columns:1fr;gap:20px}
+main.with-map{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+.count{margin:0 0 14px;font-weight:600}.count small{display:block;font-weight:400;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px 18px}
+.card{all:unset;display:block;cursor:pointer;border-radius:14px}.card:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
+.ph{position:relative;aspect-ratio:20/19;border-radius:14px;overflow:hidden;background:var(--soft)}.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.score{position:absolute;top:10px;left:10px;border-radius:999px;padding:4px 10px;font-weight:700;font-size:13px;color:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.card .t{display:flex;justify-content:space-between;gap:8px;margin-top:10px;font-weight:600}.card .t span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card .m{color:var(--muted);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.card .v{font-size:14px;font-weight:600}
+.card .p{margin-top:4px}.card .p b{font-weight:700}.card .p u{color:var(--muted)}
+.more{display:block;margin:28px auto;padding:12px 26px;border-radius:12px;border:1px solid var(--ink);background:var(--card);cursor:pointer;font-weight:600}
+.mapwrap{position:sticky;top:150px;height:calc(100vh - 170px);border-radius:16px;overflow:hidden;border:1px solid var(--line);display:none}
+main.with-map .mapwrap{display:block}#map{height:100%;background:var(--soft)}
+.mapsearch{position:absolute;z-index:500;top:12px;left:50%;transform:translateX(-50%);background:var(--card);border-radius:999px;padding:8px 14px;box-shadow:var(--shadow);font-size:14px;white-space:nowrap}
+.pinlbl{background:var(--card);color:var(--ink);border-radius:999px;padding:3px 8px;font-weight:700;font-size:12px;box-shadow:0 1px 5px rgba(0,0,0,.35);white-space:nowrap;border:2px solid;transform:translate(-50%,-50%);display:inline-block}
+.leaflet-div-icon{background:none;border:0}
+.empty{color:var(--muted);text-align:center;padding:60px 20px}
+dialog{border:0;border-radius:20px;padding:0;width:min(780px,96vw);max-height:90vh;background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+.dh{position:sticky;top:0;background:var(--card);display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--line);font-weight:700;z-index:2}
+.x{position:absolute;left:12px;border:0;background:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:20px}.x:hover{background:var(--soft)}
+.db{padding:4px 24px 24px}.fs{padding:20px 0;border-bottom:1px solid var(--line)}.fs:last-child{border:0}.fs h3{margin:0 0 6px;font-size:18px}.fs p{margin:0 0 12px;color:var(--muted);font-size:14px}
+.pricein{display:flex;gap:12px;align-items:center}.pricein label{flex:1;border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:12px;color:var(--muted)}.pricein input{display:block;width:100%;border:0;background:none;font-size:16px;color:var(--ink);padding:2px 0}
+.rr{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0}.rr .chips{gap:6px}.rr .chip{min-width:46px;padding:6px 12px}
+.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}.checks label{display:flex;gap:10px;align-items:center;cursor:pointer}.checks input{width:20px;height:20px;accent-color:var(--ink)}
+.df{position:sticky;bottom:0;background:var(--card);display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-top:1px solid var(--line)}
+.link{background:none;border:0;text-decoration:underline;font-weight:600;cursor:pointer;padding:8px 0}
+.primary{background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:12px 22px;font-weight:700;cursor:pointer}
+.hero{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;margin-top:16px;background:var(--soft)}
+.big{display:flex;gap:14px;align-items:center;margin:16px 0}.big .n{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:26px;font-weight:800;flex:none}
+.cat{display:grid;grid-template-columns:170px 34px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}.cat .n{font-weight:700}
+.bar{height:6px;border-radius:3px;background:var(--line);margin-top:6px}.bar i{display:block;height:100%;border-radius:3px}
+.db h4{margin:18px 0 6px}.db ul{margin:0;padding-left:20px}.facts{color:var(--muted)}
+@media (max-width:900px){main.with-map{grid-template-columns:1fr}main.with-map .results{display:none}.mapwrap{position:relative;top:0;height:70vh}.brand{display:none}}
+@media (max-width:640px){.toolbar{flex-wrap:wrap}.toolbar .chips{flex-basis:100%;order:2}.toolbar .btn{flex:1;justify-content:center;padding:8px}.searchbar{min-width:0}.seg{padding:8px 12px}.seg .lbl{font-size:11px}.seg .val{font-size:13px}.seg[data-panel="when"]+.seg[data-panel="when"]{display:none}.go{width:40px;height:40px}.cat{grid-template-columns:1fr 34px}.cat .f{grid-column:1/-1}#p-who{right:0}}
+</style></head><body>
+<header>
+ <div class="headrow">
+  <div class="brand">Accessible Stays</div>
+  <div class="searchbar" role="search">
+   <button class="seg" data-panel="where" aria-haspopup="true"><span class="lbl">Where</span><span class="val" id="whereVal">Search destinations</span></button>
+   <button class="seg" data-panel="when" aria-haspopup="true"><span class="lbl" id="inLbl">Check in</span><span class="val" id="inVal">Add dates</span></button>
+   <button class="seg" data-panel="when" aria-haspopup="true"><span class="lbl" id="outLbl">Check out</span><span class="val" id="outVal">Add dates</span></button>
+   <button class="seg" data-panel="who" aria-haspopup="true"><span class="lbl">Who</span><span class="val" id="whoVal">Add guests</span></button>
+   <button class="go" id="go" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7"/><path d="M21 21l-5.2-5.2"/></svg></button>
+  </div>
+  <div class="panel" id="p-where" role="dialog" aria-label="Where">
+   <label class="sr" for="whereInput">Destination</label>
+   <input class="textin" id="whereInput" placeholder="Search a city, neighborhood or ZIP" autocomplete="off">
+   <ul class="suggest" id="suggest"></ul>
+  </div>
+  <div class="panel" id="p-when" role="dialog" aria-label="When">
+   <div class="tabs" role="tablist"><button role="tab" id="tabDates" aria-selected="true">Dates</button><button role="tab" id="tabFlex" aria-selected="false">Flexible</button></div>
+   <div id="whenDates">
+    <div class="dates"><label>Check in<input class="textin" type="date" id="checkIn"></label><label>Check out<input class="textin" type="date" id="checkOut"></label></div>
+    <p class="hint" id="dateHint"></p>
+   </div>
+   <div id="whenFlex" hidden>
+    <h3>How long would you like to stay?</h3>
+    <div class="chips" id="lenChips"></div>
+    <h3 style="margin-top:22px">When do you want to go?</h3>
+    <div class="chips" id="monthChips"></div>
+    <p class="hint">Shows places with an open stretch of that length starting in the months you pick (any month if none picked).</p>
+   </div>
+  </div>
+  <div class="panel" id="p-who" role="dialog" aria-label="Who">
+   <div id="steppers"></div>
+   <p class="hint">Infants don't count toward the guest limit. Service animals aren't pets, so no need to add them.</p>
+  </div>
+ </div>
+ <div class="toolbar">
+  <div class="chips" id="quick"></div>
+  <label class="sr" for="sort">Sort</label>
+  <select class="btn" id="sort"><option value="access">Most accessible</option><option value="priceAsc">Price: low to high</option><option value="priceDesc">Price: high to low</option><option value="rating">Top rated</option></select>
+  <button class="btn" id="openFilters"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Filters <span class="badge" id="fcount" hidden></span></button>
+  <button class="btn" id="toggleMap" aria-pressed="false">Show map</button>
+ </div>
+</header>
+<main id="main">
+ <section class="results"><p class="count" id="count" aria-live="polite"></p><div class="grid" id="grid"></div><button class="more" id="more" hidden>Show more</button></section>
+ <aside class="mapwrap" aria-label="Map of results"><div id="map"></div><label class="mapsearch"><input type="checkbox" id="moveSearch"> Search as I move the map</label></aside>
+</main>
+
+<dialog id="filters" aria-labelledby="fTitle">
+ <div class="dh"><button class="x" data-close aria-label="Close">×</button><span id="fTitle">Filters</span></div>
+ <div class="db">
+  <div class="fs"><h3>Accessibility rating</h3><p>1 is ideal for a wheelchair user, 10 is not accessible.</p>
+   <div class="chips" id="fScore"></div>
+   <div class="checks" style="margin-top:14px"><label><input type="checkbox" id="fReviewed"> Only listings whose photos were reviewed</label><label><input type="checkbox" id="fNoBarrier"> Hide listings with a known barrier</label></div></div>
+  <div class="fs"><h3>Type of place</h3><div class="chips" id="fType"></div></div>
+  <div class="fs"><h3>Price range</h3><p>Nightly prices before fees and taxes</p>
+   <div class="pricein"><label>Minimum<input type="number" min="0" inputmode="numeric" id="fMin" placeholder="$0"></label><span>–</span><label>Maximum<input type="number" min="0" inputmode="numeric" id="fMax" placeholder="Any"></label></div></div>
+  <div class="fs"><h3>Rooms and beds</h3><div id="fRooms"></div></div>
+  <div class="fs"><h3>Accessibility features</h3><p>Features the host has listed on Airbnb</p><div class="checks" data-group="Accessibility features"></div></div>
+  <div class="fs"><h3>Amenities</h3><div class="checks" data-group="Amenities"></div></div>
+  <div class="fs"><h3>Booking options</h3><div class="checks" data-group="Booking options"></div></div>
+  <div class="fs"><h3>Standout stays</h3><div class="checks"><label><input type="checkbox" id="fSuper"> Superhost</label><label><input type="checkbox" id="fTop"> Top rated (4.8+ stars, 5+ reviews)</label></div></div>
+  <div class="fs"><h3>Property type</h3><div class="chips" id="fPtype"></div></div>
+ </div>
+ <div class="df"><button class="link" id="clearAll">Clear all</button><button class="primary" id="showN" data-close>Show places</button></div>
+</dialog>
+
+<dialog id="detail" aria-labelledby="dTitle">
+ <div class="dh"><button class="x" data-close aria-label="Close">×</button><span id="dTitle">Accessibility breakdown</span></div>
+ <div class="db" id="dBody"></div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const DATA=__DATA__, CFG=__CONFIG__;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const color=s=>s<=2?'var(--good)':s<=4?'var(--good2)':s<=6?'var(--ok)':'var(--bad)';
+const money=n=>'$'+Math.round(n).toLocaleString('en-US');
+const DAY=864e5, dayNum=iso=>{const[y,m,d]=iso.split('-').map(Number);return Date.UTC(y,m-1,d)/DAY};
+const isoOf=n=>new Date(n*DAY).toISOString().slice(0,10);
+const fmt=n=>new Date(n*DAY).toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+// ---------- derived data ----------
+const ptypeOf=t=>{t=(t||'').toLowerCase();
+ if(/hotel|hostel|resort|bed and breakfast|aparthotel|boutique/.test(t))return'hotel';
+ if(/guest ?suite|guesthouse|guest house/.test(t))return'guesthouse';
+ if(/rental unit|condo|apartment|loft|serviced/.test(t))return'apartment';
+ if(/home|house|cottage|bungalow|cabin|villa|townhouse|chalet|farm|ranch|tiny|casa/.test(t))return'house';
+ return'other'};
+let calStart=Infinity, calEnd=-Infinity, withCal=0;
+DATA.forEach(d=>{d._pt=ptypeOf(d.type);d._entire=/^entire/i.test(d.room);d._feat=new Set(d.feat);
+ d._loc=(d.market+' '+d.hood+' '+d.region).toLowerCase();
+ if(d.avail){withCal++;d._start=dayNum(d.avail.start);calStart=Math.min(calStart,d._start);calEnd=Math.max(calEnd,d._start+364)}});
+function bits(d){if(!d._bits){const s=atob(d.avail.bits);d._bits=new Uint8Array(s.length);for(let i=0;i<s.length;i++)d._bits[i]=s.charCodeAt(i)}return d._bits}
+function open(d,day){const i=day-d._start;if(i<0||i>=368)return false;return(bits(d)[i>>3]>>(i&7))&1}
+
+// ---------- state ----------
+const DEF={where:'',mode:'dates',checkIn:'',checkOut:'',len:0,months:[],adults:0,children:0,infants:0,pets:0,
+ maxScore:10,reviewed:false,noBarrier:false,place:'any',priceMin:'',priceMax:'',bedrooms:0,beds:0,baths:0,feat:[],superhost:false,top:false,ptype:[],sort:'access'};
+let S=JSON.parse(JSON.stringify(DEF));  // deep copy: filters mutate the arrays in place
+try{const h=decodeURIComponent(location.hash.slice(1));if(h)Object.assign(S,JSON.parse(h))}catch(e){}
+let bounds=null, shown=48;
+function save(){const o={};for(const k in S)if(JSON.stringify(S[k])!==JSON.stringify(DEF[k]))o[k]=S[k];
+ history.replaceState(null,'',Object.keys(o).length?'#'+encodeURIComponent(JSON.stringify(o)):location.pathname+location.search)}
+
+// ---------- filtering ----------
+// Flexible with months but no length picked = at least one open night in those months.
+const nightsOf=()=>S.mode==='dates'?(S.checkIn&&S.checkOut?dayNum(S.checkOut)-dayNum(S.checkIn):0):(S.len||(S.months.length?1:0));
+const datesActive=()=>nightsOf()>0;
+function stayOK(d){
+ const n=nightsOf();
+ if(n&&((d.minN&&n<d.minN)||(d.maxN&&n>d.maxN)))return false;
+ if(!d.avail)return false;
+ if(S.mode==='dates'){const a=dayNum(S.checkIn);for(let k=0;k<n;k++)if(!open(d,a+k))return false;d._win=[a,a+n];return true}
+ const months=new Set(S.months), weekend=S.len===2;let run=0;
+ for(let i=0;i<368;i++){run=open(d,d._start+i)?run+1:0;
+  if(run>=n){const s=d._start+i-n+1,dt=new Date(s*DAY);
+   if(weekend&&dt.getUTCDay()!==5)continue;
+   if(months.size&&!months.has(isoOf(s).slice(0,7)))continue;
+   d._win=[s,s+n];return true}}
+ return false}
+function match(d,skipBounds){
+ if(d.overall>S.maxScore)return false;
+ if(S.reviewed&&d.method!=='claude')return false;
+ if(S.noBarrier&&d.barriers.length)return false;
+ if(S.where){const toks=S.where.toLowerCase().split(/[\s,]+/).filter(Boolean);if(!toks.every(t=>d._loc.includes(t)))return false}
+ const guests=S.adults+S.children;if(guests&&!(d.guests>=guests))return false;
+ if(S.pets&&!d._feat.has('pets'))return false;
+ if(S.place==='entire'&&!d._entire)return false;if(S.place==='room'&&d._entire)return false;
+ if(S.priceMin!==''&&!(d.price>=+S.priceMin))return false;if(S.priceMax!==''&&!(d.price<=+S.priceMax))return false;
+ if(S.bedrooms&&!(d.bedrooms>=S.bedrooms))return false;if(S.beds&&!(d.beds>=S.beds))return false;if(S.baths&&!(d.baths>=S.baths))return false;
+ for(const f of S.feat)if(!d._feat.has(f))return false;
+ if(S.superhost&&!d.superhost)return false;if(S.top&&!(d.stars>=4.8&&d.reviews>=5))return false;
+ if(S.ptype.length&&!S.ptype.includes(d._pt))return false;
+ if(!skipBounds&&bounds&&!(d.lat!=null&&bounds.contains([d.lat,d.lng])))return false;
+ d._win=null;
+ if(datesActive()&&!stayOK(d))return false;
+ return true}
+const CONF={high:0,medium:1,low:2};
+const SORTS={access:(a,b)=>a.overall-b.overall||(CONF[a.confidence]-CONF[b.confidence])||((b.stars||0)-(a.stars||0)),
+ priceAsc:(a,b)=>(a.price??1e9)-(b.price??1e9),priceDesc:(a,b)=>(b.price??-1)-(a.price??-1),
+ rating:(a,b)=>((b.stars||0)-(a.stars||0))||(b.reviews-a.reviews)};
+
+// ---------- search bar ----------
+let openPanel=null;
+function setPanel(name){openPanel=openPanel===name?null:name;
+ document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('open',p.id==='p-'+openPanel));
+ document.querySelectorAll('.seg').forEach(s=>{s.classList.toggle('active',s.dataset.panel===openPanel);s.setAttribute('aria-expanded',s.dataset.panel===openPanel)});
+ if(openPanel==='where'){$('whereInput').focus();suggest()}}
+document.querySelectorAll('.seg').forEach(s=>s.onclick=e=>{e.stopPropagation();setPanel(s.dataset.panel)});
+document.querySelectorAll('.panel').forEach(p=>p.onclick=e=>e.stopPropagation());
+document.addEventListener('click',()=>openPanel&&setPanel(openPanel));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&openPanel)setPanel(openPanel)});
+$('go').onclick=e=>{e.stopPropagation();openPanel&&setPanel(openPanel);update(true);document.querySelector('.results').scrollIntoView({behavior:'smooth'})};
+
+// where
+const PLACES=(()=>{const m=new Map();DATA.forEach(d=>{
+ if(!m.has(d.market))m.set(d.market,{label:d.market,sub:'Market',n:0});m.get(d.market).n++;
+ if(d.hood){const k=d.hood+'|'+d.market;if(!m.has(k))m.set(k,{label:d.hood+', '+d.market,sub:(/^\d{5}$/.test(d.hood)?'ZIP code':'Neighborhood'),n:0});m.get(k).n++}});
+ return[...m.values()].sort((a,b)=>b.n-a.n)})();
+function suggest(){const q=$('whereInput').value.toLowerCase().split(/[\s,]+/).filter(Boolean);
+ const hits=PLACES.filter(p=>q.every(t=>p.label.toLowerCase().includes(t))).slice(0,8);
+ $('suggest').innerHTML=(S.where?`<li><button data-v=""><span class="pin">✕</span><span>Anywhere<small>Clear destination</small></span></button></li>`:'')+
+  hits.map(p=>`<li><button data-v="${esc(p.label)}"><span class="pin" aria-hidden="true">📍</span><span>${esc(p.label)}<small>${p.sub} · ${p.n.toLocaleString()} listing${p.n>1?'s':''}</small></span></button></li>`).join('');
+ $('suggest').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.where=b.dataset.v;$('whereInput').value=S.where;bounds=null;update(true);setPanel('when')})}
+$('whereInput').oninput=suggest;
+$('whereInput').onkeydown=e=>{if(e.key==='Enter'){S.where=$('whereInput').value.trim();bounds=null;update(true);setPanel('when')}};
+
+// when
+function setMode(m){S.mode=m;$('tabDates').setAttribute('aria-selected',m==='dates');$('tabFlex').setAttribute('aria-selected',m==='flex');$('whenDates').hidden=m!=='dates';$('whenFlex').hidden=m!=='flex';update()}
+$('tabDates').onclick=()=>setMode('dates');$('tabFlex').onclick=()=>setMode('flex');
+if(withCal){$('checkIn').min=$('checkOut').min=isoOf(calStart);$('checkIn').max=$('checkOut').max=isoOf(calEnd)}
+$('dateHint').textContent=withCal?`Availability is from Inside Airbnb's calendar snapshot (${fmt(calStart)} – ${fmt(calEnd)}); confirm on Airbnb before booking.`:'No availability calendar in these results, so date search is off. Rerun without --no-calendar to enable it.';
+$('checkIn').oninput=()=>{S.checkIn=$('checkIn').value;if(S.checkOut&&S.checkOut<=S.checkIn){S.checkOut='';$('checkOut').value=''}
+ if(S.checkIn)$('checkOut').min=isoOf(dayNum(S.checkIn)+1);update()};
+$('checkOut').oninput=()=>{S.checkOut=$('checkOut').value;update()};
+const LENS=[[2,'Weekend'],[7,'Week'],[28,'Month'],[3,'3 nights'],[5,'5 nights'],[14,'2 weeks']];
+$('lenChips').innerHTML=LENS.map(([n,l])=>`<button class="chip" data-n="${n}">${l}</button>`).join('');
+$('lenChips').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.len=S.len===+b.dataset.n?0:+b.dataset.n;update()});
+(()=>{if(!withCal)return;const d=new Date(calStart*DAY);let y=d.getUTCFullYear(),m=d.getUTCMonth(),h='';
+ for(let i=0;i<12;i++){const k=`${y}-${String(m+1).padStart(2,'0')}`;h+=`<button class="chip month" data-m="${k}">${MONTHS[m]}<br><small>${y}</small></button>`;if(++m>11){m=0;y++}}
+ $('monthChips').innerHTML=h;$('monthChips').querySelectorAll('button').forEach(b=>b.onclick=()=>{const i=S.months.indexOf(b.dataset.m);i<0?S.months.push(b.dataset.m):S.months.splice(i,1);update()})})();
+
+// who
+const WHO=[['adults','Adults','Ages 13 or above'],['children','Children','Ages 2–12'],['infants','Infants','Under 2'],['pets','Pets','Bringing a pet?']];
+$('steppers').innerHTML=WHO.map(([k,l,s])=>`<div class="step"><div>${l}<small>${s}</small></div><div class="stepper"><button data-k="${k}" data-d="-1" aria-label="Fewer ${l.toLowerCase()}">−</button><output id="o-${k}">0</output><button data-k="${k}" data-d="1" aria-label="More ${l.toLowerCase()}">+</button></div></div>`).join('');
+$('steppers').querySelectorAll('button').forEach(b=>b.onclick=()=>{const k=b.dataset.k;S[k]=Math.max(0,Math.min(16,S[k]+ +b.dataset.d));
+ if(k!=='adults'&&S[k]>0&&!S.adults)S.adults=1;update()});
+
+// ---------- filters ----------
+const chipRow=(el,opts,get,set,multi)=>{el.innerHTML=opts.map(([v,l])=>`<button class="chip" data-v="${v}">${l}</button>`).join('');
+ el._sync=()=>el.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',multi?get().includes(b.dataset.v):String(get())===b.dataset.v));
+ el.querySelectorAll('button').forEach(b=>b.onclick=()=>{set(b.dataset.v);update()})};
+chipRow($('fScore'),[[10,'Any'],[2,'1–2 Highly recommended'],[4,'1–4 Recommended'],[6,'1–6 Incl. use caution']],()=>S.maxScore,v=>S.maxScore=+v);
+chipRow($('fType'),[['any','Any type'],['room','Room'],['entire','Entire home']],()=>S.place,v=>S.place=v);
+chipRow($('fPtype'),[['house','House'],['apartment','Apartment'],['guesthouse','Guesthouse'],['hotel','Hotel']],()=>S.ptype,v=>{const i=S.ptype.indexOf(v);i<0?S.ptype.push(v):S.ptype.splice(i,1)},true);
+$('fRooms').innerHTML=[['bedrooms','Bedrooms'],['beds','Beds'],['baths','Bathrooms']].map(([k,l])=>`<div class="rr"><span>${l}</span><div class="chips" id="r-${k}"></div></div>`).join('');
+['bedrooms','beds','baths'].forEach(k=>chipRow($('r-'+k),[[0,'Any'],...[1,2,3,4,5,6,7].map(n=>[n,n]),[8,'8+']],()=>S[k],v=>S[k]=+v));
+document.querySelectorAll('.checks[data-group]').forEach(box=>{box.innerHTML=CFG.features.filter(f=>f.group===box.dataset.group).map(f=>`<label><input type="checkbox" data-f="${f.key}"> ${esc(f.label)}</label>`).join('')});
+document.querySelectorAll('input[data-f]').forEach(i=>i.onchange=()=>{toggleFeat(i.dataset.f,i.checked);update()});
+function toggleFeat(k,on){const i=S.feat.indexOf(k);if(on&&i<0)S.feat.push(k);if(!on&&i>=0)S.feat.splice(i,1)}
+[['fReviewed','reviewed'],['fNoBarrier','noBarrier'],['fSuper','superhost'],['fTop','top']].forEach(([id,k])=>$(id).onchange=()=>{S[k]=$(id).checked;update()});
+$('fMin').oninput=()=>{S.priceMin=$('fMin').value;update()};$('fMax').oninput=()=>{S.priceMax=$('fMax').value;update()};
+$('openFilters').onclick=()=>$('filters').showModal();
+$('clearAll').onclick=()=>{Object.assign(S,{maxScore:10,reviewed:false,noBarrier:false,place:'any',priceMin:'',priceMax:'',bedrooms:0,beds:0,baths:0,feat:[],superhost:false,top:false,ptype:[]});update()};
+document.querySelectorAll('dialog').forEach(d=>{d.addEventListener('click',e=>{if(e.target===d||e.target.closest('[data-close]'))d.close()})});
+const QUICK=['step_free_entrance','step_free_shower','single_level','elevator','shower_grab_bar','accessible_parking'];
+$('quick').innerHTML=`<button class="chip" id="qReviewed">Photos reviewed</button>`+QUICK.map(k=>`<button class="chip" data-q="${k}">${esc(CFG.features.find(f=>f.key===k).label)}</button>`).join('');
+$('quick').querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{toggleFeat(b.dataset.q,!S.feat.includes(b.dataset.q));update()});
+$('qReviewed').onclick=()=>{S.reviewed=!S.reviewed;update()};
+$('sort').onchange=()=>{S.sort=$('sort').value;update()};
+
+// ---------- map ----------
+let map=null,layer=null,moving=false;
+const hasMap=typeof L!=='undefined';
+if(!hasMap)$('toggleMap').hidden=true;
+function initMap(){if(map||!hasMap)return;map=L.map('map',{zoomControl:true});
+ const dark=matchMedia('(prefers-color-scheme: dark)').matches;
+ L.tileLayer(`https://{s}.basemaps.cartocdn.com/${dark?'dark_all':'rastertiles/voyager'}/{z}/{x}/{y}{r}.png`,{maxZoom:19,attribution:'© OpenStreetMap contributors © CARTO'}).addTo(map);
+ layer=L.layerGroup().addTo(map);
+ map.on('moveend',()=>{if(moving){moving=false;return}if($('moveSearch').checked){bounds=map.getBounds();update(false,true)}})}
+$('moveSearch').onchange=()=>{bounds=$('moveSearch').checked&&map?map.getBounds():null;update(false,true)};
+function drawMap(rows,fit){if(!map)return;layer.clearLayers();const pts=[];
+ rows.slice(0,1500).forEach(d=>{if(d.lat==null)return;pts.push([d.lat,d.lng]);
+  const label=d.price?money(d.price):d.overall+'/10';
+  L.marker([d.lat,d.lng],{icon:L.divIcon({className:'',html:`<span class="pinlbl" style="border-color:${color(d.overall)}">${label}</span>`}),keyboard:false,title:d.name}).on('click',()=>detail(d)).addTo(layer)});
+ if(fit&&pts.length){moving=true;map.fitBounds(pts,{padding:[30,30],maxZoom:15})}}
+$('toggleMap').onclick=()=>{const on=!$('main').classList.contains('with-map');$('main').classList.toggle('with-map',on);
+ $('toggleMap').setAttribute('aria-pressed',on);$('toggleMap').textContent=on?'Hide map':'Show map';
+ if(on){initMap();setTimeout(()=>{map.invalidateSize();update(false)},50)}else{bounds=null;$('moveSearch').checked=false;update(false)}};
+
+// ---------- render ----------
+function stayText(d){return d._win&&S.mode==='flex'&&S.len?`${fmt(d._win[0])} – ${fmt(d._win[1])}`:''}
+function cardHTML(d,i){const n=nightsOf();
+ const price=d.price?`<div class="p"><b>${money(d.price)}</b> night${n?` · <u>${money(d.price*n)} est. total</u>`:''}</div>`:'<div class="p m">Price not listed</div>';
+ const star=d.stars?`<span>★ ${d.stars.toFixed(2)}${d.reviews?` (${d.reviews})`:''}</span>`:(d.reviews?'':'<span>New</span>');
+ return `<button class="card" data-i="${i}" aria-label="${esc(d.name)}, accessibility ${d.overall} out of 10, ${esc(d.verdict)}">
+ <div class="ph">${d.photo?`<img loading="lazy" src="${esc(d.photo)}" alt="">`:''}<span class="score" style="background:${color(d.overall)}">♿ ${d.overall}/10</span></div>
+ <div class="t"><span>${esc(d.hood?d.hood+', '+d.market:d.market)}</span>${star}</div>
+ <div class="m">${esc(d.name)}</div><div class="m">${esc(d.type)}${d.bedrooms?` · ${d.bedrooms} bedroom${d.bedrooms>1?'s':''}`:''}${d.guests?` · ${d.guests} guests`:''}</div>
+ ${stayText(d)?`<div class="m">${stayText(d)}</div>`:''}
+ <div class="v" style="color:${color(d.overall)}">${esc(d.verdict)}${d.method==='claude'?'':' · keyword check'}</div>${price}</button>`}
+let current=[];
+function update(fit=true,fromMap=false){
+ save();
+ shown=fromMap?shown:48;
+ const rows=DATA.filter(d=>match(d)).sort(SORTS[S.sort]);current=rows;
+ const n=nightsOf(), guests=S.adults+S.children;
+ // bar labels
+ $('whereVal').textContent=S.where||'Search destinations';$('whereVal').classList.toggle('set',!!S.where);
+ if(S.mode==='flex'){$('inLbl').textContent='When';$('outLbl').textContent='Stay';
+  $('inVal').textContent=S.months.length?S.months.map(m=>MONTHS[+m.slice(5)-1]).join(', '):'Any month';
+  $('outVal').textContent=S.len?(LENS.find(l=>l[0]===S.len)||[0,S.len+' nights'])[1]:'Any length'}
+ else{$('inLbl').textContent='Check in';$('outLbl').textContent='Check out';
+  $('inVal').textContent=S.checkIn?fmt(dayNum(S.checkIn)):'Add dates';$('outVal').textContent=S.checkOut?fmt(dayNum(S.checkOut)):'Add dates'}
+ [$('inVal'),$('outVal')].forEach(e=>e.classList.toggle('set',e.textContent!=='Add dates'));
+ const who=[guests?`${guests} guest${guests>1?'s':''}`:'',S.infants?`${S.infants} infant${S.infants>1?'s':''}`:'',S.pets?`${S.pets} pet${S.pets>1?'s':''}`:''].filter(Boolean).join(', ');
+ $('whoVal').textContent=who||'Add guests';$('whoVal').classList.toggle('set',!!who);
+ WHO.forEach(([k])=>{$('o-'+k).textContent=S[k];document.querySelector(`[data-k="${k}"][data-d="-1"]`).disabled=!S[k]||(k==='adults'&&S.adults===1&&(S.children||S.infants||S.pets))});
+ // panel + filter controls
+ $('checkIn').value=S.checkIn;$('checkOut').value=S.checkOut;
+ $('lenChips').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',S.len===+b.dataset.n));
+ $('monthChips').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',S.months.includes(b.dataset.m)));
+ document.querySelectorAll('.chips').forEach(c=>c._sync&&c._sync());
+ document.querySelectorAll('input[data-f]').forEach(i=>i.checked=S.feat.includes(i.dataset.f));
+ $('quick').querySelectorAll('[data-q]').forEach(b=>b.setAttribute('aria-pressed',S.feat.includes(b.dataset.q)));
+ $('qReviewed').setAttribute('aria-pressed',S.reviewed);
+ [['fReviewed','reviewed'],['fNoBarrier','noBarrier'],['fSuper','superhost'],['fTop','top']].forEach(([id,k])=>$(id).checked=S[k]);
+ $('fMin').value=S.priceMin;$('fMax').value=S.priceMax;$('sort').value=S.sort;
+ const fc=(S.maxScore<10)+S.reviewed+S.noBarrier+(S.place!=='any')+(S.priceMin!==''||S.priceMax!=='')+!!S.bedrooms+!!S.beds+!!S.baths+S.feat.length+S.superhost+S.top+S.ptype.length;
+ $('fcount').hidden=!fc;$('fcount').textContent=fc;
+ $('showN').textContent=`Show ${rows.length.toLocaleString()} place${rows.length===1?'':'s'}`;
+ // results
+ const where=S.where?` in ${S.where}`:'';
+ const noCal=datesActive()?DATA.length-withCal:0;
+ $('count').innerHTML=`${rows.length.toLocaleString()} place${rows.length===1?'':'s'}${esc(where)}${bounds?' within map area':''}`+
+  `<small>Sorted by ${$('sort').selectedOptions[0].text.toLowerCase()} · ${CFG.total.toLocaleString()} listings rated${noCal?` · ${noCal.toLocaleString()} without calendar data are hidden while dates are set`:''}</small>`;
+ renderGrid();
+ if($('main').classList.contains('with-map'))drawMap(rows,fit&&!fromMap&&!$('moveSearch').checked);
+}
+function renderGrid(){const rows=current;
+ $('grid').innerHTML=rows.length?rows.slice(0,shown).map(cardHTML).join(''):'<p class="empty">No exact matches. Try changing or removing some filters, or adjusting the map.</p>';
+ $('grid').querySelectorAll('.card').forEach(c=>c.onclick=()=>detail(rows[+c.dataset.i]));
+ $('more').hidden=rows.length<=shown;$('more').textContent=`Show more (${(rows.length-shown).toLocaleString()} left)`}
+$('more').onclick=()=>{shown+=48;renderGrid()};
+
+// ---------- detail ----------
+function airbnbURL(d){const p=new URLSearchParams();
+ if(d._win){p.set('check_in',isoOf(d._win[0]));p.set('check_out',isoOf(d._win[1]))}
+ if(S.adults)p.set('adults',S.adults);if(S.children)p.set('children',S.children);if(S.infants)p.set('infants',S.infants);if(S.pets)p.set('pets',S.pets);
+ const q=p.toString();return d.url+(q?(d.url.includes('?')?'&':'?')+q:'')}
+function detail(d){
+ const list=(t,a)=>a&&a.length?`<h4>${t}</h4><ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'';
+ const cats=Object.entries(CFG.labels).map(([k,l])=>{const c=d.categories[k];return `<div class="cat"><div>${l}<div class="bar"><i style="width:${(11-c.score)*10}%;background:${color(c.score)}"></i></div></div><div class="n" style="color:${color(c.score)}">${c.score}</div><div class="f">${esc(c.findings)}</div></div>`}).join('');
+ const n=nightsOf();
+ $('dTitle').textContent=d.name;
+ $('dBody').innerHTML=`${d.photo?`<img class="hero" src="${esc(d.photo.replace('im_w=480','im_w=1200'))}" alt="">`:''}
+ <div class="big"><div class="n" style="background:${color(d.overall)}">${d.overall}</div><div><b>${esc(d.verdict)}</b><div class="facts">${d.method==='claude'?'Photos, description and amenities reviewed':'Keyword and amenity check only; photos not reviewed'} · ${esc(d.confidence)} confidence</div></div></div>
+ <p class="facts">${esc(d.type)} · ${esc(d.hood?d.hood+', ':'')}${esc(d.market)}${d.guests?` · up to ${d.guests} guests`:''}${d.bedrooms?` · ${d.bedrooms} bedrooms`:''}${d.beds?` · ${d.beds} beds`:''}${d.baths?` · ${d.baths} baths`:''}${d.price?` · ${money(d.price)}/night`:''}${d._win?` · open ${fmt(d._win[0])} – ${fmt(d._win[1])}${n&&d.price?` (${money(d.price*n)} est.)`:''}`:''}${d.minN?` · ${d.minN}-night minimum`:''}</p>
+ <p>${esc(d.summary)} <a href="${esc(airbnbURL(d))}" target="_blank" rel="noopener">View on Airbnb${d._win?' with these dates':''}</a></p>
+ ${cats}${list('Barriers',d.barriers)}${list('Host-declared accessibility features',d.declared)}${list('Photo observations',(d.photos||[]).map(p=>`Photo ${p.photo}: ${p.observation}`))}${list('Ask the host before booking',d.questions)}${d.note?`<p class="facts"><small>${esc(d.note)}</small></p>`:''}`;
+ $('detail').showModal()}
+
+// ---------- init ----------
+$('whereInput').value=S.where;setMode(S.mode);
+if(hasMap&&innerWidth>=1100){$('toggleMap').click()}else update();
+</script></body></html>
