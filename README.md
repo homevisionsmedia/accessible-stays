@@ -22,8 +22,9 @@ Each listing gets a score from 1 to 10 in each of six categories. The overall sc
 | Parking & approach | 5% | Accessible or on-site parking, hills, gravel |
 | Host-declared accessibility | 5% | Airbnb's "Accessibility features" amenities, the accessibility photo tour, and explicit statements |
 
-Two overrides apply on top of the average:
-- Any specific barrier, such as a bathtub as the only shower, puts the overall score at 7 or worse.
+Three overrides apply on top of the average:
+- One bad essential area can't be averaged away. The overall score is never better than the worst of entrance, bathroom, moving around inside and bedroom, minus 2. For example, a tub-only bathroom scored 8 keeps the listing at 6 or worse.
+- A barrier found by the keyword check alone, such as a walk-up or a spiral staircase, puts the overall score at 7 or worse.
 - A blocking barrier puts it at 10. Blocking means a wheelchair user couldn't get inside, or couldn't reach any bedroom or bathroom. A host saying the place is not wheelchair accessible also counts.
 
 A category with no information scores 7, because saying nothing about accessibility is not evidence of it.

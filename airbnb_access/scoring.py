@@ -49,11 +49,19 @@ VERDICTS = [
 ]
 
 
-def overall(category_scores: dict, blocking_barrier: bool, hard_barriers: list) -> int:
+# Areas a guest can't do without: a bad score in one of these can't be averaged away.
+ESSENTIAL = ("entrance", "bathroom", "interior", "bedroom")
+
+
+def overall(category_scores: dict, blocking_barrier: bool, hard_barriers: list, method: str = "claude") -> int:
     total = sum(CATEGORIES[k]["weight"] * category_scores[k] for k in CATEGORIES)
-    score = int(round(total))
-    if hard_barriers:
-        # A single barrier (e.g. the only shower is a tub) outweighs a good average.
+    # A tub-only bathroom (8) keeps the listing at 6 or worse however good the rest is.
+    worst = max(category_scores[k] for k in ESSENTIAL)
+    score = max(int(round(total)), worst - 2)
+    if hard_barriers and method == "heuristic":
+        # Keyword-found barriers (a walk-up, a spiral stair) aren't reflected in the
+        # keyword category scores, so they set the floor directly. Claude's category
+        # scores already account for the barriers it lists.
         score = max(score, 7)
     if blocking_barrier:
         # Cannot get in, or cannot reach any bedroom/bathroom without stairs.

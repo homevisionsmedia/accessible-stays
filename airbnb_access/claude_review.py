@@ -37,7 +37,7 @@ How to judge:
 - Host photos are marketing: entrances and bathrooms are often not shown. Do not assume what is not shown.
 - Weigh an explicit host statement heavily, but prefer what the photos show when they contradict it.
 - "Elevator" in a high-rise only helps if the unit itself is step-free from the elevator.
-- hard_barriers lists specific barriers a wheelchair user would hit (one short phrase each). Set blocking_barrier to true only when a wheelchair user could not get inside, or could not reach any bedroom or any bathroom.
+- hard_barriers lists barriers a wheelchair user would definitely hit, as shown or stated (one short phrase each). Put possible or unconfirmed concerns in questions_for_host instead, and reflect them in the category scores. Set blocking_barrier to true only when a wheelchair user could not get inside, or could not reach any bedroom or any bathroom.
 - questions_for_host lists what a guest should confirm before booking.
 - confidence reflects how much of the listing you could actually verify."""
 

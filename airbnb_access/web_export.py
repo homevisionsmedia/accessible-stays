@@ -69,6 +69,16 @@ def _promise(listing, prelim):
     return (prelim["overall"], -declared, -min(open_nights, 30), -(listing.reviews or 0))
 
 
+def rescore(rating):
+    """Recompute a saved review's overall score with the current rule; the category
+    scores are Claude's and never change."""
+    r = dict(rating)
+    r["overall"] = scoring.overall({k: v["score"] for k, v in r["categories"].items()},
+                                   r.get("blocking_barrier", False), r.get("hard_barriers", []))
+    r["verdict"] = scoring.verdict(r["overall"])
+    return r
+
+
 def load_reviews(path):
     if path and Path(path).exists():
         return json.loads(Path(path).read_text(encoding="utf-8"))
@@ -107,7 +117,7 @@ def export(out: Path, wanted, claude_limit=0, claude_max_prelim=6, model="claude
             l.availability = calendar.get(l.id)
             saved = reviews.get(l.id)
             if saved:
-                rows.append(_row_for(l, saved["rating"], saved.get("gallery")))
+                rows.append(_row_for(l, rescore(saved["rating"]), saved.get("gallery")))
                 continue
             prelim = heuristics.rate(l)
             rows.append(_row_for(l, prelim))

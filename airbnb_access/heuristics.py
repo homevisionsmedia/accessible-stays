@@ -172,7 +172,7 @@ def rate(listing: Listing) -> dict:
         hard_barriers.insert(0, "Host states the listing is not accessible")
 
     scores = {k: min(10, max(1, v)) for k, v in scores.items()}
-    score = scoring.overall(scores, blocking, hard_barriers)
+    score = scoring.overall(scores, blocking, hard_barriers, method="heuristic")
     return {
         "method": "heuristic",
         "overall": score,
