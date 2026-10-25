@@ -123,6 +123,7 @@ main{max-width:1400px;margin:0 auto;padding-block:18px 40px}
 .card .p{margin-top:4px}.card .p u{color:var(--muted);text-decoration-thickness:1px}
 .more{display:block;margin:30px auto 0;padding:12px 26px;border-radius:12px;border:1px solid var(--ink);background:var(--surface);cursor:pointer;font-weight:600}
 .empty{color:var(--muted);text-align:center;padding:60px 20px}
+.grid>.empty{grid-column:1/-1;max-width:760px;margin:0 auto}
 .loading{display:flex;align-items:center;gap:10px;color:var(--muted)}
 .loading::before{content:"";width:16px;height:16px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -212,7 +213,7 @@ dialog::backdrop{background:rgba(10,15,22,.5)}
  <div class="toolbar">
   <div class="chips" id="quick" aria-label="Quick accessibility filters"></div>
   <label class="sr" for="sort">Sort</label>
-  <select class="btn" id="sort"><option value="access">Most accessible</option><option value="priceAsc">Price: low to high</option><option value="priceDesc">Price: high to low</option><option value="rating">Top rated</option></select>
+  <select class="btn" id="sort"><option value="access">Most accessible</option><option value="priceAsc">Price: low to high</option><option value="priceDesc">Price: high to low</option><option value="rating">Top rated</option><option value="distance">Nearest first</option></select>
   <button class="btn" id="openFilters"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Filters <span class="badge" id="fcount" hidden></span></button>
  </div>
 </header>
@@ -223,7 +224,7 @@ dialog::backdrop{background:rgba(10,15,22,.5)}
  <button class="more" id="more" hidden>Show more</button>
 </main>
 <footer class="foot">
- <p>Listing data from <a href="https://insideairbnb.com/" target="_blank" rel="noopener">Inside Airbnb</a>, licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. This site adds accessibility ratings and reorganizes the data.</p>
+ <p>Listing data from <a href="https://insideairbnb.com/" target="_blank" rel="noopener">Inside Airbnb</a>, licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. This site adds accessibility ratings and reorganizes the data. Place search and maps by <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>.</p>
  <p>Not affiliated with or endorsed by Airbnb. Listings, descriptions and photos belong to their hosts; photos are shown from Airbnb's own servers.</p>
  <p>Accessibility ratings are estimates made from each listing's text, amenities and photos, partly by AI. They can be wrong or out of date. Always confirm accessibility with the host before booking.</p>
  <p>Hosts and photo owners: to have a listing or photo removed from this site, email <a href="mailto:nina@homevisionsmedia.com?subject=Accessible%20Stays%20removal%20request">nina@homevisionsmedia.com</a> with the listing's Airbnb link. Requests are handled promptly.</p>
@@ -327,8 +328,44 @@ function marketFor(q){q=q.toLowerCase().trim();if(!q)return null;
  const scored=CFG.markets.map(m=>{const h=(m.label+' '+m.key.replace(/[/-]/g,' ')). toLowerCase().split(/[^a-z0-9]+/);return[m,toks.filter(t=>h.includes(t)).length]});
  const best=Math.max(0,...scored.map(x=>x[1]));const top=scored.filter(x=>x[1]===best);
  return best&&top.length===1?top[0][0]:null}
+// ---------- search near any place ----------
+// Places outside the covered markets are looked up with OpenStreetMap's place search,
+// then listings from the nearest covered markets are shown by distance.
+let near=null;
+const NEAR_MAX=100, RADII=[10,25,50,100];
+const toRad=x=>x*Math.PI/180;
+function miles(a,b){const R=3958.8,dLat=toRad(b.lat-a.lat),dLng=toRad(b.lng-a.lng);
+ const h=Math.sin(dLat/2)**2+Math.cos(toRad(a.lat))*Math.cos(toRad(b.lat))*Math.sin(dLng/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
+function bboxMiles(g,b){return miles(g,{lat:Math.min(b[2],Math.max(b[0],g.lat)),lng:Math.min(b[3],Math.max(b[1],g.lng))})}
+async function geocode(q){
+ const key='geo:'+q.toLowerCase().trim();
+ try{const c=JSON.parse(localStorage.getItem(key)||'null');if(c)return c}catch(e){}
+ try{const r=await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=us&accept-language=en&q=${encodeURIComponent(q)}`);
+  if(!r.ok)return null;const j=await r.json();if(!j.length)return null;
+  const g={lat:+j[0].lat,lng:+j[0].lon,name:j[0].display_name.split(',').slice(0,2).join(',').trim()};
+  try{localStorage.setItem(key,JSON.stringify(g))}catch(e){}
+  return g}catch(e){return null}}
+async function loadNear(){
+ loadingMsg=`Finding “${S.where}”…`;DATA=[];render();
+ const g=await geocode(S.where);
+ if(!g){near={failed:true};DATA=[];loadingMsg='';update();return}
+ const ranked=CFG.markets.filter(m=>m.bbox).map(m=>({m,mi:bboxMiles(g,m.bbox)})).sort((a,b)=>a.mi-b.mi);
+ const picks=ranked.filter(x=>x.mi<=NEAR_MAX).slice(0,3);
+ if(!picks.length){near={...g,none:true,nearest:ranked[0]};DATA=[];loadingMsg='';update();return}
+ loadingMsg=`Loading places near ${g.name}…`;render();
+ try{DATA=[].concat(...await Promise.all(picks.map(x=>loadFile(x.m.file))))}
+ catch(e){DATA=[];loadError=`Couldn't load listings near ${g.name} (${e.message}). Check your connection and try again.`}
+ for(const d of DATA)d._mi=d.lat!=null?miles(g,d):Infinity;
+ // The smallest radius that still gives a useful number of places.
+ const radius=RADII.find(r=>DATA.filter(d=>d._mi<=r).length>=50)||NEAR_MAX;
+ near={...g,radius,markets:picks.map(x=>x.m.label),inside:picks[0].mi===0};
+ loadingMsg='';update()}
+
 async function loadForWhere(){
- const m=marketFor(S.where);const file=m?m.file:'data/best.gz.txt';
+ near=null;
+ const m=marketFor(S.where);
+ if(S.where&&!m)return loadNear();
+ const file=m?m.file:'data/best.gz.txt';
  dataLabel=m?m.label:'';loadError='';
  if(!cache.has(file)){loadingMsg=m?`Loading ${m.count.toLocaleString()} listings in ${m.label}…`:'Loading the most accessible listings in the US…';DATA=[];render()}
  try{DATA=await loadFile(file)}catch(e){DATA=[];loadError=`Couldn't load ${m?m.label:'listings'} (${e.message}). Check your connection and try again.`}
@@ -352,7 +389,8 @@ function match(d){
  if(d.overall<S.minScore)return false;
  if(S.reviewed&&d.method!=='claude')return false;
  if(S.noBarrier&&d.barriers.length)return false;
- if(S.where){const toks=S.where.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);if(!toks.every(t=>d._loc.includes(t)))return false}
+ if(near&&near.radius){if(!(d._mi<=near.radius))return false}
+ else if(S.where){const toks=S.where.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);if(!toks.every(t=>d._loc.includes(t)))return false}
  const guests=S.adults+S.children;if(guests&&!(d.guests>=guests))return false;
  if(S.pets&&!d._feat.has('pets'))return false;
  if(S.place==='entire'&&!d._entire)return false;if(S.place==='room'&&d._entire)return false;
@@ -367,7 +405,8 @@ function match(d){
 const CONF={high:0,medium:1,low:2};
 const SORTS={access:(a,b)=>b.overall-a.overall||(CONF[a.confidence]-CONF[b.confidence])||((b.stars||0)-(a.stars||0)),
  priceAsc:(a,b)=>(a.price??1e9)-(b.price??1e9),priceDesc:(a,b)=>(b.price??-1)-(a.price??-1),
- rating:(a,b)=>((b.stars||0)-(a.stars||0))||(b.reviews-a.reviews)};
+ rating:(a,b)=>((b.stars||0)-(a.stars||0))||(b.reviews-a.reviews),
+ distance:(a,b)=>((a._mi??1e9)-(b._mi??1e9))||(b.overall-a.overall)};
 
 // ---------- search bar ----------
 let openPanel=null;
@@ -394,7 +433,9 @@ function suggest(){const q=$('whereInput').value.toLowerCase().split(/[^a-z0-9]+
   for(const [k,n] of seen)places.push({label:k,sub:`${/^\d{5}/.test(k)?'ZIP code':'Neighborhood'} · ${n.toLocaleString()} listings`,n})}
  const pool=q.length?places:places.slice(0,CFG.markets.length);
  const hits=pool.filter(p=>q.every(t=>p.label.toLowerCase().includes(t))).sort((a,b)=>b.n-a.n).slice(0,10);
- $('suggest').innerHTML=`<li><button data-v=""><span class="pin" aria-hidden="true">✦</span><span>Anywhere in the US<small>The most accessible listings across all markets</small></span></button></li>`+
+ const typed=$('whereInput').value.trim();
+ const nearItem=typed&&!hits.some(p=>p.label.toLowerCase()===typed.toLowerCase())?`<li><button data-v="${esc(typed)}"><span class="pin" aria-hidden="true">⌖</span><span>Search near “${esc(typed)}”<small>Any US city, town, address or ZIP code</small></span></button></li>`:'';
+ $('suggest').innerHTML=nearItem+`<li><button data-v=""><span class="pin" aria-hidden="true">✦</span><span>Anywhere in the US<small>The most accessible listings across all markets</small></span></button></li>`+
   hits.map(p=>`<li><button data-v="${esc(p.label)}"><span class="pin" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span>${esc(p.label)}<small>${esc(p.sub)}</small></span></button></li>`).join('');
  $('suggest').querySelectorAll('button').forEach(b=>b.onclick=()=>{setWhere(b.dataset.v);setPanel('when')})}
 $('whereInput').oninput=suggest;
@@ -512,27 +553,37 @@ function render(){
  const rows=current,where=dataLabel||S.where;
  const mk=CFG.markets.find(m=>m.label===dataLabel);
  // How fresh the data is: each market is a snapshot Inside Airbnb takes every few months.
- const asOf=mk?`Listings and availability as of ${fmtLong(dayNum(mk.date))}`:
+ const nearMk=near&&near.markets?CFG.markets.find(m=>m.label===near.markets[0]):null;
+ const asOf=(mk||nearMk)?`Listings and availability as of ${fmtLong(dayNum((mk||nearMk).date))}`:
   (Math.min(...snaps)===Math.max(...snaps)?`Listings and availability as of ${fmtLong(snaps[0])}`:
    `Listings and availability as of ${fmtLong(Math.min(...snaps))} to ${fmtLong(Math.max(...snaps))}, depending on the market`);
- const scope=(mk?`${mk.count.toLocaleString()} listings in this market`:
+ const scope=near&&near.radius?`Within ${near.radius} miles of ${esc(near.name)}, from Inside Airbnb's ${esc(near.markets.join(', '))} data${near.inside?'':`. Inside Airbnb doesn't cover ${esc(S.where)} itself, so these are the closest listings it has`}.<br>${asOf}. Confirm dates on Airbnb before booking.`:
+  (mk?`${mk.count.toLocaleString()} listings in this market`:
   `Showing the ${DATA.length.toLocaleString()} most accessible of ${TOTAL.toLocaleString()} listings in ${CFG.markets.length} US markets. Pick a destination to search every listing there.`)+`<br>${asOf}. Confirm dates on Airbnb before booking.`;
+ if(near&&(near.none||near.failed)){
+  $('count').innerHTML=`No places found near ${esc(S.where)}`;
+  $('grid').innerHTML=emptyHTML();$('grid').querySelectorAll('[data-market]').forEach(b=>b.onclick=()=>setWhere(b.dataset.market));
+  $('more').hidden=true;return}
  const noCal=datesActive()?DATA.filter(d=>!d.avail).length:0;
- $('count').innerHTML=`${rows.length.toLocaleString()} place${rows.length===1?'':'s'}${where?` in ${esc(S.where||where)}`:''}<small>${scope}${noCal?` · ${noCal.toLocaleString()} without calendar data are hidden while dates are set`:''}</small>`;
+ $('count').innerHTML=`${rows.length.toLocaleString()} place${rows.length===1?'':'s'}${where?` ${near&&near.radius?'near':'in'} ${esc(S.where||where)}`:''}<small>${scope}${noCal?` · ${noCal.toLocaleString()} without calendar data are hidden while dates are set`:''}</small>`;
  $('grid').innerHTML=rows.length?rows.slice(0,shown).map(cardHTML).join(''):emptyHTML();
  $('grid').querySelectorAll('[data-market]').forEach(b=>b.onclick=()=>setWhere(b.dataset.market));
  $('grid').querySelectorAll('.card').forEach(c=>c.onclick=()=>detail(rows[+c.dataset.i]));
  $('more').hidden=rows.length<=shown;$('more').textContent=`Show more (${(rows.length-shown).toLocaleString()} left)`}
 $('more').onclick=()=>{shown+=48;render()};
+function marketChips(){return `<div class="chips" style="justify-content:center">${CFG.markets.map(m=>`<button class="chip" data-market="${esc(m.label)}">${esc(m.label)}</button>`).join('')}</div>`}
 function emptyHTML(){
+ if(near&&near.failed)return `<div class="empty"><p>Couldn't find “${esc(S.where)}” on the map. Check the spelling, or try a city and state like “Arlington, VA” or a ZIP code. Or pick one of the covered markets:</p>${marketChips()}</div>`;
+ if(near&&near.none)return `<div class="empty"><p>Inside Airbnb has no listings within ${NEAR_MAX} miles of ${esc(near.name)}. The closest area it covers is <b>${esc(near.nearest.m.label)}</b>, about ${Math.round(near.nearest.mi)} miles away.</p>${marketChips()}</div>`;
  // A destination outside the covered markets would otherwise just look like "no results".
  if(S.where&&!dataLabel&&!DATA.some(d=>S.where.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).every(t=>d._loc.includes(t))))
   return `<div class="empty"><p>“${esc(S.where)}” isn't one of the ${CFG.markets.length} US markets this site covers. Inside Airbnb publishes data for these:</p>
-   <div class="chips" style="justify-content:center">${CFG.markets.map(m=>`<button class="chip" data-market="${esc(m.label)}">${esc(m.label)}</button>`).join('')}</div></div>`;
+   ${marketChips()}</div>`;
  return '<p class="empty">No exact matches. Try changing or removing some filters.</p>'}
 function cardHTML(d,i){const n=nightsOf();
  const tags=d.feat.filter(k=>FEAT[k]&&FEAT[k].group==='Accessibility features').slice(0,3).map(k=>`<span class="tag">${esc(FEAT[k].label)}</span>`).join('');
  const price=d.price?`<div class="p"><b class="num">${money(d.price)}</b> night${n&&d._win?` · <u class="num">${money(d.price*n)} est. total</u>`:''}</div>`:'<div class="p m">Price not listed</div>';
+ const dist=near&&near.radius&&isFinite(d._mi)?`<div class="m">${d._mi<0.95?d._mi.toFixed(1):Math.round(d._mi)} mi from ${esc(S.where.split(',')[0].trim())}</div>`:'';
  const star=d.stars?`<span class="num">★ ${d.stars.toFixed(2)}${d.reviews?` (${d.reviews})`:''}</span>`:(d.reviews?'':'<span>New</span>');
  const win=d._win?`<div class="asof">${S.mode==='flex'&&S.len?`${fmt(d._win[0])} – ${fmt(d._win[1])}, open`:'Open'} as of ${d._asOf}; may have been booked since</div>`:'';
  return `<button class="card" data-i="${i}" aria-label="${esc(d.name)}. Accessibility ${d.overall} out of 10, ${esc(d.verdict)}.">
@@ -540,7 +591,7 @@ function cardHTML(d,i){const n=nightsOf();
   <div><div class="sc"><b>${d.overall}</b><span>/10</span></div><div class="vd">${esc(d.verdict)}</div></div><div class="tags">${tags}</div></div>
  <div class="t"><span>${esc(d.hood?d.hood+', '+d.market:d.market)}</span>${star}</div>
  <div class="m">${esc(d.name)}</div>
- <div class="m">${esc(d.type)}${d.bedrooms?` · ${d.bedrooms} bedroom${d.bedrooms>1?'s':''}`:''}${d.guests?` · ${d.guests} guests`:''}</div>${win}${price}</button>`}
+ <div class="m">${esc(d.type)}${d.bedrooms?` · ${d.bedrooms} bedroom${d.bedrooms>1?'s':''}`:''}${d.guests?` · ${d.guests} guests`:''}</div>${dist}${win}${price}</button>`}
 
 function airbnbURL(d){const p=new URLSearchParams();
  if(d._win){p.set('check_in',isoOf(d._win[0]));p.set('check_out',isoOf(d._win[1]))}

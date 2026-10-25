@@ -224,6 +224,13 @@ def _summarize(data: Path, markets, best_rows):
             elif item[:2] > best[0][:2]:
                 heapq.heapreplace(best, item)
         m.update(count=len(rows), reviewed=sum(1 for r in rows if r.get("method") == "claude"), **counts)
+        # The market's map area, so the page can find markets near any searched place.
+        pts = [(r["lat"], r["lng"]) for r in rows if r.get("lat") is not None and r.get("lng") is not None]
+        if pts:
+            lats, lngs = sorted(p[0] for p in pts), sorted(p[1] for p in pts)
+            # 1st-99th percentile, so a few mislocated listings don't stretch the area.
+            lo, hi = len(pts) // 100, len(pts) - 1 - len(pts) // 100
+            m["bbox"] = [round(lats[lo], 3), round(lngs[lo], 3), round(lats[hi], 3), round(lngs[hi], 3)]
     _write_packed(data / "best.gz.txt", sorted((r for _, _, r in best), key=_sort_key))
     (data / "index.json").write_text(json.dumps(markets, separators=(",", ":")), encoding="utf-8")
     return markets
