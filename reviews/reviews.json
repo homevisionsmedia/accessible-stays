@@ -5172,6 +5172,64 @@
 "verdict": "Not recommended"
 }
 },
+"12203249": {
+"gallery": [
+"https://a0.muscache.com/pictures/1925341a-064e-4750-aeae-7c446b2ec2d9.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos. The host mentions a whirlpool tub in the primary suite and lists 'Bathtub'. The tub appears to be the main bathing option; no step-free shower, grab bars or shower chair is mentioned. The half bath likely has only a toilet and sink. Door widths and turning space are unknown.",
+"score": 8
+},
+"bedroom": {
+"findings": "One bedroom with a king bed, on the same level as the rest of the unit. A king bed suggests a larger room, but there are no photos to confirm clearance beside the bed, bed height or door width. The second sleeping option is a fold-out sofa bed, which counts against accessibility.",
+"score": 5
+},
+"entrance": {
+"findings": "High-rise condo tower (Palms Place, photo 1) with elevator, doorman, building staff and connection to the casino. Large modern resort buildings typically have step-free lobbies and elevator access, but the building entrance, unit door width and any threshold are not shown. The 'Private entrance' amenity is ambiguous in a high-rise. Probably workable, but unverified.",
+"score": 4
+},
+"host_features": {
+"findings": "No Airbnb accessibility features are listed and there is no accessibility photo tour. The only reference is '2 accessible balconies', which likely means easy to reach rather than wheelchair accessible. The elevator and single-level amenities are general, not accessibility declarations.",
+"score": 7
+},
+"interior": {
+"findings": "Listed as a 'Single level home' with an elevator. At 1220 sq ft, the corner unit suggests reasonable space. No interior photos, so doorway widths, thresholds, rugs and balcony door sills cannot be checked. The host calls the balconies 'accessible', but this is not defined and balcony sliders usually have a raised sill.",
+"score": 4
+},
+"parking": {
+"findings": "Free parking on premises (likely a garage connected to the building) and free street parking are listed, along with luggage drop-off and a doorman. No mention of accessible or van-accessible spaces, or of the distance or route from the garage to the elevators.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Exterior of a large modern high-rise condo tower (Palms Place) seen from street level. Neither the entrance, lobby, parking nor the unit interior is visible. Suggests an elevator-served building, but provides no detail on step-free access.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the parking garage and the main entrance to the elevators and to the unit door?",
+"What is the clear width of the unit entrance door, the bedroom door and the bathroom doors?",
+"Is there any shower without a tub (walk-in or roll-in), or is the whirlpool tub the only bathing option?",
+"Are there grab bars near the toilet or tub, and can a shower chair or tub transfer bench be provided?",
+"What does 'accessible balconies' mean? Is there a raised sill or step at the balcony doors?",
+"Are accessible or van-accessible parking spaces available in the on-premises garage, and how far are they from the elevator?",
+"How much clear floor space is beside the king bed, and how high is the mattress?",
+"Does the half bath have room for a wheelchair beside the toilet?"
+],
+"summary": "A single-level, elevator-served condo in a large modern Las Vegas resort tower. It is likely reachable step-free, but only an exterior photo is provided, so nothing inside is verified. The main concern is the bathroom: a whirlpool tub appears to be the primary bathing option, with no mention of a walk-in shower or grab bars. The second sleeping option is a sofa bed. Entrance, door widths, parking and bedroom clearance all need confirmation from the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "1221344006933569450": {
 "gallery": [
 "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTIyMTM0NDAwNjkzMzU2OTQ1MA%3D%3D/original/8e92ff83-bcb9-4447-8662-337b5a05c790.jpeg",
@@ -8180,6 +8238,63 @@
 "How much clear floor space is there on each side of the bed?"
 ],
 "summary": "A high-rise studio in an elevator building, listed as single level with on-site garage parking, which makes reaching the unit probably workable but unverified. The main concern is the bathroom: a bathtub is listed and no bathroom photos exist, so a tub is likely the only bathing option. There is only one photo (the bed area) and no host-declared accessibility features, so confirm the entrance route, door widths and shower type before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
+"13224803": {
+"gallery": [
+"https://a0.muscache.com/pictures/prohost-api/Hosting-13224803/original/f8a984e8-4250-49f2-a13e-c548ba4f049c.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "Bathroom is not photographed. The host highlights a 'jetted bath' and lists Bathtub. This suggests a jetted tub, which is a barrier for wheelchair users. Whether a separate step-free shower exists is unknown. No grab bars or shower chair mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "Photo 1 shows a king bed on a platform frame with nightstands, in the same open studio space, so it is reachable step-free. There is clear space on the right side of the bed toward the sofa area. The bed looks standard to slightly high. The bench at the foot of the bed takes up floor space. The left side between the bed and the wall/nightstand looks tighter. A sofa likely serves extra guests.",
+"score": 4
+},
+"entrance": {
+"findings": "Unit is in The Signature at MGM Grand, a high-rise hotel-condo tower with an elevator (listed) and building staff/valet. Large Las Vegas resort towers typically have step-free lobbies and elevator access to rooms. Unit entrance door width is not shown or stated. No photo of the entrance.",
+"score": 4
+},
+"host_features": {
+"findings": "The host declared no accessibility features and included no accessibility photos. The description makes no accessibility statements.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' listed, and the elevator makes it a studio on one floor. Photo 1 shows a smooth hard-surface floor with no visible thresholds or steps and fairly open space between the bed, sofa and desk. A folding/sliding glass partition is visible. Some furniture, such as the bench at the foot of the bed, narrows the paths.",
+"score": 3
+},
+"parking": {
+"findings": "'Free parking on premises' and free valet are advertised. Valet at a major resort usually means a covered, level drop-off near the lobby, but accessible self-parking spaces and the distance to the elevators are not stated.",
+"score": 4
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Open studio with a king bed on a platform base, an upholstered bench at the foot of the bed, a sofa area behind a glass folding partition, and a desk by the floor-to-ceiling windows. Smooth wood-look flooring with no rugs or visible thresholds. The space on the right side of the bed looks reasonably generous.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a separate step-free or roll-in shower, or is the jetted tub the only bathing option?",
+"Does the bathroom have grab bars, and can a shower chair or tub bench be provided?",
+"What is the width of the bathroom door and the unit entry door?",
+"Can this exact unit be swapped for an ADA-accessible room in The Signature tower?",
+"Is the route from the valet drop-off to the elevators and the unit fully step-free?",
+"Is accessible self-parking available near the tower entrance?",
+"How high is the bed, and can the bench at the foot of the bed be removed?"
+],
+"summary": "This is a high-rise hotel-condo studio at The Signature with an elevator, a single-level layout and valet parking, so getting in and moving around are likely workable. Photo 1 shows an open, smooth-floored studio with reasonable space around the king bed. The main concern is the bathroom: it is not photographed, and the host promotes a jetted tub, which may be the only bathing option. No accessibility features are declared, and only one photo is available. Confirm the shower type, grab bars and door widths before booking, or ask about an ADA room.",
 "verdict": "Use caution - confirm details with host"
 }
 },
@@ -13521,6 +13636,64 @@
 "verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
+"15759557": {
+"gallery": [
+"https://a0.muscache.com/pictures/45eea26a-1a6b-475d-9635-ea4309ec9ba8.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "A bathtub is listed, and no step-free or roll-in shower is mentioned. No bathroom photos are provided. There are 2 baths, but there is no evidence of grab bars, a shower chair, or adequate clearance.",
+"score": 8
+},
+"bedroom": {
+"findings": "In a single-level unit the bedrooms are presumably step-free. No bedroom photos are provided, so bed type and height, clear space beside the bed, and door widths are unknown.",
+"score": 6
+},
+"entrance": {
+"findings": "An elevator and a single-level home are listed, which suggests the unit can be reached without stairs. This is a historic downtown building, though, so street-level steps at the building entrance are common and unverified. No entrance photos are provided, and door widths are unknown.",
+"score": 5
+},
+"host_features": {
+"findings": "No accessibility features are declared, and there is no accessibility photo tour. Only the 'Elevator' and 'Single level home' amenities are relevant.",
+"score": 7
+},
+"interior": {
+"findings": "The host lists 'Single level home', so there are no internal stairs. Photo 1 shows a spacious living room with smooth hardwood floors and reasonable open space. There is an area rug in the middle of the room, and doorways and thresholds are not shown.",
+"score": 4
+},
+"parking": {
+"findings": "Only a paid parking garage off premises is mentioned. Its distance, accessible spaces, and route are unknown. Downtown New Orleans sidewalks are flat but often uneven.",
+"score": 7
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Open living room with smooth hardwood flooring and wide circulation space. A patterned area rug lies under the coffee table and could hinder wheels slightly. There are tall windows, and no steps are visible in this room.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there step-free access from the street to the building lobby and elevator, with no steps at the building entrance?",
+"Does the elevator open directly onto the condo's floor with no steps up to the unit door?",
+"What are the widths of the unit entrance, bedroom, and bathroom doors? Are they at least 32 in / 81 cm?",
+"Does either bathroom have a walk-in or roll-in shower, or are both tub/shower combos?",
+"Are there grab bars, or is a shower chair available?",
+"How far is the off-premises parking garage, does it have accessible spaces, and is the route step-free?",
+"What are the bed heights, and is there clear floor space beside the beds?",
+"Are there raised thresholds between rooms or into the bathrooms?"
+],
+"summary": "This is a single-level condo in a historic downtown New Orleans building with an elevator, which is promising for interior mobility. Photo 1 shows a spacious living room with smooth floors. Only one photo is provided, so the entrance, bathrooms, and bedrooms cannot be verified. The listed bathtub suggests the bathing setup may be a barrier. Parking is off-site and the details are unknown. Confirm step-free building entry, door widths, and shower type before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "1578457436766070087": {
 "gallery": [
 "https://a0.muscache.com/im/pictures/hosting/Hosting-1578457436766070087/original/f5bb86b0-e93d-4763-a826-0235a008471c.jpeg",
@@ -14856,6 +15029,64 @@
 "verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
+"16349317": {
+"gallery": [
+"https://a0.muscache.com/pictures/cba1ebe2-3e5f-4065-aaf3-5da3f02ca893.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos. 'Bathtub' is listed, so a tub may be the only bathing option. There are 1.5 baths, meaning only one full bathroom. No grab bars, roll-in shower or shower chair are mentioned. Door width and turning space are unknown.",
+"score": 8
+},
+"bedroom": {
+"findings": "Three bedrooms, presumably on the single level, though none are photographed. Bed height, clear floor space and door widths are unknown.",
+"score": 6
+},
+"entrance": {
+"findings": "Host states a private front entrance with a wheelchair ramp. The ramp is not photographed, and its slope, the landing, the threshold and the door width are unverified. Self check-in by keypad avoids handling keys.",
+"score": 4
+},
+"host_features": {
+"findings": "No Airbnb accessibility features were available for this listing. The description explicitly mentions a wheelchair ramp at the front entrance, and the amenities list a single level home. Nothing else is declared.",
+"score": 5
+},
+"interior": {
+"findings": "'Single level home' is listed among the amenities. Photo 1 shows hardwood floors with no visible thresholds, but the room is heavily furnished: a grand piano, chairs, a pedestal table with plants and many decorative items. That clutter could restrict turning space. Hallway and doorway widths are not shown.",
+"score": 5
+},
+"parking": {
+"findings": "Free parking on premises is listed. Its distance to the ramped entrance, the surface and the slope are unknown.",
+"score": 4
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Living room with smooth hardwood flooring and no visible steps. It is densely furnished with a grand piano and bench, an armchair, a desk and a round table covered with plants and decor, which limits clear turning space for a wheelchair. Window view suggests ground level.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Can you share photos of the wheelchair ramp, including its slope, handrails, landing, and the threshold height at the front door?",
+"How wide is the front entrance door, and are the interior doors (bedrooms, bathroom) at least 32 in (81 cm)?",
+"Is the only shower over a bathtub, or is there a walk-in or roll-in shower? Are there grab bars or a shower chair?",
+"How wide is the bathroom door, and is there clear space beside the toilet?",
+"Are all three bedrooms and the full bathroom on the same level as the ramped entrance, with no interior steps?",
+"How far is the on-site parking from the ramp, and what is the path surface (paved, gravel, grass)?",
+"Can some furniture be moved to create wider pathways in the living areas?",
+"What are the bed heights, and is there clear floor space beside at least one bed?"
+],
+"summary": "A single-level home with a host-stated wheelchair ramp at a private front entrance and free on-site parking, which is a promising start for getting inside. However, only one living-room photo exists. The bathroom likely has only a tub, with no grab bars mentioned, and the living areas are heavily furnished. Confirm the ramp, the door widths and the bathing setup with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "16353693": {
 "gallery": [],
 "rating": {
@@ -15763,6 +15994,62 @@
 "verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
+"16755204": {
+"gallery": [
+"https://a0.muscache.com/pictures/hosting/Hosting-16755204/original/16e1dc9a-8da4-48ec-956d-ca4f70d04054.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "The listing mentions only a 'Full bathroom'. There are no photos and no details on shower vs. tub, grab bars or door width. A 'full bath' often includes a tub, which is a concern.",
+"score": 7
+},
+"bedroom": {
+"findings": "This is a studio, so the bed is in the main space with no separate bedroom door. Photo 1 shows a queen bed of standard height with generous clear tile floor space at the foot and on the right side. The left side is against a nightstand. With 4 guests listed, other sleeping arrangements (possibly a sofa bed) are unknown.",
+"score": 4
+},
+"entrance": {
+"findings": "The host states 'No steps to climb', and the unit has a private entrance. Neither the entrance nor the door width is photographed, so a threshold, door width and path surface remain unverified.",
+"score": 4
+},
+"host_features": {
+"findings": "No Airbnb accessibility features are declared. The host does explicitly state 'No steps to climb' and lists 'Single level home', but there is no accessibility photo tour.",
+"score": 5
+},
+"interior": {
+"findings": "The unit is listed as a single level home and described as a studio with no steps. Photo 1 shows smooth tile flooring and open floor space. A runner rug is visible near the bed. Doorways and thresholds are not shown.",
+"score": 4
+},
+"parking": {
+"findings": "A free carport with 2 spaces is on the premises, and the host says it is covered. The distance and surface between the carport and the entrance are not shown. The property is on 1 acre, so the path could be gravel or grass.",
+"score": 4
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 5,
+"photo_observations": [
+{
+"observation": "Studio sleeping area with a queen bed of standard height on smooth, level tile floors. There is ample open floor space to the right of and in front of the bed, and a thin runner rug at the lower right. No steps or thresholds are visible.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is the path from the carport to the entrance paved and level, and how far is it?",
+"Is there any threshold or lip at the entrance door, and how wide is the door (32 in / 81 cm or more)?",
+"Does the bathroom have a step-free/curbless shower or a bathtub?",
+"How wide is the bathroom door, and is there room beside the toilet? Are there grab bars or a shower chair?",
+"Where do the 3rd and 4th guests sleep (sofa bed, futon)?",
+"Are there steps onto the back porch?"
+],
+"summary": "A single-level studio guesthouse where the host explicitly states there are no steps, with covered on-site parking and smooth tile floors (photo 1), which is a promising sign. However, only one photo is provided. The entrance, parking path and bathroom are not shown, and the bathroom's shower or tub type and grab bars are unknown. Confirm the bathroom setup and the carport-to-door path before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "1676983441587565996": {
 "gallery": [
 "https://a0.muscache.com/im/pictures/hosting/Hosting-1676983441587565996/original/bc5f0550-53d7-41bc-828d-289ee8a723bf.jpeg",
@@ -16554,6 +16841,63 @@
 ],
 "summary": "This is a remodeled ground floor, single-level 1BR condo with level plank floors, a same-level bedroom, and a walk-in shower with a bench rather than a tub. That is a promising layout for wheelchair users. However, the front entrance, door widths, shower curb and grab bars are not shown or declared, and the host listed no accessibility features. It is likely workable, but confirm entry steps and the shower details before booking.",
 "verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"17020418": {
+"gallery": [
+"https://a0.muscache.com/pictures/miso/Hosting-17020418/original/feafa6f0-bf2e-468f-aeef-b1898b2f059a.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "Only one bathroom, not photographed. 'Bathtub' is listed as an amenity, which suggests a tub/shower combo rather than a step-free shower. No grab bars, shower chair or door width are mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "One bedroom with a king bed, presumably on the same level as the rest of the unit. The bedroom is not photographed, so door width, bed height and clear space beside the bed are unverified. A queen sleeper sofa is the alternative sleeping option.",
+"score": 6
+},
+"entrance": {
+"findings": "Condo in a building with an elevator listed and covered parking in the building. Photo 1 shows the unit's entry door (white door beyond the kitchen) opening onto a level hard floor with no visible step inside. The building entrance, elevator size and door width are not shown or stated.",
+"score": 5
+},
+"host_features": {
+"findings": "No accessibility features declared and no accessibility photo tour. Only general amenities that happen to help (elevator, single level home, self check-in with keypad).",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed. Photo 1 shows an open-plan living, kitchen and dining area with smooth wood-look flooring and reasonable circulation space. There is one low-pile area rug and a coffee table between the sofas. Interior doors look like standard width and their exact clearance is unknown.",
+"score": 4
+},
+"parking": {
+"findings": "Free covered parking on premises 'right in the building', plus free street parking. Accessible parking spaces and the route from the garage to the elevator are not described.",
+"score": 4
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Open-plan living, kitchen and dining space with continuous smooth wood-look flooring and no visible steps or thresholds. The unit entry door, near the refrigerator, and two interior doors are visible. The room has a low area rug, a glass coffee table and a futon/sofa. The kitchen counter is standard height.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the covered parking and the building entrance to the elevator and to the unit door?",
+"Are there designated accessible parking spaces in the garage?",
+"What is the clear width of the unit entry door, bedroom door and bathroom door?",
+"Does the bathroom have a bathtub only, or is there a walk-in or roll-in shower? Are there grab bars or a shower chair?",
+"Is there turning space beside the toilet, and what is the toilet height?",
+"What is the height of the king bed, and how much clear floor space is beside it?",
+"Is there a threshold or step onto the balcony?"
+],
+"summary": "An elevator-served, single-level condo with on-site covered parking, and the open living area (photo 1) looks level with smooth floors. These are promising signs for wheelchair users, but the only photo shows the living area. The building entrance, door widths, bedroom and bathroom are unverified. A listed bathtub suggests the only bathing option may be a tub, which is a likely barrier. Confirm the step-free route, door widths and shower type with the host before booking.",
+"verdict": "Use caution - confirm details with host"
 }
 },
 "1708975388750702481": {
@@ -22880,6 +23224,74 @@
 "verdict": "Use caution - confirm details with host"
 }
 },
+"21370662": {
+"gallery": [
+"https://a0.muscache.com/pictures/15e2ae70-53a3-47a7-bdd6-37d3ace74e3c.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "The description mentions a private en-suite bathroom with a 'rainforest shower', which suggests a shower rather than a tub, but no bathroom photo is provided. There is no information on a curbless entry, grab bars, a shower seat, door width or turning space.",
+"score": 7
+},
+"bedroom": {
+"findings": "The bed is in the main open studio space (photo 1), so it is step-free from the living area. It appears to be a standard-height queen or king. There is reasonable open floor between the bed and the living area, but space on the left side of the bed beside the wall/dresser is unclear.",
+"score": 4
+},
+"entrance": {
+"findings": "Host describes a ground-floor unit with its own private keyless front door, and photo 1 shows that door on the far wall. Nothing shows the exterior, so steps from the sidewalk are unknown. Many Castro ground-floor units in San Francisco sit a few steps up or down from street level. Door width is not stated, though it looks like a standard single door.",
+"score": 6
+},
+"host_features": {
+"findings": "No accessibility features are declared and there is no accessibility photo tour. Only the general amenities 'Single level home', 'Private entrance' and 'Self check-in' (smart lock) are listed.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed, and photo 1 shows an open-plan studio of about 500 sq ft with continuous hardwood floor and no visible interior steps or thresholds. A sloped ceiling (stair underside) on the left lowers headroom near the dresser. Area rugs near the sitting area could hinder rolling. Dining chairs are set close to the table.",
+"score": 4
+},
+"parking": {
+"findings": "No parking is mentioned. The Castro has dense street parking and steep hills nearby; the approach to the entrance is not shown.",
+"score": 7
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Open-plan studio with continuous hardwood floor and no visible interior steps. Bed, sitting area and dining table are all on one level.",
+"photo": 1
+},
+{
+"observation": "A private entry door with a keypad lock is on the back wall; any step or threshold outside it cannot be seen.",
+"photo": 1
+},
+{
+"observation": "Area rugs sit in the sitting area and beside the bed, and a low sloped ceiling sits above the dresser on the left.",
+"photo": 1
+},
+{
+"observation": "Two interior doors are visible on the left wall (likely bathroom or closet); they look like standard-width doors, width not confirmed.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Are there any steps or a raised threshold between the sidewalk and the private entrance door? If so, how many?",
+"What is the clear width of the entrance door and the bathroom door?",
+"Is the shower curbless or step-free, or does it have a curb or tub? Are there grab bars, or is a shower chair available?",
+"How much clear floor space is there next to the toilet and inside the bathroom?",
+"Is there any parking nearby, and is the route from the street level or on a hill?",
+"How high is the bed, and how much clear space is there on each side?"
+],
+"summary": "A ground-floor, single-level studio with its own entrance and an open, step-free interior (photo 1), which makes it promising. However, the exterior entrance and the bathroom are not shown, and the host declares no accessibility features. The 'rainforest shower' may or may not be step-free. Confirm entry steps, door widths and shower access before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "21395598": {
 "gallery": [
 "https://a0.muscache.com/im/pictures/prohost-api/Hosting-21395598/original/170c33ee-403b-4b44-835b-1b2baf4892ec.jpeg",
@@ -23102,6 +23514,64 @@
 "Are there any steps or level changes inside the unit?"
 ],
 "summary": "A downtown Seattle penthouse with an elevator, a single-level layout and an on-site paid garage, which are promising signs for getting in. However, the only photo is a view shot, so the entrance, interior, bathroom and bedroom can't be verified. The listed bathtub suggests a likely bathing barrier, and no accessibility features are declared. Confirm the step-free route, door widths and shower type with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
+"21877829": {
+"gallery": [
+"https://a0.muscache.com/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MjE4Nzc4Mjk=/original/c674b86a-bc76-4d3b-89fe-5e023f194083.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "Two bathrooms are listed, but none are photographed. 'Bathtub' is listed as an amenity, so at least one bathroom likely has a tub, possibly a tub/shower combo. No roll-in shower, grab bars, shower chair or toilet details are mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "Two bedrooms (a king bed and a queen bed) on the single level, so they should be step-free. Neither bedroom is photographed, so bed height, clearance beside the beds and door widths are unknown. The sleeper sofa is an additional, less suitable option.",
+"score": 6
+},
+"entrance": {
+"findings": "Condo in a building with an elevator (amenity) and covered parking in the building's garage. Photo 1 shows the unit's front door from inside: a standard single hinged door that looks roughly standard width, with no visible step at the threshold and continuous flooring up to it. The building entrance, the elevator, the hallway route and the door's exact width are not shown or described.",
+"score": 5
+},
+"host_features": {
+"findings": "No Airbnb accessibility features are listed and the description says nothing about accessibility. Only the general amenities 'Elevator' and 'Single level home' are relevant.",
+"score": 7
+},
+"interior": {
+"findings": "The host lists 'Single level home'. Photo 1 shows an open-plan living, dining and kitchen area with continuous wood-look flooring and no visible steps or level changes. There is a fair amount of furniture, including a sofa, coffee table, area rug and dining set, but a reasonable path appears to lead from the entry to the living area. Hallway and interior door widths are not shown.",
+"score": 4
+},
+"parking": {
+"findings": "Free covered garage parking on the premises (1 space), described as 'right in the building', plus free street parking. No accessible or van-accessible space is mentioned. The route from the garage to the elevator is not described.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Open-plan living, dining and kitchen area with continuous wood-look laminate flooring and no visible steps. The unit entry door (white, with a keypad lock) is visible at the back right with flush flooring at the threshold. A rug sits under the coffee table, and the sofa and dining furniture narrow the circulation somewhat.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the garage parking space to the building entrance and elevator?",
+"Which floor is the unit on, and is the route from the elevator to the unit door completely step-free?",
+"How wide is the unit's front door, and how wide are the bedroom and bathroom doors (32 in / 81 cm or more)?",
+"Does either bathroom have a walk-in or roll-in shower, or are both tub/shower combinations?",
+"Are there grab bars by the toilet or shower, and is a shower chair or tub transfer bench available?",
+"Is there an accessible parking space in the garage, and how close is the assigned space to the elevator?",
+"How high are the king and queen beds, and how much clear floor space is beside each bed?",
+"Is there a step or raised threshold to the balcony?"
+],
+"summary": "An elevator-served, single-level condo with garage parking in the building. The one photo shows a step-free open living area and an entry door with no visible threshold step. However, the bathrooms, bedrooms and building entrance are not shown, the listed bathtub suggests tub-only bathing, and the host declares no accessibility features. It is potentially workable for some wheelchair users, but door widths and bathroom setup must be confirmed with the host before booking.",
 "verdict": "Use caution - confirm details with host"
 }
 },
@@ -23346,6 +23816,64 @@
 ],
 "summary": "This ground-level, single-level studio is laid out open with smooth floors, which is promising once inside. However, the only photo shows the main room. The entrance is not shown, and historic DC rowhouse units often have steps down to the door or up a stoop. The only listed bathing option is a bathtub, with no grab bars mentioned. There is no parking and there are no declared accessibility features. Confirm step-free entry, door widths and the bathing setup with the host before booking.",
 "verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"22339850": {
+"gallery": [
+"https://a0.muscache.com/pictures/bb1cf092-e918-4f05-a00a-03aeba4070fb.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos or details. Shower vs. tub, grab bars, door width and turning space are all unknown. Many Maui condos of this era have tub/shower combos.",
+"score": 7
+},
+"bedroom": {
+"findings": "One bedroom with a king bed is described, and the single-level listing suggests it is on the same floor. Bed height, clear floor space and door width are not shown.",
+"score": 6
+},
+"entrance": {
+"findings": "Amenities list an elevator and private entrance, but the floor of the unit, the path from parking to the elevator, any steps at the building or unit door, and door widths are not shown or described. Photo 1 is taken from an upper vantage point overlooking the pool, which suggests an upper-floor unit, so the elevator matters. The title's '40 steps to Ocean' likely refers to distance, not stairs, but this is unconfirmed.",
+"score": 6
+},
+"host_features": {
+"findings": "The host declares no accessibility features and added no accessibility photo tour. Only general amenities (elevator, single level) hint at access.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed, so there are probably no internal stairs. Door widths, thresholds (especially to the lanai) and clutter are unverified. No interior photos.",
+"score": 5
+},
+"parking": {
+"findings": "Free parking on premises and free street parking are listed. No accessible parking is mentioned. Distance and surface from parking to the elevator or entrance are unknown. Photo 1 shows paved pavers around the pool area, but the parking area is not shown.",
+"score": 6
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Elevated view over the pool deck, lawn and ocean. Pool surround appears to be flat pavers, and the lawn is fenced. This suggests the unit is on an upper floor. No entrance, unit interior, bathroom, bedroom or parking is shown.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Which floor is the unit on, and does the elevator serve that floor with step-free access from the parking lot to the unit door?",
+"Are there any steps or curbs between the parking area, building entrance, elevator and unit door?",
+"What is the width of the unit entrance door, bedroom door and bathroom door (32 in / 81 cm or more)?",
+"Does the bathroom have a tub/shower combo or a walk-in/roll-in shower? Are there grab bars, and is a shower chair available?",
+"What is the bed height, and how much clear floor space is beside the bed?",
+"Is there a raised threshold or step down to the lanai?",
+"Is there designated accessible parking, and how far is it from the elevator?",
+"Is the pool area and beach access reachable without steps?"
+],
+"summary": "Ocean-front one-bedroom condo in Ma'alaea, likely on an upper floor. An elevator and 'single level home' are listed, which is promising, but there is only one photo (an exterior view) and no accessibility features are declared. The entrance route, bathroom type, door widths and bedroom space are all unverified. No definite barriers are shown, but a wheelchair user should confirm the elevator-to-unit route and bathroom setup with the host before booking.",
+"verdict": "Use caution - confirm details with host"
 }
 },
 "22401491": {
@@ -23626,6 +24154,63 @@
 "verdict": "Use caution - confirm details with host"
 }
 },
+"23109650": {
+"gallery": [
+"https://a0.muscache.com/pictures/e5f0a551-2f3b-4116-9b34-a94545f384a0.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "One bathroom, never photographed or described. Shower vs. tub, grab bars, door width and turning space are all unknown.",
+"score": 7
+},
+"bedroom": {
+"findings": "Studio with 0 bedrooms. The sleeping arrangement is not shown or described: it could be a bed, a sofa bed or a Murphy bed. Bed height and clear space beside the bed are unknown.",
+"score": 7
+},
+"entrance": {
+"findings": "Described as a ground floor condo with a private entrance, which suggests few or no stairs. However, no photo shows the entrance, the path from parking, any steps up to the lanai or unit door, or the door width. Ground-floor units in Kona often still have a step or two. Photo 1 shows a tiled lanai with a sliding glass door at the right edge; the threshold height is not visible.",
+"score": 5
+},
+"host_features": {
+"findings": "No accessibility features were declared and there is no accessibility photo tour. The only relevant items are 'Single level home', 'Private entrance' and 'ground floor'.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed in the amenities, and the host says it is a ground floor condo, so there are probably no internal stairs. It is a studio (0 bedrooms), so space is likely compact. Interior photos are not provided, so clutter, rugs and thresholds are unverified.",
+"score": 5
+},
+"parking": {
+"findings": "Free parking on premises and free street parking are listed. Distance to the unit and the path surface are not described. The downtown Ali'i Drive location is fairly flat, but this is unverified.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Covered tiled lanai with a dining table, chairs and bar stools, an ocean view across the street, and a decorative railing. A sliding glass door is partly visible at the right. The floor appears level, but the door threshold and any steps from the lanai to the garden or ground are not visible. The furniture leaves limited clear space.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Are there any steps from the parking area to the unit's entrance or lanai? How many, and how high?",
+"What is the width of the entrance door and the bathroom door?",
+"Is the shower a walk-in or curbless shower, or a tub/shower combo? Are there grab bars?",
+"What is the sleeping arrangement in the studio (standard bed, sofa bed, Murphy bed), and how high is the bed?",
+"How far is the on-premises parking from the unit, and is the path paved and level?",
+"Is the threshold at the sliding lanai door raised?",
+"Are the pool and hot tub reachable without steps?"
+],
+"summary": "This ground-floor oceanfront studio condo in downtown Kona is listed as single level with a private entrance and on-premises parking, which is promising. However, the only photo shows the lanai; the entrance, bathroom and sleeping area are not shown. The bathroom type, door widths, bed type and the route from parking are all unverified. No definite barriers are visible, but a wheelchair user should confirm step-free entry and the shower type with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "23236083": {
 "gallery": [
 "https://a0.muscache.com/im/pictures/ebd5771f-6aa0-4bf7-92eb-1bb9e3a32dc9.jpg",
@@ -23732,6 +24317,62 @@
 ],
 "summary": "This top-floor condo has a listed elevator and a single-level layout, and the open-plan tile living area looks workable. The master bath reportedly has a walk-in shower. However, the entrance, elevator, bathrooms and door widths are not shown, and no accessibility features are declared. There are minor issues with the carpeted bedroom and the lanai door tracks. It is potentially workable, but the guest should confirm the step-free route and shower details before booking.",
 "verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"23241097": {
+"gallery": [
+"https://a0.muscache.com/pictures/3e56d99b-cf3a-4dda-97f8-66d918473ade.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "One bath listed with a bidet, but no bathroom photos or description. Shower vs. tub, grab bars, door width and turning space are unknown. Older Waikiki condos often have tub/shower combos.",
+"score": 7
+},
+"bedroom": {
+"findings": "Photo 1 shows a queen bed on a frame at standard height (no bunk, loft or floor mattress). Clear space appears limited: a nightstand and closet sit on the left and a desk and chair on the right, in a small studio.",
+"score": 5
+},
+"entrance": {
+"findings": "Penthouse studio in a Waikiki condo building; amenities list an elevator, single level home, self check-in with keypad and private entrance. No photos of the building entrance, lobby, elevator or unit door, so step-free access and door width are unverified.",
+"score": 5
+},
+"host_features": {
+"findings": "The host declares no accessibility features and gives no accessibility photo tour. Only general amenities (elevator, single level) suggest suitability.",
+"score": 7
+},
+"interior": {
+"findings": "Studio marked 'Single level home', so there are no internal stairs. Photo 1 shows a smooth wood-look floor with a small rug near the bed. The studio appears compact, and clear widths are not shown.",
+"score": 5
+},
+"parking": {
+"findings": "Free covered assigned on-site parking, suited to small/medium vehicles only. That likely rules out larger accessible vans. Distance from the space to the elevator and any accessible stall are not stated.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Studio sleeping area: a standard-height queen bed with a nightstand and lamp on the left, a desk and chair on the right, and a louvered closet door. The floor is smooth wood-look with a small rug. Space beside the bed looks narrow.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is the route from the street and the parking garage to the elevator and the unit door fully step-free, including the building entrance and any penthouse-level steps?",
+"What is the clear width of the unit entrance door and the bathroom door (32 in / 81 cm or more)?",
+"Does the bathroom have a tub or a walk-in/curbless shower? Are there grab bars or a shower chair?",
+"How much clear floor space is beside the bed and the toilet?",
+"Can the assigned parking stall fit a wheelchair-accessible van (height and width), and is accessible parking available?",
+"Are there thresholds at the balcony or bathroom doors?"
+],
+"summary": "An elevator-served, single-level penthouse studio with on-site covered parking. This is a promising base, but only one bedroom photo is provided. The entrance, bathroom and parking details are unverified, and the parking is limited to small/medium vehicles. No confirmed barriers were found, but key items like the shower type and door widths must be confirmed with the host.",
+"verdict": "Use caution - confirm details with host"
 }
 },
 "23343151": {
@@ -24347,6 +24988,121 @@
 ],
 "summary": "This is a ground-floor, single-level 1-bedroom condo with tile floors and no interior stairs, which is promising for wheelchair users. However, the entrance threshold, door widths, parking distance, and bathroom shower type are unverified. No accessibility features are declared and no grab bars are visible. Workable for many mobility-limited guests, but confirm the entry and bathroom details before booking.",
 "verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"24015983": {
+"gallery": [
+"https://a0.muscache.com/pictures/hosting/Hosting-24015983/original/a4bc9b78-a220-4708-b312-bd7e1a45f115.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "A bathtub is listed and neither bathroom is photographed. A tub may be the only bathing option. Grab bars, shower chair and door width are not mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "Neither bedroom is photographed. Bed height, door width and clear space beside the bed are unknown, though single-level living suggests the bedrooms are on the same floor.",
+"score": 7
+},
+"entrance": {
+"findings": "Amenities list an elevator, a private entrance, self check-in and a smart lock, but the floor the unit is on and the route from the street or garage are not stated. No entrance photo, so steps, thresholds and door width are unverified.",
+"score": 6
+},
+"host_features": {
+"findings": "The host declared no accessibility features and the description says nothing about accessibility.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed. Photo 1 shows a level light wood floor with no visible thresholds in the living area, but a rug sits under the coffee table and the furniture is fairly close together. Doorway widths are not shown.",
+"score": 5
+},
+"parking": {
+"findings": "A paid parking garage on the premises is listed, with paid off-premises parking as an alternative. Accessible stalls and the route from the garage to the elevator and unit are not described. The Seattle neighborhood near the Space Needle can be hilly.",
+"score": 6
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Living room on a level light wood floor with no visible steps. Area rug under the oval coffee table, and a floor fan and furniture narrow the open floor space. A doorway is partly visible at right, but its width can't be judged.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"What floor is the unit on, and is there a step-free route from the street and the parking garage to the elevator and the unit door?",
+"How wide is the unit entrance door, and are there steps or a raised threshold at it?",
+"Does either bathroom have a walk-in or roll-in shower, or are both tub/shower combos? Are there grab bars, or can a shower chair be provided?",
+"How wide are the bathroom and bedroom doors, and how high are the toilets?",
+"How high are the beds, and how much clear floor space is beside them?",
+"Does the on-site garage have accessible parking spaces, and how far are they from the elevator?",
+"Is there a step at the patio/balcony door?"
+],
+"summary": "A single-level condo with an elevator and on-site garage parking listed, which is promising, but the only photo is the living room. The entrance, bathrooms and bedrooms are not shown or described. A bathtub is listed, so a tub may be the only bathing option. No barriers are confirmed, but most key details need host confirmation before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
+"24393004": {
+"gallery": [
+"https://a0.muscache.com/pictures/ff0551f4-8eb0-4df7-9c8e-9b521390f966.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "Two bathrooms, neither photographed. 'Bathtub' is listed, which suggests at least one bathroom has a tub/shower combo. No mention of a roll-in shower, grab bars, shower chair or door widths. A tub may be the only bathing option.",
+"score": 8
+},
+"bedroom": {
+"findings": "No bedroom photos. Two bedrooms on a single level, so they are likely step-free, but bed type, bed height, door width and clear floor space are unknown. With 6 guests and 2 bedrooms, some sleeping may be on a sofa bed.",
+"score": 7
+},
+"entrance": {
+"findings": "Penthouse condo with an elevator listed, so stairs to the unit are probably avoidable. No photos of the building entrance, lobby, elevator or unit door, so steps at the street entrance, door width and thresholds are unverified. 'Private entrance' and 'Smart lock' are listed but not shown.",
+"score": 5
+},
+"host_features": {
+"findings": "The host declared no accessibility features and there is no accessibility photo tour. Only the general amenities 'Elevator' and 'Single level home' are relevant.",
+"score": 7
+},
+"interior": {
+"findings": "Listed as 'Single level home.' Photo 1 shows an open-plan living, dining and kitchen area with smooth parquet floors and wide circulation. Concerns: a large area rug in the living area, a possible flooring transition (tile) at the kitchen, and dining chairs that narrow the path. Hallways and interior doors are not shown.",
+"score": 4
+},
+"parking": {
+"findings": "Secure on-site garage parking for $35/night. The garage presumably connects to the elevator, but no accessible parking space, garage clearance or route to the elevator is described. The area is urban and walkable, and Seattle streets can be hilly.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Open-plan living, dining and kitchen with flat parquet flooring and generous circulation space. There is a large area rug under the seating area, and the kitchen appears to have a different tile floor with a possible small transition. No steps are visible within this area.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the street and from the parking garage to the elevator and the unit door?",
+"Does the elevator reach the penthouse floor directly, with no steps up to the unit?",
+"What is the clear width of the unit entrance door, bedroom doors and bathroom doors (32 in / 81 cm or more)?",
+"Do either of the bathrooms have a walk-in or roll-in shower, or are both tub/shower combos? Are there grab bars, or is a shower chair available?",
+"What are the bed heights, and is there clear floor space beside the beds?",
+"Is the extra sleeping for 6 guests on a sofa bed, or are there beds in the bedrooms?",
+"Is an accessible or wider parking space available in the garage, and what is the vehicle height clearance?",
+"Are there thresholds at the balcony door or between rooms?"
+],
+"summary": "An elevator-served, single-level penthouse condo, so it is probably reachable without stairs, but almost nothing is verified. Only one photo (the living, dining and kitchen area) is provided, and it shows smooth floors and open space. The bathrooms, bedrooms, entrance and parking are not shown, and the listing includes a bathtub, which suggests no roll-in shower. Confirm the step-free route, door widths and shower type with the host before booking.",
+"verdict": "Use caution - confirm details with host"
 }
 },
 "2440357": {
@@ -25649,6 +26405,64 @@
 "verdict": "Use caution - confirm details with host"
 }
 },
+"2693672": {
+"gallery": [
+"https://a0.muscache.com/pictures/cc2bef58-0c4c-410b-a18b-19d3232b6f42.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "Bathroom was newly renovated, but 'Bathtub' is listed in amenities, suggesting a tub/shower combo may be the only bathing option. No bathroom photos; grab bars, shower chair, door width and turning space are unknown.",
+"score": 8
+},
+"bedroom": {
+"findings": "One bedroom with a double bed on a single level. No bedroom photos, so bed height, clear floor space beside the bed and door width are unverified. A double bed may leave limited transfer space in a small condo room.",
+"score": 6
+},
+"entrance": {
+"findings": "Condo building with an elevator listed and self check-in via smart lock. No photos of the building entrance, lobby, unit door or path from elevator to unit, so step-free entry and door width are unverified.",
+"score": 6
+},
+"host_features": {
+"findings": "The host declares no accessibility features and offers no accessibility photo tour. Only general amenities are listed: elevator, single level home and self check-in.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed, which suggests no internal stairs. No interior photos to check doorway widths, thresholds, rugs or clutter. The unit appears small (1 bedroom with kitchenette), so circulation space may be tight.",
+"score": 5
+},
+"parking": {
+"findings": "Only paid parking off premises. There is no on-site or accessible parking, and the distance to the building is unknown. Seattle's Lower Queen Anne/Uptown area has some sloped streets.",
+"score": 8
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Shared rooftop deck with wood decking, planters, a picnic table and a railing, with a Space Needle view. The deck surface looks level, but there is no view of the deck's access door or threshold. No photos show the unit, entrance, bathroom or bedroom.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is the route from the street through the building entrance to the elevator and unit fully step-free?",
+"What is the clear width of the unit entrance door and the bathroom door?",
+"Is the only bathing option a bathtub, or is there a walk-in/roll-in shower? Are grab bars or a shower chair available?",
+"What is the toilet height, and is there clear space beside it?",
+"How much clear floor space is beside the bed, and how high is the bed?",
+"Is the rooftop deck reachable by elevator without steps or a raised threshold?",
+"Where is the nearest accessible parking, and how far and how steep is the route to the building?",
+"Are there any thresholds or rugs within the unit?"
+],
+"summary": "This is an elevator-served, single-level condo near the Space Needle, which is promising for basic access. However, the only photo shows the rooftop deck, and there are no images of the entrance, interior, bathroom or bedroom. A bathtub is listed, so a tub may be the only bathing option. Parking is paid and off premises only. The host declares no accessibility features. Confirm step-free entry, door widths and the shower setup before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "27483995": {
 "gallery": [
 "https://a0.muscache.com/pictures/miso/Hosting-27483995/original/7299ea85-de97-4e83-af5c-5fa1d2be65d4.jpeg"
@@ -26049,6 +26863,63 @@
 "verdict": "Use caution - confirm details with host"
 }
 },
+"28106693": {
+"gallery": [
+"https://a0.muscache.com/pictures/00be9834-7229-47de-9744-2206210401ea.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos and no description of the bathroom. Shower vs. tub, grab bars, door width and turning space are all unknown.",
+"score": 7
+},
+"bedroom": {
+"findings": "One bedroom on a single level, so step-free access to it is likely. It is not photographed, so bed height, clear space beside the bed and door width are unknown.",
+"score": 6
+},
+"entrance": {
+"findings": "Condo building with an elevator listed, and the unit is listed as a single level home. No photos of the building entrance, lobby, elevator or unit door, so step-free access from the street and the door width are unverified. Seattle waterfront buildings can have grade changes between the street levels.",
+"score": 5
+},
+"host_features": {
+"findings": "The host declared no accessibility features and the description does not mention accessibility. The only relevant amenities are Elevator and Single level home.",
+"score": 7
+},
+"interior": {
+"findings": "Listed as a single level home. Photo 1 shows a carpeted living room with an area rug, a sectional and a glass coffee table. The room looks reasonably open, but the carpet and rug add rolling resistance. Doorways and hallways are not shown.",
+"score": 4
+},
+"parking": {
+"findings": "Free parking on premises is listed, likely a building garage with elevator access. The location and accessibility of the space, and the route to the elevator, are unverified. Downtown Seattle near Pike Place has steep hills on the surrounding streets.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Living room with carpet, a patterned area rug, a large leather sectional, a glass coffee table and a fireplace. The space looks moderately open and there are no steps or level changes visible in the frame.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the street and from the parking garage to the elevator and to the unit door?",
+"How wide is the unit entrance door, and are the interior doors (bedroom, bathroom) at least 32 in (81 cm) wide?",
+"Does the bathroom have a walk-in or roll-in shower or a bathtub? Are there any grab bars?",
+"How much clear floor space is beside the toilet and in the bathroom generally?",
+"What is the bed height, and how much space is beside it?",
+"Is the on-premises parking space in a garage connected to the elevator? Is an accessible or wide space available?",
+"Is there a step or raised threshold to the balcony?"
+],
+"summary": "A single-level downtown waterfront condo with an elevator and on-site parking, which is a promising starting point. However, only one living room photo is provided and there are no accessibility declarations. The entrance route, door widths, bathroom setup and bedroom are all unverified. Carpet and rugs may make rolling harder. Confirm the bathroom and the step-free route with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "28160615": {
 "gallery": [
 "https://a0.muscache.com/pictures/hosting/Hosting-28160615/original/a203ff22-9af1-4c3b-bea3-28a82bf24307.jpeg"
@@ -26436,6 +27307,65 @@
 "Does the patio sliding door have a raised track?"
 ],
 "summary": "This is a single-level, first-floor condo with an elevator and garage parking. The main living space is open with smooth floors, which looks promising for moving around inside. The bathroom is the major concern: a standard tub/shower combo is the only bathing option, the room is narrow, there is a raised threshold at the doorway, and no grab bars are declared. The building entrance and the route from the garage are not shown, so step-free arrival is unconfirmed. It may suit guests who can transfer into a tub with assistance, but it is poorly suited to anyone needing a roll-in shower.",
+"verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"2874486": {
+"gallery": [
+"https://a0.muscache.com/pictures/airflow/Hosting-2874486/original/56b23382-f5e8-45a6-8f0c-33c053d18955.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "There are 2 bathrooms. The master has both a shower and a bathtub; the shower type is unclear and may be a tub-shower combo. The second bathroom is undescribed. 'Bathtub' is listed as an amenity. No bathroom photos are provided, and no grab bars, shower chair, or roll-in shower are mentioned. A tub is likely the main bathing option in at least one bathroom.",
+"score": 8
+},
+"bedroom": {
+"findings": "Two bedrooms with large closets are described, but there are no bedroom photos. Bed height, clearance beside the bed, and door widths are unknown.",
+"score": 7
+},
+"entrance": {
+"findings": "Top-floor condo in Wicker Park; amenities list 'Elevator', which suggests the unit can be reached without stairs. However, the building entrance, any steps at the street door, the elevator size, and the unit door width are not shown or described. Chicago walk-up-style condos often have front stoops, so this is unverified.",
+"score": 6
+},
+"host_features": {
+"findings": "The host declared no accessibility features and provided no accessibility photos. Only 'Elevator' and 'Single level home' are listed as general amenities.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed. Photo 1 shows an open living room with hardwood floors and a wide clear path, but also a large shag rug that is hard to roll over. The rooftop access route, likely stairs from a top-floor unit, is not described. Doorway widths are unknown.",
+"score": 5
+},
+"parking": {
+"findings": "Only free street parking is offered. There is no on-site or accessible parking, and the distance and curb conditions to the entrance are unknown. Wicker Park is flat.",
+"score": 7
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 7,
+"photo_observations": [
+{
+"observation": "Bright open living room with hardwood floors and wide circulation space. A large thick shag rug covers the center. French doors open to a balcony, possibly with a raised threshold. Interior doors on the right appear standard width. No steps are visible within the room.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the street into the building and into the elevator? Are there any steps at the front entrance?",
+"Does the elevator go directly to the unit's floor, and what are the elevator door width and cab size?",
+"What is the width of the unit entry door and the bedroom and bathroom doors?",
+"Does either bathroom have a walk-in or curbless shower, or are both tub/shower combos? Are there grab bars, or is a shower chair available?",
+"How is the private rooftop accessed: stairs, a ladder, or the elevator?",
+"Are there raised thresholds at the balcony or bathroom doors?",
+"Can the shag rug be removed before arrival?",
+"What are the bed heights, and how much clear floor space is beside the beds?",
+"How close is typical street parking, and are there curb cuts near the entrance?"
+],
+"summary": "A top-floor Chicago condo listed as single level with an elevator, which is promising for step-free access. However, there is only one photo (the living room), no entrance, bathroom, or bedroom photos, and no declared accessibility features. Bathing likely involves a tub. The rooftop is probably reached by stairs. Parking is street only. Confirm the building entrance, elevator, door widths, and shower type before booking.",
 "verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
@@ -27391,6 +28321,64 @@
 "verdict": "Use caution - confirm details with host"
 }
 },
+"30299392": {
+"gallery": [
+"https://a0.muscache.com/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MzAyOTkzOTI%3D/original/cfa1a249-2599-4843-9781-e16996e46ed5.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photo or description. Shower vs. tub, grab bars, door width, and turning space are unknown.",
+"score": 7
+},
+"bedroom": {
+"findings": "Photo 1 shows the queen bed in the open studio with no step to reach it. Bed height looks standard-to-low on a wooden platform frame. There is clear tile floor on the left side of the bed; the right side is partly obstructed by a luggage rack and the dresser. The blue futon is a sofa bed but is not needed for 2 guests.",
+"score": 4
+},
+"entrance": {
+"findings": "Host describes a ground-floor studio with a private entrance, and amenities list 'Single level home'. No photo of the entrance door, threshold, or the path from parking, so step-free access and door width are unverified. Kona Islander Inn is an older complex where there may be small steps or curbs along walkways.",
+"score": 5
+},
+"host_features": {
+"findings": "The host declared no accessibility features and added no accessibility photo tour. Only 'Single level home', 'ground-floor', and 'Private entrance' are mentioned.",
+"score": 7
+},
+"interior": {
+"findings": "Photo 1 shows an open-plan studio on one level with continuous tile flooring, no rugs, and no visible thresholds or internal steps. There is reasonably open floor space. The glass coffee table, chest of drawers, and luggage racks narrow some routes but could be moved. The doorway at the rear (to the bathroom or kitchenette) is not clearly visible.",
+"score": 4
+},
+"parking": {
+"findings": "Amenities list both free parking on premises and free street parking. There is no information on accessible spaces, distance to the unit, or path surface. Downtown Ali'i Drive is fairly flat.",
+"score": 6
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 5,
+"photo_observations": [
+{
+"observation": "Open single-level studio with smooth tile floor throughout and no visible steps or rugs. The queen platform bed has open floor space on the left side, while the right side has a luggage rack and a large dresser. The furniture (coffee table, luggage racks) is movable. A doorway at the rear is partially visible; its width cannot be judged. Neither the bathroom nor the entrance is shown.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is the route from the on-site parking to the unit door completely step-free, including curbs, walkway steps, and the patio?",
+"How wide is the entrance door, and is there a raised threshold or step at it?",
+"Does the bathroom have a step-free or walk-in shower, or a bathtub?",
+"How wide is the bathroom door, and are there grab bars near the toilet and shower?",
+"Is there room for a wheelchair beside the toilet and to turn inside the bathroom?",
+"Is there an accessible or reserved parking space, and how far is it from the unit?",
+"Are the pool and hot tub areas reachable without steps?",
+"Could the luggage racks and coffee table be moved to create clearance beside the bed?"
+],
+"summary": "This is a ground-floor, single-level studio, and the one photo shows an open, tile-floored room with the bed reachable without steps. That is promising for moving around inside. However, the entrance, bathroom, and parking route are not shown, and the host lists no accessibility features. The bathroom is the biggest unknown. Confirm a step-free entry and the shower type before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "30338637": {
 "gallery": [
 "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MzAzMzg2Mzc=/original/30201ae7-cb11-48d5-bc7b-494d3008954e.jpeg",
@@ -27622,6 +28610,64 @@
 ],
 "summary": "This first-floor studio is in an elevator building and is all on one level with smooth tile floors, which is a good base for moving around inside. The main problem is the only bathroom: a bathtub with sliding glass doors, no visible grab bars, and a cramped, cluttered layout. Sleeping is on a Murphy bed or sofa bed. The building entrance, unit door width and patio threshold are not shown and need confirming before booking.",
 "verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"30793500": {
+"gallery": [
+"https://a0.muscache.com/pictures/7566f720-39fa-4676-ae3c-1950db39e7a6.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "The bathroom is not shown in any photo or described. It is unknown whether there is a tub or a walk-in shower, grab bars, or enough door width and turning space.",
+"score": 7
+},
+"bedroom": {
+"findings": "The bedroom is not photographed. It sleeps 4 with 1 bedroom, so the extra guests likely sleep on the sofa (possibly a sofa bed) seen in photo 1. Bed height and clearance beside the bed are unknown.",
+"score": 7
+},
+"entrance": {
+"findings": "The amenities list an elevator, 'Single level home' and 'Private entrance', which suggests the condo may be reachable without stairs. No photos show the building entrance, the lobby, the elevator or the unit door. Steps at the street entrance and door width are unverified.",
+"score": 6
+},
+"host_features": {
+"findings": "No Airbnb accessibility features were provided and the description says nothing about accessibility. Only the generic amenities 'Elevator' and 'Single level home' are listed.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is declared. Photo 1 shows smooth large-format tile and a reasonably open kitchen and dining area, with no visible steps. Tall bar-height stools and the table narrow the circulation space. A small rug is at the kitchen edge. Doorways and hallways are not shown.",
+"score": 5
+},
+"parking": {
+"findings": "Only paid parking off premises is offered. Distance, accessible spaces and the route to the building are unknown. The street is in flat Waikiki, which helps, but there is no on-site parking.",
+"score": 8
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Open-plan living, dining and kitchen area with smooth tile floor and no visible steps. A bar-height dining table with tall stools would be unusable from a wheelchair. There is moderate floor space between the table and the kitchen. A small mat is near the kitchen counter. The blue sofa may serve as the extra sleeping space.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the street to the lobby and elevator, and from the elevator to the unit door?",
+"What is the width of the unit entrance door, the bedroom door and the bathroom door?",
+"Does the bathroom have a tub/shower combo or a walk-in/roll-in shower? Are there grab bars, and can a shower chair be provided?",
+"What is the toilet height and how much clear space is beside it?",
+"What is the bed height, and how much clear floor space is beside the bed?",
+"Is the second sleeping option a sofa bed?",
+"Where is the nearest paid parking, does it have accessible spaces, and how far is it from the building entrance?",
+"Are there any thresholds or a step onto a lanai?"
+],
+"summary": "This Waikiki condo has an elevator and is declared single-level, and the one photo shows a step-free, tiled open living area. That is a reasonable sign, but almost nothing else is verifiable. The entrance, bathroom and bedroom are not shown, no accessibility features are declared, and parking is paid and off premises. The dining setup is bar height. Confirm step-free access, door widths and the shower type with the host before booking.",
+"verdict": "Use caution - confirm details with host"
 }
 },
 "31087353": {
@@ -29579,6 +30625,62 @@
 "Is the backyard patio reachable without a step?"
 ],
 "summary": "A single-story Las Vegas home with on-site parking and hard flooring (photo 1), which is a promising base for mobility access. However, only the living room is photographed, and the entrance, bedrooms and bathrooms are entirely unverified. A bathtub is listed, so the bathing setup is a likely barrier. Confirm entrance steps, door widths and shower type with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
+"35778216": {
+"gallery": [
+"https://a0.muscache.com/pictures/6005dd9a-ac53-4a26-b86d-c3dd917a66d9.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "A bathtub is listed and no shower-only or roll-in option is mentioned, so a tub is likely the only bathing option. The bathroom is not photographed, and there is no mention of grab bars, a shower chair or door width.",
+"score": 8
+},
+"bedroom": {
+"findings": "This is a studio with a standard bed in the main room (photo 1), not a loft or bunk. Bed height looks standard. Clear space on the far side and foot of the bed is not visible.",
+"score": 4
+},
+"entrance": {
+"findings": "The building has an elevator and the unit is listed as a private entrance, but the entrance, building approach, door width and any steps are not shown or described. Many older Waikiki buildings have steps at the lobby.",
+"score": 6
+},
+"host_features": {
+"findings": "No accessibility features were declared and the description says nothing about accessibility.",
+"score": 7
+},
+"interior": {
+"findings": "This is a single-level studio (amenity 'Single level home'). Photo 1 shows continuous wood-look flooring with no visible thresholds or rugs in the living/kitchen area. Bar stools at the counter and a fairly compact layout may limit turning space. A threshold to the balcony is likely but not shown.",
+"score": 4
+},
+"parking": {
+"findings": "Paid parking on premises and free street parking are listed. There is no information on accessible spaces, distance to the elevator, or garage access. The Ala Wai area is flat.",
+"score": 6
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Studio main room with a bed, a kitchenette with peninsula counter and two bar stools, and smooth plank flooring with no visible thresholds or rugs. Space between the bed and kitchen looks moderate. The bathroom, entrance and balcony are not shown.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the street or parking garage to the elevator and to the unit door?",
+"What is the width of the unit entrance door and the bathroom door?",
+"Is the bathroom shower only in a tub, or is there a walk-in/curbless shower? Are there grab bars or a shower chair available?",
+"How much clear floor space is beside the bed and beside the toilet?",
+"Is the on-premises parking accessible, and how far is it from the elevator?",
+"Is there a step or raised threshold to the balcony?"
+],
+"summary": "This is a single-level Waikiki studio in an elevator building, with smooth floors and a standard bed in the main room. However, only one photo is provided, and the entrance, bathroom and parking are undocumented. A bathtub is the only listed bathing option, which is a likely barrier for wheelchair users. Confirm step-free building access and the bathroom setup before booking.",
 "verdict": "Use caution - confirm details with host"
 }
 },
@@ -31735,6 +32837,121 @@
 "verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
+"40137350": {
+"gallery": [
+"https://a0.muscache.com/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NDAxMzczNTA=/original/328b81b7-79ef-4d15-a03d-527a702fb1a2.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "'Bathtub' is listed as an amenity and no shower type is described, so a tub may be the only bathing option. No bathroom photo is provided. Grab bars, shower chair, door width and turning space are unknown.",
+"score": 8
+},
+"bedroom": {
+"findings": "The one bedroom is not photographed, so bed height, door width and clear space beside the bed are unknown. The daybed/futon in the living room (photo 1) is low and set against the wall.",
+"score": 7
+},
+"entrance": {
+"findings": "An elevator and a keypad are listed, so the unit is probably above ground floor and reachable by lift. Photo 1 shows a city high-rise view, consistent with an upper floor. The building entrance, any steps at the street door, and the width of the unit door are not shown or described. Older Camp St. buildings in New Orleans often have steps at the street entrance.",
+"score": 6
+},
+"host_features": {
+"findings": "The host declared no accessibility features and added no accessibility photos. 'Elevator' and 'Single level home' are the only relevant amenities.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed, so there are no internal stairs. Photo 1 shows smooth wood flooring with no rug in the living area. The furniture (daybed, coffee table, chairs, side table) leaves moderate but somewhat tight circulation space. Doorway widths and thresholds are not shown.",
+"score": 5
+},
+"parking": {
+"findings": "No parking is mentioned. The building is in the dense CBD/French Quarter area, where on-site parking is unlikely. The sidewalk approach is not shown.",
+"score": 7
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 7,
+"photo_observations": [
+{
+"observation": "Living area with smooth hardwood floor and no rugs. A low black daybed with a coffee table sits close in front of it, plus an accent chair, a side table and dining chairs. Circulation space is moderate. The window view suggests an upper floor in a high-rise area.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is the building entrance step-free from the sidewalk, and is the elevator door at least 32 in (81 cm) wide?",
+"Is there a step-free route from the elevator to the unit door, and how wide is the unit door?",
+"Is the only bathing option a bathtub, or is there a walk-in or roll-in shower? Are there grab bars or a shower chair?",
+"How wide is the bathroom door, and how much space is there beside the toilet?",
+"How wide is the bedroom door, how high is the bed, and how much clear floor space is beside it?",
+"Is there any accessible parking or a drop-off zone near the entrance?"
+],
+"summary": "This is a single-level condo in an elevator building near the French Quarter, which is promising for moving around inside. However, there is only one photo, of the living room, and no accessibility details. The entrance, bathroom and bedroom are all unverified. A bathtub is listed, which suggests a tub may be the only bathing option. Parking is unknown in this dense downtown area. Confirm the step-free entry, door widths and the shower type with the host before booking.",
+"verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"40138210": {
+"gallery": [
+"https://a0.muscache.com/pictures/miso/Hosting-40138210/original/71282636-cb3b-46f4-8e08-5e19b03c1279.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos. 'Bathtub' is listed in amenities, suggesting tub bathing; no mention of a roll-in shower, grab bars or shower chair. Door widths unknown.",
+"score": 8
+},
+"bedroom": {
+"findings": "No bedroom photos. Bed types, bed height and clear floor space are unknown. The description calls the bedrooms 'cozy', which may mean limited space beside the bed.",
+"score": 7
+},
+"entrance": {
+"findings": "Penthouse condo; amenities list an elevator, which helps if it serves the penthouse floor step-free. The building entrance, the elevator itself and the unit door are not shown or described. Older New Orleans Camp St buildings often have a step at the street entrance. Self check-in with smart lock.",
+"score": 6
+},
+"host_features": {
+"findings": "No Airbnb accessibility features are declared and no accessibility photo tour is provided. Only the general amenities 'Elevator' and 'Single level home' are relevant.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed, which suggests no internal stairs. Hallway and doorway widths, thresholds and rugs are unverified. Photo 1 shows French doors to the terrace with a visible raised sill/threshold.",
+"score": 5
+},
+"parking": {
+"findings": "No parking information. Urban downtown/Warehouse District location, likely street or paid garage parking. Terrain is flat, but no accessible parking is mentioned.",
+"score": 7
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 7,
+"photo_observations": [
+{
+"observation": "Private terrace with artificial turf, acapulco-style chairs and glass coffee table. Tall French doors open onto the terrace with a raised wooden threshold/sill at the base. Turf over the terrace surface may be uneven for wheels. Furniture leaves moderate open space.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there step-free access from the street into the building, and does the elevator go directly to the penthouse floor?",
+"What are the elevator door width and cab dimensions?",
+"Is the unit door at least 32 in (81 cm) wide, and are there steps between the elevator and the unit?",
+"Is the unit truly all on one level, with no steps to bedrooms, bathrooms or the terrace?",
+"How high is the threshold at the terrace French doors?",
+"Does either bathroom have a walk-in or roll-in shower, or are both tub/shower combos? Are there grab bars?",
+"What are the bathroom and bedroom door widths, and how much clear space is beside the toilet and beds?",
+"What are the bed types and heights?",
+"Where is the nearest parking, and is accessible parking available nearby?"
+],
+"summary": "Only one terrace photo is provided and no accessibility features are declared. Positives are a listed elevator and a 'single level home' tag, so a step-free route is plausible but unverified. Concerns include a listed bathtub (likely tub-only bathing), a raised sill at the terrace doors, 'cozy' rooms, and no information on the building entrance, door widths or parking. No definite barriers are confirmed, but a wheelchair user should get detailed answers and photos from the host before booking.",
+"verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
 "40260647": {
 "gallery": [
 "https://a0.muscache.com/im/pictures/597855d6-03a0-4742-9cad-7cfbec55fee7.jpg",
@@ -32829,6 +34046,65 @@
 "verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
+"43582845": {
+"gallery": [
+"https://a0.muscache.com/pictures/miso/Hosting-43582845/original/b7241ce5-37e4-4f69-9c79-cd781068f52f.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos. Amenities list 'Bathtub', suggesting a tub or tub/shower combo is likely the only bathing option. No grab bars or shower chair mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "One bedroom on the single level, so it is presumably step-free. Bed height, door width and clear space beside the bed are not shown.",
+"score": 5
+},
+"entrance": {
+"findings": "Photo 1 shows the front door reached by a concrete walkway with a step up onto a raised concrete stoop (roughly 1 step from the lower walk segment), and the door sill appears slightly raised above the stoop. No ramp is visible. Door appears standard width; not verified as 32 in. The garage or a side/back entrance might offer an alternative, but none are shown.",
+"score": 8
+},
+"host_features": {
+"findings": "No Airbnb accessibility features were declared. The only relevant statements are 'single level home' and 'private entrance'.",
+"score": 7
+},
+"interior": {
+"findings": "Host declares 'Single level home' and describes it as a single-level house, so no internal stairs are expected. Hallway and doorway widths, thresholds and rugs are unverified, since no interior photos were provided.",
+"score": 4
+},
+"parking": {
+"findings": "Free on-site parking: a long driveway and single-car garage, plus street parking. The driveway likely sits beside the house (paved area visible at right in photo 1). It is not designated accessible, and the route from the driveway to the door is unverified.",
+"score": 4
+}
+},
+"confidence": "low",
+"hard_barriers": [
+"Step up onto front stoop with no ramp (photo 1)"
+],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Front of the cottage: the concrete walk rises with a step to a raised stoop in front of the door, and there is a small threshold at the door. No ramp or handrail is visible. A paved driveway is visible to the right side of the house.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"How many steps are at the front entrance, and how tall is each? Is there a step-free route via the garage, back door or side door?",
+"What is the clear width of the entrance door and of the interior doors (bedroom, bathroom)?",
+"Is the only bathing option a bathtub, or is there a walk-in shower? Are there grab bars, or is a shower chair available?",
+"What is the toilet height, and how much clear floor space is beside it?",
+"What is the bed height, and how much clear space is beside the bed?",
+"Is the driveway level and paved all the way to an entrance?",
+"Are there raised thresholds between rooms, or rugs on the floors?"
+],
+"summary": "A single-level 1-bedroom cottage with good on-site parking, but the only photo shows a step up to a raised front stoop with no ramp, and the bathroom is listed with a bathtub, likely the only bathing option. Interior layout, door widths and bathroom details are unverified. It may suit guests who can manage one step and a tub transfer; wheelchair users should confirm alternative entrances and the bathroom setup before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "43912272": {
 "gallery": [
 "https://a0.muscache.com/im/pictures/prohost-api/Hosting-43912272/original/4e532662-fa6f-4b68-bff8-ea0c503eced6.jpeg",
@@ -33228,6 +34504,63 @@
 ],
 "summary": "This ground-floor, single-level condo has a host-declared step-free entrance, and photo 1 supports it with only a low threshold strip. Moving around inside and reaching the bedrooms looks workable. The main concern is the bathrooms: bathtubs are listed, no roll-in shower or grab bars are mentioned, and the doors look standard to narrow. Parking proximity and door widths are unverified.",
 "verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"44359835": {
+"gallery": [
+"https://a0.muscache.com/pictures/2bd56696-7eb1-40a1-9025-b59dc2f46180.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "The bathroom is not photographed. 'Bathtub' is listed as an amenity, so a tub is likely the only bathing option. No grab bars, shower chair or roll-in shower are mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "One bedroom, but sleeping arrangements for 5 guests are not described and the bedroom is not photographed. The sofa in photo 1 may be a sofa bed. Bed height and clearance beside the bed are unknown.",
+"score": 6
+},
+"entrance": {
+"findings": "Upper-floor condo (photo 1 shows an elevated city view) with an elevator listed and a private entrance and self check-in with a lockbox. The building entrance, the route from the elevator to the unit, door widths and thresholds are not shown or described.",
+"score": 5
+},
+"host_features": {
+"findings": "The host declared no accessibility features and added no accessibility photo tour. The description refers to a longer 'about the space' section that was not provided.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed. Photo 1 shows an open-plan living room and kitchen with wide laminate floors and a reasonable amount of clear floor. However, there is an area rug under the coffee table and some furniture clutter. Hallway and interior door widths are unknown.",
+"score": 4
+},
+"parking": {
+"findings": "Free parking on premises and free street parking are listed. The type of parking (garage or lot), accessible spaces and distance to the elevator are not stated.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Open-plan living room and kitchen on an upper floor with laminate flooring and no visible steps. A patterned area rug sits under the coffee table. The kitchen has standard-height counters and bar stools at a high table. Interior doors in the background appear to be standard width. No bathroom, bedroom or entrance is shown.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there step-free access from parking to the building entrance and elevator?",
+"Is the route from the elevator to the unit door step-free, and how wide is the unit's entry door?",
+"Is the only bathing option a bathtub, or is there a walk-in or roll-in shower? Are there grab bars, or is a shower chair available?",
+"How wide are the bathroom and bedroom doors, and is there turning space in the bathroom?",
+"What are the bed types and bed heights, and is there clear floor space beside the bed?",
+"Is accessible parking available, and how far is it from the elevator?",
+"Are there any thresholds or steps inside the unit, or to the balcony or patio?"
+],
+"summary": "This is a single-level, upper-floor condo with an elevator, and the open living area in the only photo looks reasonably navigable. The entrance, bathroom and bedroom are not shown, and the listed bathtub suggests a likely bathing barrier. There are no declared accessibility features, so the details need to be confirmed with the host before booking.",
+"verdict": "Use caution - confirm details with host"
 }
 },
 "44752240": {
@@ -34232,6 +35565,64 @@
 "verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
+"46659190": {
+"gallery": [
+"https://a0.muscache.com/pictures/hosting/Hosting-46659190/original/ef5d34be-00e8-4777-a325-2eaeb02a4ef2.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "One bathroom, not shown in any photo and not described. Shower vs. tub, grab bars, door width and turning space are all unknown.",
+"score": 7
+},
+"bedroom": {
+"findings": "One bedroom with a king bed. The description mentions a queen bed as well, possibly in the living area or a second sleeping space. The bedroom is not photographed, so bed height, clear space and door width are unknown. It is on the same level as the rest of the unit.",
+"score": 6
+},
+"entrance": {
+"findings": "2nd-floor condo in a secured building; amenities list an elevator and self check-in with smart lock. No photos of the building entrance, elevator, or unit door, so step-free access from the street and door width are unverified.",
+"score": 6
+},
+"host_features": {
+"findings": "No Airbnb accessibility features were declared and no accessibility photo tour. The only relevant general amenities are Elevator and Single level home.",
+"score": 7
+},
+"interior": {
+"findings": "Listed as a single level home. Photo 1 shows an open, spacious living area (about 1100 sq ft) with smooth hardwood floors. There is a large area rug and loose furniture such as armchairs and a bar cart, but the space looks generally navigable. Doorways and thresholds are not shown.",
+"score": 4
+},
+"parking": {
+"findings": "Free parking on premises is listed (title says FREE parking), plus a paid garage off premises. Accessible spaces, distance to the elevator and surface are not described. The downtown location suggests a paved urban approach.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Open-plan living room with exposed brick and ductwork, smooth hardwood floor, and a large flat area rug under the seating. Furniture leaves reasonable circulation space. No steps or level changes are visible in this room.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the street and from the on-site parking to the building entrance and the elevator?",
+"What are the elevator door width and cab size?",
+"How wide is the unit entrance door? Are there thresholds?",
+"Is the on-site parking a garage or lot? Are there accessible spaces, and how far are they from the elevator?",
+"Does the bathroom have a tub or a walk-in/roll-in shower? Are there grab bars, and how wide is the bathroom door?",
+"How wide is the bedroom door, how high is the bed, and how much clear space is beside it?",
+"Where is the queen bed located? Is it a regular bed or a sofa bed?",
+"Can the large rugs be removed on request?"
+],
+"summary": "This 2nd-floor downtown Nashville condo lists an elevator, a single-level layout and free on-site parking, which is a promising starting point. Photo 1 shows a spacious open living area with smooth floors. However, only one photo is available. The entrance, elevator, bathroom and bedroom are not shown, and the host declared no accessibility features. Before booking, a wheelchair user should confirm a step-free route from parking through the elevator to the unit, the door widths, and the bathroom setup (tub vs. step-free shower, grab bars).",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "46746874": {
 "gallery": [
 "https://a0.muscache.com/im/pictures/miso/Room-221402746-Amenities/original/77f17b38-d0bc-4498-98fe-71a85ca64aef.jpeg",
@@ -34457,6 +35848,63 @@
 "How close is typical street parking to the entrance, and are the sidewalks level?"
 ],
 "summary": "There is only one bedroom photo, with no entrance or bathroom photos and no declared accessibility features. 'Single level home' and 'first floor' are encouraging for moving around inside. However, Brooklyn Heights buildings commonly have entry steps, and the listed bathtub suggests a tub is the only bathing option. Parking is street-only. Confirm step-free entry, door widths and the shower setup before booking.",
+"verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"4691716": {
+"gallery": [
+"https://a0.muscache.com/pictures/fa248da8-c613-4704-a2ed-5406bdbcb61c.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "Amenities list a bathtub and the description says 'full bath', suggesting a tub/shower combo as the likely only bathing option. No bathroom photo, no grab bars, shower chair or door width mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "One bedroom on the single level, plus a sofa bed in the living room. No bedroom photo; bed height, clear space and door width unverified.",
+"score": 7
+},
+"entrance": {
+"findings": "Description says first-floor apartment with a separate private entrance and covered porch, but 'first-floor' in a 1960s home does not mean step-free; covered porches often have steps. No entrance photo, no door width stated.",
+"score": 7
+},
+"host_features": {
+"findings": "No Airbnb accessibility features declared and no accessibility photos. Only general statements (first-floor, single level, private entrance).",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' amenity and first-floor description suggest no internal stairs. Photo 1 shows smooth wood-look flooring in the dining nook, but the space is fairly compact with a bench of attached theater-style seats and a pedestal table. Doorway and hallway widths unknown.",
+"score": 5
+},
+"parking": {
+"findings": "Free parking on premises and free street parking listed, with 'separate entrances and parking'. Distance from parking to entrance and path surface (garden, porch) not shown.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 7,
+"photo_observations": [
+{
+"observation": "Dining nook with smooth hardwood-look floor and no visible rugs or thresholds. Vintage attached theater seats and a pedestal marble table; the narrow nook may limit wheelchair space at the table. No entrance, bathroom or bedroom shown.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Are there any steps up to the porch or the private entrance door, and if so how many? Is there a ramp?",
+"What is the clear width of the entrance door, the bathroom door and the bedroom door?",
+"Is the bathing option a tub/shower combo only, or is there a walk-in shower? Are there grab bars, or is a shower chair available?",
+"How far is the on-site parking from the entrance, and is the path paved and level (not gravel or grass)?",
+"Are there any raised thresholds or level changes between rooms in the apartment?",
+"How high is the bed, and is there clear floor space beside it?",
+"Is there enough room to move a wheelchair beside the toilet?"
+],
+"summary": "A first-floor, single-level guest suite with private entrance and on-site parking. This is promising for interior circulation, but only one dining-nook photo is provided. The entrance (a 1960s home with a covered porch) may have steps, and the bathroom appears to have a bathtub as the likely only bathing option, with no grab bars noted. No accessibility features are declared. Confirm entrance steps, door widths and bathroom setup with the host before booking.",
 "verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
@@ -34692,6 +36140,62 @@
 ],
 "summary": "Ground-floor, single-level resort condo with an elevator, private entrance and garage parking listed. Photo 1 suggests a level transition from the lanai to the living room and one bedroom through wide folding glass walls, which is promising. However, there is only one photo, with no images of the entrance, bathrooms or doorways, and no declared accessibility features. A bathtub is listed with no mention of a step-free shower, so bathing is the main likely concern. Verify the entrance route, door widths and shower type with the host before booking.",
 "verdict": "Use caution - confirm details with host"
+}
+},
+"47537064": {
+"gallery": [
+"https://a0.muscache.com/pictures/a75c9bbc-02f9-41d6-a7db-bf5f23f9f459.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "The bathroom is not photographed. 'Bathtub' is listed in the amenities, which suggests a tub/shower combo is the only bathing option. No grab bars, shower chair or roll-in shower are mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "The bedroom is not photographed. On a single level it is likely reachable from the living area, but door width, bed height and clearance beside the bed are unknown.",
+"score": 7
+},
+"entrance": {
+"findings": "Private first-floor entrance and a porch are mentioned, but no entrance photo. This is an East Side Providence historic house (photo 1 shows original wide-plank floors, a brick fireplace and period trim). Houses like this typically have raised first floors reached by porch steps. A first-floor unit is not the same as a step-free one. Door width is unknown.",
+"score": 8
+},
+"host_features": {
+"findings": "No accessibility features are declared and there is no accessibility photo tour. The only relevant items are 'Single level home' and 'Private entrance'.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed. Photo 1 shows standard-width historic doorways and a large area rug in the living room. Old wood floors may have small thresholds between rooms. Hallway widths are unverified.",
+"score": 5
+},
+"parking": {
+"findings": "'Free parking on premises' for 1 car is listed, plus free street parking. The distance and surface from the parking spot to the entrance are unknown (a driveway could be gravel or uneven).",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 7,
+"photo_observations": [
+{
+"observation": "Living room in a historic house: wide-plank wood floors, a large patterned area rug, a glass coffee table close to the sofa, and a brick fireplace hearth. Two doorways lead to a hall and a dining area. They look like standard historic widths, possibly under 32 in, and the hallway beyond looks narrow.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"How many steps are there from the street or parking spot up to the porch and entrance door? Is there a ramp?",
+"What is the clear width of the entrance door and of the bedroom and bathroom doors?",
+"Is the bathing option only a bathtub, or is there a walk-in or curbless shower? Are there any grab bars?",
+"Are there raised thresholds between rooms?",
+"Where is the on-site parking spot relative to the entrance, and is the path paved and level?",
+"How much clear floor space is there beside the bed and the toilet, and what is the bed height?"
+],
+"summary": "This is a first-floor, single-level apartment in a historic Providence house with on-site parking. Those are encouraging points, but only one living room photo is provided. Historic homes like this usually have porch steps up to the first floor, and the listed bathtub suggests no step-free shower. Doorways in photo 1 look like typical older widths. Treat it as likely to have entry steps and a tub-only bathroom until the host confirms otherwise.",
+"verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
 "48108532": {
@@ -35107,6 +36611,65 @@
 "verdict": "Use caution - confirm details with host"
 }
 },
+"48349199": {
+"gallery": [
+"https://a0.muscache.com/pictures/prohost-api/Hosting-48349199/original/cffb8328-e4f0-4ae6-89e6-14db0be13da0.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "Two bathrooms, none photographed. 'Bathtub' is listed in amenities, suggesting a tub may be the bathing option. No mention of a roll-in shower, grab bars, or a shower chair.",
+"score": 8
+},
+"bedroom": {
+"findings": "Three bedrooms on a single level, so step-free access is likely. No bedroom photos, so bed height, clear floor space, and door widths are unknown.",
+"score": 6
+},
+"entrance": {
+"findings": "Top-floor penthouse in a building with an elevator (amenities) and smart lock/self check-in. No photos or details of the street entrance, lobby steps, or unit door width. Older loft-style building (photo 1 windows) may have entry steps.",
+"score": 5
+},
+"host_features": {
+"findings": "No accessibility features declared and no accessibility photo tour. Elevator and single-level home are the only relevant amenities.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed and the description says 1,400+ sq ft. Photo 1 shows a spacious living room with a flat floor, but also a large patterned area rug and several pieces of furniture. Hallway and door widths are not shown.",
+"score": 4
+},
+"parking": {
+"findings": "Only paid parking off premises. Distance, accessible spaces, and the route to the building are unknown. Downtown Loop streets are generally flat and paved.",
+"score": 7
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Living room with a large window, sofa, two chairs, a coffee table, and a large area rug over a flat floor. Reasonable open space, though the rug edge and furniture spacing may affect maneuvering. No entrance, bathroom, or bedroom is shown.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the street into the building lobby and to the elevator?",
+"Does the elevator go directly to the penthouse floor, with no steps between the elevator and the unit door?",
+"How wide is the unit entry door, and how wide are the bedroom and bathroom doors (32 in / 81 cm or more)?",
+"Do both bathrooms have bathtubs, or is there a walk-in or roll-in shower? Are grab bars or a shower chair available?",
+"What is the clear floor space beside the toilet and in the bathrooms?",
+"How high are the beds, and how much clear space is beside them?",
+"Are there thresholds between rooms or raised steps anywhere in the unit?",
+"Is the open rooftop/pool area reachable by elevator without steps?",
+"Where is the nearest paid parking, does it have accessible spaces, and how far is it from the building entrance?"
+],
+"summary": "Top-floor penthouse in an elevator building, listed as a single-level home, so step-free access is plausible but unverified. Only the living room is photographed. Bathrooms are unseen, a bathtub is listed, and no accessibility features are declared. Parking is off-site and paid. Confirm the entrance route, door widths, and the shower type before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "48349354": {
 "gallery": [
 "https://a0.muscache.com/pictures/prohost-api/Hosting-48349354/original/749df50a-8819-41f6-949c-7a7e8036b70f.jpeg"
@@ -35277,6 +36840,64 @@
 "Are there any thresholds or level changes between rooms?"
 ],
 "summary": "This is a detached, single-level coach house, so there are likely no internal stairs. Accessibility otherwise can't be verified. The only photo shows the exterior, with a door near grade that may have a small step and an approach over lawn and pavers. No bathroom, bedroom or interior photos are provided, no accessibility features are declared, and parking is street-only. Confirm the entry threshold, door widths and shower type with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
+"48550468": {
+"gallery": [
+"https://a0.muscache.com/pictures/miso/Hosting-48550468/original/bcaa30a9-c039-4edd-b076-783610502a73.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "One bathroom, not photographed. A bathtub is listed in amenities, which suggests a tub/shower combo may be the only bathing option. No grab bars, shower chair or door width are mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "Two bedrooms on the single level: one queen, and two twins that can be joined into a king. Bedrooms are not photographed, so door width, bed height and clear floor space are unknown.",
+"score": 6
+},
+"entrance": {
+"findings": "Host states the unit is the downstairs of a duplex with no stairs and a private entrance. Photo 1 shows a covered lanai with a flat tiled walkway, but there appears to be a slight change in level at the open gate/edge toward the yard. The actual unit entry door, its threshold and its width are not shown.",
+"score": 5
+},
+"host_features": {
+"findings": "No Airbnb accessibility features are listed. The host only says there are no stairs and lists 'Single level home.'",
+"score": 7
+},
+"interior": {
+"findings": "Single level home is listed and the description says 'no stairs.' No interior photos, so doorway widths, thresholds, rugs and clutter cannot be verified.",
+"score": 4
+},
+"parking": {
+"findings": "Plenty of free off-street private parking on premises. The surface and the path from parking to the entrance are not shown; photo 1 shows lava-rock gravel beds beside the tiled walkway.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Covered lanai with a smooth red-tile floor running along the unit toward an ocean-view opening; it appears largely level. Lava-rock gravel lines the sides. There is a possible small step or edge at the far end where it meets the yard. The unit door is not visible.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is the route from the parking area to the unit door paved and step-free, and how long is it?",
+"Is there any step or raised threshold at the unit entrance, and how wide is the entry door?",
+"Is the only bathing option a bathtub, or is there a walk-in or curbless shower?",
+"Are there grab bars by the toilet or tub, and is a shower chair available?",
+"What is the bathroom door width, and is there turning space inside?",
+"How wide are the bedroom doors, and is there clear space beside the queen bed?",
+"Are there thresholds or rugs between rooms?",
+"Is the parking surface gravel or paved?"
+],
+"summary": "The host says this downstairs duplex unit has no stairs and is a single-level home, with private on-site parking. That is a promising start. However, only one photo is provided, showing a mostly level tiled lanai. The entrance door, bathroom, bedrooms and parking path are unverified. The bathroom likely has only a bathtub, which would be a significant barrier for wheelchair users. Confirm the shower type, door widths and the parking-to-entrance route before booking.",
 "verdict": "Use caution - confirm details with host"
 }
 },
@@ -36393,6 +38014,63 @@
 "verdict": "Use caution - confirm details with host"
 }
 },
+"49531849": {
+"gallery": [
+"https://a0.muscache.com/pictures/2fcbf6d4-26dc-451a-bc2c-2be47ed81534.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos. 'Bathtub' is listed as an amenity, so the shower is likely a tub/shower combo, a barrier for wheelchair users. No grab bars, shower chair or toilet details are mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "Photo 1 shows a queen bed behind a sliding glass partition, on the same level as the living room. The bed sits at moderate height on a platform frame. Clear space beside the bed and the width of the partition opening cannot be determined.",
+"score": 5
+},
+"entrance": {
+"findings": "Amenities list an elevator and the unit is a rental apartment, which suggests a lift to the unit floor. No photos of the building entrance, lobby, path from the street or unit door, so step-free access and door width are unverified.",
+"score": 6
+},
+"host_features": {
+"findings": "No accessibility features declared and no accessibility photos. The description does not mention accessibility. The rooftop deck access method is unknown.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed, so there are no internal stairs. Photo 1 shows a compact studio-style layout with a sliding glass partition to the sleeping area. A large sectional sofa, an arc lamp and a coffee table take up floor space. Threshold heights and the sliding door track are unverified.",
+"score": 5
+},
+"parking": {
+"findings": "Only street parking with a pass, which the host says 'can be difficult at times', plus a paid lot off premises. No on-site or accessible parking. Lower Queen Anne has notable hills.",
+"score": 8
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Living area with a large sectional sofa, an arc floor lamp and a small coffee table. A sliding frosted glass/mirror partition opens to the sleeping area with a queen bed. The floor is dark hardwood with no visible steps between the areas. The sliding door track may form a small threshold. Clear space beside the bed is not visible.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the street into the building and to the elevator?",
+"Does the elevator serve the unit's floor and the rooftop deck?",
+"How wide is the unit entry door and the bathroom door (32 in / 81 cm or more)?",
+"Is the only bathing option a tub/shower combo, or is there a walk-in or roll-in shower? Are there grab bars or a shower chair?",
+"Is there a raised track or threshold at the sliding partition to the bedroom?",
+"How much clear floor space is there beside the bed and next to the toilet?",
+"Is there any accessible or close-by parking or a loading zone near the entrance, and how steep is the block?"
+],
+"summary": "A single-level Lower Queen Anne apartment in a building with an elevator, which is promising for interior circulation. However, only one interior photo is provided, and nothing verifies the building entrance, door widths or the bathroom. The listed bathtub suggests a tub/shower combo, a likely barrier. Parking is difficult street parking with no accessible option. Confirm the step-free route, bathroom setup and door widths with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "49704371": {
 "gallery": [
 "https://a0.muscache.com/pictures/da537171-9ece-4b2d-b730-db972edd1f90.jpg"
@@ -37083,6 +38761,63 @@
 "Could the backyard gate be used as a step-free entry from the driveway?"
 ],
 "summary": "This single-level house is a good sign for moving around inside once you are in, and there is on-site driveway parking. The only photo shows four steps on the front walkway from the sidewalk. A step-free route from the driveway to the door is possible but not shown or confirmed. Bathrooms, bedrooms, door widths and thresholds are not shown, and the host declared no accessibility features. Confirm a step-free entry route and the bathroom shower type with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
+"51412503": {
+"gallery": [
+"https://a0.muscache.com/pictures/df7fc3f1-4309-458d-a24e-1c236883505d.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos. 'Bathtub' is listed as an amenity, so a tub is likely the bathing option in at least one bathroom. There is no mention of a walk-in shower, grab bars or a shower chair.",
+"score": 8
+},
+"bedroom": {
+"findings": "All 3 bedrooms should be on the single level. Bed height, door widths and clear space beside the beds are not shown or described.",
+"score": 5
+},
+"entrance": {
+"findings": "No entrance photos. Single-story Las Vegas home, which often has zero or one small step at the front door, but no confirmation of step-free entry or door width. The private entrance and lockbox self check-in are listed.",
+"score": 6
+},
+"host_features": {
+"findings": "The host declared no accessibility features and added no accessibility photo tour. The only relevant statement is 'single story'.",
+"score": 7
+},
+"interior": {
+"findings": "The title and amenities state 'Single level home', so there are no internal stairs. Hallway and doorway widths, thresholds and rugs are unverified.",
+"score": 4
+},
+"parking": {
+"findings": "Free parking on premises is listed, probably a driveway or garage in a suburban home, typically close to the entrance on flat Las Vegas terrain. No photos confirm surface or distance. Photo 1 shows a flat concrete patio in the backyard.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Backyard putting green of artificial turf, with flags and clubs, and a flat concrete patio slab. The turf is likely hard to roll across, but the concrete patio appears level. No entrance, bathroom or interior is shown.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Are there any steps up to the front door or garage-to-house door, and what is the front door width?",
+"Does either bathroom have a walk-in or roll-in shower, or are both tub/shower combos?",
+"Are there grab bars, or can a shower chair be provided?",
+"What are the bathroom and bedroom door widths (32 in / 81 cm or more)?",
+"Is there a step or threshold from the house to the back patio?",
+"Is the parking a driveway or garage, and is the path from it to the entrance level and paved?",
+"What is the bed height, and is there clear space beside at least one bed?"
+],
+"summary": "Single-story home, so there are no interior stairs, which is a plus. With only one backyard photo, the entrance, bathrooms, bedrooms and door widths are all unverified. A bathtub is listed, so a tub may be the only bathing option. Confirm entry steps and the shower type with the host before booking.",
 "verdict": "Use caution - confirm details with host"
 }
 },
@@ -39674,6 +41409,64 @@
 "verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
+"547370671823018704": {
+"gallery": [
+"https://a0.muscache.com/pictures/0fab07b1-9161-4899-939e-a2d9a82e4fb0.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "Bathtub is listed as an amenity and no shower type is mentioned, so a tub/shower combo is likely the only bathing option. No grab bars, shower chair, toilet height or door width information, and no bathroom photos.",
+"score": 8
+},
+"bedroom": {
+"findings": "The studio has 0 bedrooms yet sleeps 4, which implies a sofa bed, Murphy bed or similar for at least some guests. Bed type, bed height and clear space beside the bed are not shown or described.",
+"score": 7
+},
+"entrance": {
+"findings": "The host lists an elevator, and the historic building in photo 1 has street-level storefront doors that look near sidewalk grade. However, the residential entrance is not identifiable or photographed. Historic buildings often have a step at the entry, and the host warns of multiple secured check-in steps (procedural, but they may involve fobs, gates or heavy doors). Door widths and the route from the elevator to the unit door are unknown.",
+"score": 6
+},
+"host_features": {
+"findings": "No Airbnb accessibility features were provided, and the description says nothing about accessibility. The only relevant amenities are 'Elevator' and 'Single level home', and neither is photographed or detailed.",
+"score": 6
+},
+"interior": {
+"findings": "The host declares a 'Single level home', and it is a studio condo, which suggests open space with few internal doors. No interior photos exist, so clutter, rugs, thresholds and floor space cannot be verified. Portable fans and portable AC units may take up floor space in a small studio.",
+"score": 5
+},
+"parking": {
+"findings": "Free parking on premises is listed, along with a paid lot off premises. Location, type (garage or lot), accessible stall availability and the route from parking to the elevator are unknown. Downtown Seattle near Pike Place includes steep hills, though the street in photo 1 appears fairly level.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Exterior of a multi-story historic brick building on a city street. Ground-floor storefronts appear close to sidewalk level. A fenced patio area sits in front of the central arched section. The residential entrance cannot be identified, so steps or a ramp cannot be verified. The street looks relatively flat in this view.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the sidewalk into the building lobby, and how wide is the entrance door?",
+"Does the elevator reach the unit's floor, and is the path from the elevator to the unit door step-free? What are the elevator door and cab dimensions?",
+"How wide is the unit's front door (32 in / 81 cm or more)?",
+"Is the only bathing option a bathtub, or is there a walk-in shower? Are there grab bars, or could a shower chair or tub transfer bench be provided?",
+"How wide is the bathroom door, and how much clear space is there beside the toilet?",
+"What are the sleeping arrangements (Murphy bed, sofa bed, regular bed)? What is the bed height and the clear floor space beside it?",
+"Where is the free on-premises parking (garage or lot), is there an accessible stall, and is the route to the elevator step-free?",
+"What do the 'multiple check-in steps' involve? Are there heavy doors, gates, keypads or lockboxes at heights that may be hard to reach from a wheelchair?"
+],
+"summary": "A downtown Seattle studio in a historic building, with only one exterior photo. The host lists an elevator, single-level living and free on-site parking, which are promising signs, but none are verified. The building entrance, unit door, bathroom and bed are not shown. The listed bathtub suggests the only bathing option may be a tub. The 0-bedroom, 4-guest setup implies a sofa or Murphy bed. No definite barriers are confirmed, but a wheelchair user should verify step-free entry, the elevator route, the shower type and the sleeping arrangement with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "548417989867082360": {
 "gallery": [
 "https://a0.muscache.com/im/pictures/miso/Hosting-548417989867082360/original/a60aed6a-beaf-4106-b61c-0594cef1e131.jpeg",
@@ -39892,6 +41685,63 @@
 "Can rugs be removed if needed?"
 ],
 "summary": "This is a declared single-level, first-floor unit with an elevator in the building and reserved on-site parking, which is promising for mobility. However, only one living room photo is provided, and nothing confirms a step-free building entrance, door widths, or the bathroom setup. A bathtub is listed, so the shower is likely a tub/shower combo, which is a probable barrier. Confirm the entrance route and bathroom details with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
+"5614698": {
+"gallery": [
+"https://a0.muscache.com/pictures/miso/Hosting-5614698/original/df773800-4dbc-4054-a6dc-7574911d9057.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "Two bathrooms are listed but none is photographed. There is no information about shower type (tub vs. roll-in), grab bars, door width or toilet height.",
+"score": 7
+},
+"bedroom": {
+"findings": "Photo 1 shows two queen/king beds of standard height on hard flooring. There is a narrow-to-moderate gap between the beds, and accent chairs and a bench at the foot of the bed reduce clear floor space. Bedroom door width is unknown. With 16 guests in 2 bedrooms, extra sleeping (sofa beds or floor) is likely, but the main beds appear reachable.",
+"score": 6
+},
+"entrance": {
+"findings": "Large hotel-style building on the Las Vegas Strip (next to Bellagio, attached to Cosmopolitan) with elevator, doorman and building staff listed. Such buildings typically have step-free lobbies, but the building entrance, the route from elevator to unit, and the unit door width are not shown or described.",
+"score": 5
+},
+"host_features": {
+"findings": "No accessibility features are declared and there is no accessibility photo tour. The description does not mention accessibility.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed, and the elevator suggests no internal stairs. Photo 1 shows smooth hard flooring with no rugs. Hallways, doorways and thresholds are not shown.",
+"score": 5
+},
+"parking": {
+"findings": "'Free parking on premises' is listed and the building has an elevator. Large Strip resort garages usually have accessible spaces, but the distance from parking to the unit and accessible spaces are not confirmed.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Bedroom with two large beds on smooth wood-look flooring with no rugs. Beds appear standard height. Red accent chairs and a bench near the beds and window limit turning space; the space between the beds looks narrow for a wheelchair. Bedroom door, bathroom and entrance are not visible.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is the route from the parking garage and building entrance to the unit fully step-free via elevator?",
+"What is the width of the unit entrance door and the interior bedroom and bathroom doors?",
+"Does either bathroom have a roll-in or step-free shower, or are both bathtubs?",
+"Are there grab bars by the toilet or shower, and is a shower chair available?",
+"Are accessible parking spaces available in the on-premises parking, and how far are they from the elevator?",
+"Is there at least 30 inches of clear floor space beside a bed, and can furniture such as the accent chairs be moved?",
+"Are there any thresholds or raised steps between rooms or into the bathrooms?"
+],
+"summary": "This is a 2-bedroom unit in a large Strip resort building with an elevator, on-premises parking and a single-level layout, so it is plausibly workable for a wheelchair user. However, the only photo is a bedroom: it shows smooth floors but limited clear space between the beds. The entrance, bathrooms, door widths and shower type are entirely unverified, and the host declares no accessibility features. Confirm bathroom details and door widths with the host before booking.",
 "verdict": "Use caution - confirm details with host"
 }
 },
@@ -40873,6 +42723,64 @@
 ],
 "summary": "A private first-floor room in an LIC house, with a private bath, a private entrance, 'single level home' listed and an on-site paid parking space. These are promising signs, but there is only one photo (the bedroom) and no accessibility details. The entrance and bathroom are entirely unverified, and NYC houses often have entry steps. The bedroom has limited clearance on one side and an area rug. Confirm entrance steps, door widths and the bathroom setup with the host before booking.",
 "verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"6102192": {
+"gallery": [
+"https://a0.muscache.com/pictures/hosting/Hosting-6102192/original/6c0b203d-f14e-4a9b-b5f0-82c49508b77a.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "The single bathroom is not shown or described. Shower vs. tub, grab bars, door width and turning space are all unknown. Older Florida resort condos commonly have tub/shower combos, which is a concern.",
+"score": 7
+},
+"bedroom": {
+"findings": "This is a studio, so the beds are in the main living space with no separate bedroom door. Two queen beds in a small studio may leave limited clear space beside a bed. Bed height is unknown, and no photos of the sleeping area are provided.",
+"score": 6
+},
+"entrance": {
+"findings": "The condo is in the Ocean Manor Resort building, and the amenities list an elevator and a smart lock for self check-in. No photos show the building entrance, lobby, unit door or its width, so step-free access from the street to the unit is unverified. Resort hotel buildings usually have elevator access, but the elevator only helps if there are no steps between it and the unit.",
+"score": 5
+},
+"host_features": {
+"findings": "The host declares no accessibility features and added no accessibility photo tour. The only relevant amenities are an elevator and \"Single level home.\"",
+"score": 7
+},
+"interior": {
+"findings": "The unit is a 500 sq ft studio listed as a \"Single level home,\" so there are no internal stairs. However, two queen beds plus a sofa in 500 sq ft suggests tight circulation space. The balcony threshold and the interior doorways (e.g., bathroom) are not shown.",
+"score": 5
+},
+"parking": {
+"findings": "Paid parking on premises is listed, but accessible spaces, the distance to the entrance and the path surface are not described. The beachfront itself is soft sand (photo 1), which is not wheelchair-navigable without a beach mat or beach wheelchair.",
+"score": 6
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "The only photo shows a wide soft-sand beach and ocean, with lounge chairs at left. There is no view of the building, the entrance, the unit interior or the bathroom. Deep sand would be impassable for a standard wheelchair.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the parking area and street entrance to the elevator and to the unit door?",
+"Which floor is the unit on, and are there any steps between the elevator and the unit?",
+"How wide is the unit entrance door, and how wide is the bathroom door?",
+"Does the bathroom have a tub/shower combo or a step-free/walk-in shower? Are there grab bars, or is a shower chair available?",
+"How much clear floor space is beside at least one bed and beside the toilet?",
+"Is there a raised threshold or step onto the balcony?",
+"Are there accessible parking spaces, and how far are they from the building entrance?",
+"Does the resort provide a beach wheelchair or beach access mat, and is the pool area step-free (with a lift)?"
+],
+"summary": "This is a 500 sq ft beachfront studio condo in a Fort Lauderdale resort building with an elevator, listed as single level. Nothing in the listing confirms wheelchair accessibility. The only photo is of the beach, and the host lists no accessibility features. The single-level layout and elevator are promising, but the entrance route, bathroom configuration (possibly a tub) and space around the two queen beds are all unverified. The beach itself is soft sand. Confirm the bathroom and the path to the unit with the host before booking.",
+"verdict": "Use caution - confirm details with host"
 }
 },
 "614470192862391103": {
@@ -43437,6 +45345,63 @@
 "verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
+"684618193750249891": {
+"gallery": [
+"https://a0.muscache.com/pictures/miso/Hosting-684618193750249891/original/c7f39616-d700-4f99-9b3f-af755715da14.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos. 'Bathtub' is listed and no walk-in or roll-in shower is mentioned, so a tub/shower combo is likely in at least one bathroom. No grab bars, shower chair, or door widths are mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "No bedroom photos. With a single-level unit, the bedrooms are likely step-free from the living area. Bed height, clear space beside the bed, and door widths are unknown. The black sofa in photo 1 may be a futon or sofa bed, but the two bedrooms should cover a guest's needs.",
+"score": 7
+},
+"entrance": {
+"findings": "Host states the condo is reached by elevator, so no stairs are needed to get to the unit, and 'Elevator' is listed in the amenities. The building's street entrance (historic building), its door widths, and the unit door are not shown or described. Any steps at the building entry are unverified.",
+"score": 5
+},
+"host_features": {
+"findings": "No Airbnb accessibility features were filled in. The host's only statement is that there is no need to worry about stairs because of the elevator, which is a positive but general claim.",
+"score": 6
+},
+"interior": {
+"findings": "'Single level home' is listed and the unit is reached by elevator. Photo 1 shows a fairly open living area with hard wood-look floors. There is a large jute area rug, a coffee table, and several chairs that reduce turning space. Hallways and doorways are not shown.",
+"score": 4
+},
+"parking": {
+"findings": "Only 'Paid parking off premises' is listed. Distance, accessible spaces, and the route are unknown. The downtown location near the French Quarter suggests city sidewalks, which can be uneven.",
+"score": 7
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Living room with an open layout and hard flooring. A large woven area rug, a round coffee table, and multiple seats somewhat limit wheelchair maneuvering space. The dining area is visible at the back with no visible level change. Tall windows suggest an upper floor.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is the building's street entrance step-free from the sidewalk to the elevator, and how wide are the entrance and unit doors?",
+"Do both bathrooms have bathtubs, or is there a walk-in or curbless shower? Are there grab bars, or is a shower chair available?",
+"What are the bathroom and bedroom door widths, and how much clear floor space is beside the toilet and beds?",
+"What is the bed height, and how much space is beside each bed?",
+"Where is the nearest paid parking, does it have accessible spaces, and how far is it from the building entrance (is the route level)?",
+"Are there any thresholds or steps inside the unit, or between the elevator and the unit door?",
+"Can the large rug be removed or the furniture rearranged on request?"
+],
+"summary": "This is an elevator-access, single-level condo near the French Quarter. The host explicitly says no stairs are required, which is a good sign for getting inside and moving around. However, only one living-room photo is provided. The building entrance, bathrooms, and bedrooms are not shown, and the listing indicates bathtubs with no mention of a roll-in shower or grab bars. Parking is paid and off-site. The unit is potentially workable, but confirm the bathroom setup, door widths, and the street entrance before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "686066690776470652": {
 "gallery": [
 "https://a0.muscache.com/im/pictures/miso/Hosting-686066690776470652/original/e19e7dcd-5cd9-4137-9e12-3c5f0b18a617.jpeg",
@@ -43535,6 +45500,62 @@
 ],
 "summary": "A single-level condo with an elevator and smooth, flush concrete floors makes this a plausible option for a wheelchair user. However, the building entrance, door widths and shower are not shown or described. The 'large walk in shower' needs confirmation that it is curbless, and no grab bars or accessibility features are declared. Area rugs and a raised vessel sink are minor concerns. Confirm the entry route, door widths and shower details with the host before booking.",
 "verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"6897078": {
+"gallery": [
+"https://a0.muscache.com/pictures/airflow/Hosting-6897078/original/d07220c7-8ea0-455f-a3d2-d7aff6fa09d1.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photo. 'Bathtub' is listed in the amenities, which suggests a tub or tub/shower combination is the likely only bathing option. No grab bars, shower chair, door width or toilet details are mentioned.",
+"score": 8
+},
+"bedroom": {
+"findings": "The bed is in the main studio space (photo 1), so it is step-free from the living area. It is a standard-height platform bed with modest clearance on the right side by the nightstand. The left side has more space but is partly occupied by ottomans that could be moved.",
+"score": 4
+},
+"entrance": {
+"findings": "Described as a first-floor studio with a private entrance in an 1892 Victorian brick cottage. Chicago cottages of this era typically have a raised first floor reached by several exterior steps, and some 'first floor' units are partly below street level. No entrance photo is provided and door width is not stated. A door with a transom is visible in photo 1, but its exterior approach is not shown.",
+"score": 8
+},
+"host_features": {
+"findings": "No Airbnb accessibility features were declared. The only related items are 'Single level home' and 'Private entrance'.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed, and photo 1 shows an open studio with hardwood floors and no visible interior steps. Some furniture (ottomans, coffee table, sofas) and area rugs reduce the clear path. Kitchen and bathroom doorways are not shown.",
+"score": 4
+},
+"parking": {
+"findings": "Only free street parking is listed. There is no on-site or accessible parking, and the distance and surface of the approach are unknown.",
+"score": 7
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Open-plan studio with hardwood floor, area rugs and a bed in an alcove. No interior steps are visible. A door with a transom and a mirror are behind the bed area. Movable ottomans and a coffee table are in the circulation path.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"How many steps are there from the sidewalk to the unit's private entrance, and is there a ramp or a step-free route (e.g., via the backyard)?",
+"What is the clear width of the entrance door and the bathroom door?",
+"Is the only bathing option a bathtub, or is there a walk-in shower? Are there any grab bars, or is a shower chair available?",
+"Is the unit at street level, raised, or partly below grade?",
+"Is there a step or threshold to the backyard patio?",
+"How far is typical street parking from the entrance, and is the sidewalk path level?"
+],
+"summary": "The studio interior appears single-level and open, with the bed in the main room. However, there is only one photo, and the entrance and bathroom are not shown. As an 1892 Chicago cottage, the first floor likely has entry steps. The listed bathtub suggests no roll-in shower. Parking is street only, and no accessibility features are declared. Confirm the entrance steps and bathroom setup before booking.",
+"verdict": "Use caution - confirm details with host"
 }
 },
 "6931": {
@@ -44503,6 +46524,63 @@
 "verdict": "Unverified - confirm accessibility with host before booking"
 }
 },
+"713820104359552438": {
+"gallery": [
+"https://a0.muscache.com/pictures/prohost-api/Hosting-713820104359552438/original/3e69f9c8-b029-494a-8756-edd51acecf66.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos. The listing has 1.5 baths, so there is one full bathroom. Shower vs. tub, grab bars, door width and turning space are all unknown.",
+"score": 7
+},
+"bedroom": {
+"findings": "No bedroom photos. There are 2 bedrooms for 8 guests, so sofa beds or bunks may be part of the sleeping setup. Bed height, clear floor space and door widths are unverified.",
+"score": 7
+},
+"entrance": {
+"findings": "Modern high-rise-style condo building with an elevator and building staff listed, which suggests a likely step-free route to the unit. However, no photos show the building entrance, the lobby, the elevator, or the unit door, and its width is unknown. 'Private entrance' is listed, but its meaning in a condo building is unclear.",
+"score": 5
+},
+"host_features": {
+"findings": "The host declares no accessibility features and offers no accessibility photo tour. Only general amenities apply: an elevator, single-level living and building staff.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' is listed. Photo 1 shows a modern open-plan living, kitchen and dining area with smooth wide-plank flooring and no visible steps or thresholds. There is a loose area rug and moderate furniture density around the coffee table. Hallway and bedroom/bathroom door widths are not shown.",
+"score": 4
+},
+"parking": {
+"findings": "Paid parking is on premises, likely a building garage, and there is an EV charger, so elevator access from the garage is plausible. Accessible parking spaces are not mentioned. The downtown Rainey Street area is generally flat with sidewalks.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Open-plan living area with continuous hardwood-style flooring flowing into the kitchen and dining area, with no visible steps or level changes. There is a loose area rug under the coffee table and fairly close furniture spacing between the sofa, chairs and table. A hallway is visible to the right of the kitchen, but its width can't be judged.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step-free route from the street and from the parking garage to the unit door, including the elevator to the unit's floor?",
+"How wide is the unit's entrance door, and how wide are the bedroom and bathroom doors (32 in / 81 cm or more)?",
+"Does the full bathroom have a walk-in or roll-in shower or a bathtub? Are there grab bars, and is a shower chair available?",
+"What are the bed heights and the clear space beside the beds? Which sleeping spots are sofa beds or bunks?",
+"Are accessible parking spaces available in the on-premises garage, and how far are they from the elevator?",
+"Is the rooftop pool area reachable by elevator without steps?",
+"Can the area rug be removed on request?"
+],
+"summary": "Modern condo in an elevator building with single-level living declared, which is a promising baseline. However, only one living-room photo is available and no accessibility features are declared. The entrance, bathroom and bedrooms are all unverified, so confirm the bathing setup and door widths with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
 "715274041118865001": {
 "gallery": [
 "https://a0.muscache.com/pictures/miso/Hosting-715274041118865001/original/3f002c5c-0ad0-463e-b108-36cefb846ef5.png"
@@ -44557,6 +46635,123 @@
 "What are the bed types and heights, and how much clear floor space is beside each bed?"
 ],
 "summary": "This ground-floor condo is in an elevator building, and the host marks it as single level, which is promising for wheelchair users. Photo 1 shows a wide, fairly level paver approach with nearby parking. However, there is only one exterior photo and no accessibility details. The entrance route, door widths, bathroom layout (shower vs. tub, grab bars) and bedroom space are all unverified. Confirm these with the host before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
+"715961511202981268": {
+"gallery": [
+"https://a0.muscache.com/pictures/prohost-api/Hosting-715961511202981268/original/8ce55894-9d59-4e52-b567-367ef81ac2f6.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "There are three en-suite bathrooms plus a half bath, but none are photographed or described. Shower vs. tub, grab bars, door widths and turning space are all unknown.",
+"score": 7
+},
+"bedroom": {
+"findings": "Three bedrooms on the single level should be reachable without steps once inside. No bedroom photos are provided, so bed height, door width and clear space beside the bed are unknown.",
+"score": 6
+},
+"entrance": {
+"findings": "Photo 1 shows the front door on a raised porch reached by about 3 steps with a railing, and no ramp is visible. A step-free alternative entrance (back or patio) is not shown or mentioned. Door width is unknown, though the host mentions 8 ft tall solid-core doors.",
+"score": 9
+},
+"host_features": {
+"findings": "No accessibility features are declared. Single level living is the only relevant statement.",
+"score": 7
+},
+"interior": {
+"findings": "The host states single-story living and lists 'Single level home', so there should be no internal stairs. Doorway widths, thresholds (including to the outdoor area) and clutter are unverified.",
+"score": 5
+},
+"parking": {
+"findings": "Photo 1 shows a large, flat paver driveway/motor court directly in front of the house. There are 2 assigned on-site spots and an EV charger. The pavers look fairly even, but the path ends at the porch steps.",
+"score": 4
+}
+},
+"confidence": "low",
+"hard_barriers": [
+"Steps up to the front porch/entrance (photo 1)"
+],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 7,
+"photo_observations": [
+{
+"observation": "The front entry sits on a raised porch with about 3 steps and a side railing; no ramp is visible. A flat herringbone paver driveway/parking court lies in front of the single-story house.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there any step-free entrance, such as through the back patio or a side gate, or could a portable ramp be provided?",
+"How many steps are at the front entrance, and what is their total height?",
+"What is the clear width of the entrance and interior doors?",
+"Do any of the bathrooms have a curbless or roll-in shower, grab bars, or a shower chair? Are any bathrooms tub-only?",
+"What are the bathroom door widths, and is there turning space?",
+"Are there thresholds between rooms or to the outdoor patio?",
+"How high are the beds, and how much clear space is there beside them?"
+],
+"summary": "This is a single-story home with flat on-site paver parking, but the only photo shows the front door up roughly 3 porch steps with no ramp. That is a likely barrier unless another step-free entrance exists. Inside, single-level living is promising, but the bathrooms, door widths and bedrooms are entirely unverified.",
+"verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"721219964805193336": {
+"gallery": [
+"https://a0.muscache.com/pictures/prohost-api/Hosting-721219964805193336/original/30949bcc-d7a1-465c-9771-f6625d2c356e.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos or description. There are 1.5 baths, but whether the full bath has a tub or a step-free shower, grab bars or adequate space is unknown.",
+"score": 7
+},
+"bedroom": {
+"findings": "No bedroom photos. With 8 guests across 2 bedrooms, the sofa or other extra sleeping may be sofa beds or bunks. Bed heights and clearances are unknown, and the bedroom door width is unverified.",
+"score": 7
+},
+"entrance": {
+"findings": "High-rise condo with an elevator and building staff listed. The listing also says 'Single level home'. Likely an elevator-served unit, but the building entrance, unit door width and any thresholds are not shown or described. Self check-in method is unknown (keypad height, lockbox).",
+"score": 5
+},
+"host_features": {
+"findings": "The host declared no accessibility features and gave no accessibility description. Only general amenities apply: elevator and single level home.",
+"score": 7
+},
+"interior": {
+"findings": "Listed as 'Single level home' and the elevator building suggests no internal stairs. Photo 1 shows a smooth hard floor with a large area rug and fairly open living room circulation. The balcony door likely has a raised track or threshold. Hallway and doorway widths are unverified.",
+"score": 4
+},
+"parking": {
+"findings": "Paid valet parking on premises and paid off-premises parking are listed, along with an EV charger. There is no mention of accessible spaces or whether valet can handle wheelchair-accessible vehicles. Downtown Rainey Street area is generally flat with sidewalks.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Living room with smooth light wood flooring, large area rug, coffee table in the center and reasonable open space. Floor-to-ceiling glass balcony door likely has a raised sliding-door threshold. No steps visible within the room.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is the route from the building entrance through the elevator to the unit door fully step-free, and how wide is the unit's entry door?",
+"Does the full bathroom have a step-free or roll-in shower, or a bathtub? Are there grab bars, and how wide is the bathroom door?",
+"How wide are the bedroom doors, how high are the beds, and is there clear floor space beside at least one bed?",
+"What are the sleeping arrangements for 8 guests (sofa beds, bunks, floor mattresses)?",
+"Does the valet parking offer accessible spaces or accommodate wheelchair-accessible vans? Is there a step-free drop-off at the entrance?",
+"How does self check-in work (keypad or lockbox height and location)?",
+"Is the rooftop pool reachable by elevator without steps, and does it have a lift?",
+"Does the balcony door have a raised threshold?"
+],
+"summary": "This downtown Austin high-rise condo has an elevator, building staff and a host-listed 'single level home' designation, so step-free access is plausible. Only one living-room photo is provided, which shows open, smooth flooring. However, the entrance, bathroom and bedrooms are entirely undocumented, and no accessibility features are declared. Bathing type and door widths are the key unknowns to confirm before booking.",
 "verdict": "Use caution - confirm details with host"
 }
 },
@@ -44768,6 +46963,63 @@
 ],
 "summary": "A ground-floor, single-level oceanfront condo with level new flooring and an open living area, which is promising for mobility. However, the entrance, bathroom and bedroom are essentially unphotographed and no accessibility features are declared. The bathroom type, door widths and route from parking are unverified, so confirm these with the host before booking.",
 "verdict": "Unverified - confirm accessibility with host before booking"
+}
+},
+"742790652952372205": {
+"gallery": [
+"https://a0.muscache.com/pictures/prohost-api/Hosting-742790652952372205/original/969a6281-c863-400d-843e-6a36ff02e179.jpeg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos. 'Bathtub' is listed, which raises the possibility that tub/shower combos are the only bathing option. Nothing is said about grab bars, a roll-in shower, a shower chair or door widths.",
+"score": 7
+},
+"bedroom": {
+"findings": "No bedroom photos. With 2 bedrooms for 8 guests, a sofa bed or air mattresses are likely for some guests. Bed height and clear floor space beside the bed are unknown.",
+"score": 7
+},
+"entrance": {
+"findings": "Condo in a high-rise building with an elevator and building staff listed, so a step-free route from the street to the unit's floor is plausible. However, no photos show the building entrance, the unit door or its width, and the host makes no step-free statement.",
+"score": 5
+},
+"host_features": {
+"findings": "The host declares no accessibility features and provides no accessibility photo tour. Only 'Elevator' and 'Single level home' indirectly help.",
+"score": 7
+},
+"interior": {
+"findings": "'Single level home' and an elevator are listed, suggesting no internal stairs. Hallway widths, door widths and thresholds are not shown. Photo 1 shows a large deck with a flat paver surface, but the door threshold to the deck is not visible.",
+"score": 5
+},
+"parking": {
+"findings": "Paid on-premises parking (likely a garage in the building) and an EV charger are listed, so an elevator connection is likely. Accessible spaces are not mentioned. Photo 1 shows a parking deck adjacent to the building.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Large private deck at dusk with a flat paver surface, glass railing, a long dining table with chairs and a lounge chair on a rug. There is reasonable open space, but the door threshold from the unit to the deck is not shown. A parking structure is visible next door.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a fully step-free route from the parking garage and the street entrance, via the elevator, to the unit door?",
+"How wide are the unit entrance and interior doors, including the bathroom and bedroom doors (32 in / 81 cm or more)?",
+"Is there a walk-in or roll-in shower in either bathroom, or are both tub/shower combos? Are there grab bars, or is a shower chair available?",
+"Is there a step or raised threshold at the door to the private deck?",
+"Does the garage have accessible parking spaces, and how far are they from the elevator?",
+"What are the bed heights, and is there clear floor space beside at least one bed?",
+"Is the rooftop pool reachable step-free by elevator?"
+],
+"summary": "This high-rise Austin condo near Rainey Street lists an elevator and a single-level layout, which makes a step-free route from the building's on-site paid parking up to the unit plausible. Beyond that, very little can be verified: the only photo shows the deck, and the host declares no accessibility features. The main concern is the bathroom, since a bathtub is listed and no walk-in shower is mentioned. Door widths and thresholds also need to be confirmed with the host before booking.",
+"verdict": "Use caution - confirm details with host"
 }
 },
 "748563587359457192": {
@@ -50026,6 +52278,64 @@
 "Can the living room rug be removed on request?"
 ],
 "summary": "The host calls this mid-century Seattle home wheelchair accessible and lists an elevator and single-level living, which is encouraging. The single photo shows only a spacious, step-free living and dining area. The entrance, elevator, bathrooms, bedrooms and parking are not shown or described, so the claim cannot be verified. Ask the host to confirm the step-free route from parking, the elevator details, door widths and shower type before booking.",
+"verdict": "Use caution - confirm details with host"
+}
+},
+"9741690": {
+"gallery": [
+"https://a0.muscache.com/pictures/ce56284c-cafb-489f-8743-2353d4b026c2.jpg"
+],
+"rating": {
+"blocking_barrier": false,
+"categories": {
+"bathroom": {
+"findings": "No bathroom photos and no description. Shower vs. tub, grab bars, door width and turning space are all unknown.",
+"score": 7
+},
+"bedroom": {
+"findings": "There is one bedroom, presumably on the single level. Sleeping for 5 guests implies extra beds such as a sofa bed or pack 'n play. No photos of the bed height, clearance beside the bed or bedroom door.",
+"score": 6
+},
+"entrance": {
+"findings": "Photo 1 shows the front of the bungalow: a covered concrete porch with a wood-panel entry door. The porch slab appears slightly raised above the planted ground, so there may be a step up. The approach path from the street or parking is hidden by shrubs. The door looks standard width but is not measured. The host says the unit is 'ground floor', which suggests no flight of stairs, but step-free access is not confirmed.",
+"score": 7
+},
+"host_features": {
+"findings": "No Airbnb accessibility features were declared and there is no accessibility photo tour. The only relevant host statements are 'Single level home' and 'ground floor'.",
+"score": 6
+},
+"interior": {
+"findings": "The amenities list 'Single level home' and the description says 'detached ground floor guest house', so there are probably no internal stairs. No interior photos, so door widths, thresholds, rugs and clutter cannot be verified. It is a small cottage, so tight spaces are possible.",
+"score": 4
+},
+"parking": {
+"findings": "'Free parking on premises' is listed, but the location, surface and distance to the entrance are unknown. The approach path is not visible in photo 1 because of landscaping. There is a stone or gravel-like ground cover near the right side of the porch.",
+"score": 5
+}
+},
+"confidence": "low",
+"hard_barriers": [],
+"heuristic_overall": 5,
+"method": "claude",
+"model": "claude-opus-5-5",
+"overall": 6,
+"photo_observations": [
+{
+"observation": "Craftsman bungalow with a covered concrete porch and a red wood entry door. The porch slab sits slightly above grade and may require a small step. A bistro table and chairs sit on the porch near the door, which may narrow the approach. The path to the porch is hidden by shrubs, and the ground cover at the right looks like stone or gravel.",
+"photo": 1
+}
+],
+"questions_for_host": [
+"Is there a step or curb up onto the porch, and how high is it? Is there a step-free route from parking to the door?",
+"What is the clear width of the entry door, and is there a raised threshold?",
+"Where is the on-site parking, and what is the path surface from it to the entrance (concrete, gravel, grass)?",
+"Does the bathroom have a step-free or roll-in shower, or a bathtub? Are there grab bars?",
+"What is the bathroom door width, and is there space beside the toilet?",
+"What are the bedroom door width and bed height, and is there clear floor space beside the bed?",
+"Are there interior thresholds or rugs between rooms?",
+"Can the bistro furniture on the porch be moved to widen the approach?"
+],
+"summary": "A single-level, ground-floor detached guesthouse with on-site parking, which is promising for limited mobility, but only one exterior photo is provided. Photo 1 suggests the porch may sit a small step above grade, and the approach path, door width, bathroom and bedroom are all unverified. No accessibility features are declared. Confirm entrance step-free access, the parking path and the bathroom shower type before booking. Stays must be 30 days or longer.",
 "verdict": "Use caution - confirm details with host"
 }
 },
